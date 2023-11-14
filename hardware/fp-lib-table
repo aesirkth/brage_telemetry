@@ -1,0 +1,8 @@
+(fp_lib_table
+  (version 7)
+  (lib (name "sx1281")(type "KiCad")(uri "${KIPRJMOD}/lib/sx1281.pretty")(options "")(descr ""))
+  (lib (name "sky65383")(type "KiCad")(uri "${KIPRJMOD}/lib/sky65383.pretty")(options "")(descr ""))
+  (lib (name "tja1462")(type "KiCad")(uri "${KIPRJMOD}/lib/tja1462.pretty")(options "")(descr ""))
+  (lib (name "tpsm82901")(type "KiCad")(uri "${KIPRJMOD}/lib/tpsm82901.pretty")(options "")(descr ""))
+  (lib (name "dea202450bt1261")(type "KiCad")(uri "${KIPRJMOD}/lib/dea202450bt1261.pretty")(options "")(descr ""))
+)
