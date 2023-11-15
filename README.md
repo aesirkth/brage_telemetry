@@ -15,4 +15,4 @@ Brage is a 1W 2.4GHz Telemetry modem that can listen and transmit from a CAN-bus
 * PCB antenna
 
 ### Hardware
-The modem is based on an STM32U575CG and an SX1280 transceiver. The 22dbm output signal is put through a frontend, filtering and amplifying it to 30dBm. The UART and CAN connectors follow the PixHawk standard while the debugging port is custom.
+The modem is based on an STM32U575CG and an SX1280 transceiver. The radio signal is put through a frontend, filtering and amplifying it to 30dBm. The UART and CAN connectors follow the PixHawk standard while the debugging port is custom.
