@@ -8465,7 +8465,7 @@
     (effects (font (size 1.27 1.27)) (justify left bottom))
     (uuid 437f7089-8c5a-4a11-a448-4928386fe4f1)
   )
-  (text "USB in -> 5.2v\ndiode drop -> 4.9v\nldo drop -> 4.7v\n"
+  (text "USB in -> 5.2v\ndiode drop -> 4.9v\nldo drop -> 4.7v\nworks down to 4.5V"
     (at 180.34 173.99 0)
     (effects (font (size 1.27 1.27)) (justify left bottom))
     (uuid 4de560d0-1346-4c7a-a3b4-b2c23c272c8f)
