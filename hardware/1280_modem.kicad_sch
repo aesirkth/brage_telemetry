@@ -9007,7 +9007,7 @@
     (effects (font (size 1.27 1.27)) (justify right bottom))
     (uuid ae096266-6f4e-4c1f-8bfa-90364c81b6ca)
   )
-  (label "VCC_FILT" (at 189.23 215.9 0) (fields_autoplaced)
+  (label "VCC_FILT" (at 187.96 215.9 0) (fields_autoplaced)
     (effects (font (size 1.27 1.27)) (justify left bottom))
     (uuid ae236880-b9e6-47f7-a5c5-7a4833e1ff72)
   )
