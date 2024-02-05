@@ -5,4 +5,7 @@
   (lib (name "tja1462")(type "KiCad")(uri "${KIPRJMOD}/lib/tja1462.kicad_sym")(options "")(descr ""))
   (lib (name "TPSM82901SISR")(type "KiCad")(uri "${KIPRJMOD}/lib/TPSM82901SISR.kicad_sym")(options "")(descr ""))
   (lib (name "DEA202450BT-1261A2")(type "KiCad")(uri "${KIPRJMOD}/lib/DEA202450BT-1261A2.kicad_sym")(options "")(descr ""))
+  (lib (name "TCAN334GDCNR")(type "KiCad")(uri "${KIPRJMOD}/lib/TCAN334GDCNR.kicad_sym")(options "")(descr ""))
+  (lib (name "LMR50410YQDBVRQ1")(type "KiCad")(uri "${KIPRJMOD}/lib/LMR50410YQDBVRQ1.kicad_sym")(options "")(descr ""))
+  (lib (name "TPS2116DRLR")(type "KiCad")(uri "${KIPRJMOD}/lib/TPS2116DRLR.kicad_sym")(options "")(descr ""))
 )

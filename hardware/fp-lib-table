@@ -5,4 +5,8 @@
   (lib (name "tja1462")(type "KiCad")(uri "${KIPRJMOD}/lib/tja1462.pretty")(options "")(descr ""))
   (lib (name "tpsm82901")(type "KiCad")(uri "${KIPRJMOD}/lib/tpsm82901.pretty")(options "")(descr ""))
   (lib (name "dea202450bt1261")(type "KiCad")(uri "${KIPRJMOD}/lib/dea202450bt1261.pretty")(options "")(descr ""))
+  (lib (name "tps2121")(type "KiCad")(uri "${KIPRJMOD}/lib/tps2121.pretty")(options "")(descr ""))
+  (lib (name "tcan334")(type "KiCad")(uri "${KIPRJMOD}/lib/tcan334.pretty")(options "")(descr ""))
+  (lib (name "lmr50410")(type "KiCad")(uri "${KIPRJMOD}/lib/lmr50410.pretty")(options "")(descr ""))
+  (lib (name "tps2116")(type "KiCad")(uri "${KIPRJMOD}/lib/tps2116.pretty")(options "")(descr ""))
 )
