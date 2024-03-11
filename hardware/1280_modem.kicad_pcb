@@ -392,7 +392,7 @@
 				(xy 2.60471 -2.607105) (xy 2.501131 -2.505176) (xy 2.409422 -2.478049) (xy 2.283203 -2.478049) (xy 2.411602 -2.314816)
 				(xy 2.521908 -2.119463) (xy 2.514908 -1.958431) (xy 2.390293 -1.825259) (xy 2.388155 -1.823852)
 				(xy 2.257995 -1.764811) (xy 2.116604 -1.766253) (xy 1.939003 -1.834837) (xy 1.70021 -1.977224) (xy 1.624573 -2.027456)
-				(xy 1.450295 -2.135159) (xy 1.31719 -2.199567) (xy 1.257591 -2.207511) (xy 1.258921 -2.133471) (xy 1.307699 -1.990855)
+				(xy 1.450295 -2.135159) (xy 1.31719 -2.199567) (xy 1.257591 -2.207511) (xy 1.25892 -2.133471) (xy 1.307699 -1.990855)
 				(xy 1.34707 -1.904563) (xy 1.518342 -1.469004) (xy 1.593072 -1.061459) (xy 1.585489 -0.806007) (xy 1.477285 -0.401056)
 				(xy 1.27786 -0.020872) (xy 1.010304 0.293073) (xy 0.940538 0.352359) (xy 0.723473 0.531017) (xy 0.589606 0.663004)
 				(xy 0.520218 0.772094) (xy 0.496581 0.882061) (xy 0.49561 0.917237) (xy 0.453095 1.110687) (xy 0.342796 1.342256)
@@ -509,7 +509,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Inductor_SMD_Wurth:L_Wurth_WE-LQSH-3012"
 			(at 0 0 -90)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -533,7 +533,7 @@
 				)
 			)
 		)
-		(property "Description" "Inductor, small symbol"
+		(property "Description" ""
 			(at 0 0 -90)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -545,7 +545,9 @@
 				)
 			)
 		)
+		(property ki_fp_filters "Choke_* *Coil* Inductor_* L_*")
 		(path "/d5c2e723-bc20-4657-b89f-4e12a7f9793a")
+		(sheetname "Root")
 		(sheetfile "1280_modem.kicad_sch")
 		(attr smd)
 		(fp_line
@@ -697,7 +699,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Capacitor_SMD:C_0603_1608Metric"
 			(at 0 0 -90)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -721,7 +723,7 @@
 				)
 			)
 		)
-		(property "Description" "Unpolarized capacitor, small symbol"
+		(property "Description" ""
 			(at 0 0 -90)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -733,7 +735,9 @@
 				)
 			)
 		)
+		(property ki_fp_filters "C_*")
 		(path "/9436e2f6-e709-4e76-8ef1-44392175a0af")
+		(sheetname "Root")
 		(sheetfile "1280_modem.kicad_sch")
 		(attr smd)
 		(fp_line
@@ -905,7 +909,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Capacitor_SMD:C_0603_1608Metric"
 			(at 0 0 -90)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -929,7 +933,7 @@
 				)
 			)
 		)
-		(property "Description" "Unpolarized capacitor, small symbol"
+		(property "Description" ""
 			(at 0 0 -90)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -941,7 +945,9 @@
 				)
 			)
 		)
+		(property ki_fp_filters "C_*")
 		(path "/f30694dd-ad43-477b-a0d2-17f8ca219b5b")
+		(sheetname "Root")
 		(sheetfile "1280_modem.kicad_sch")
 		(attr smd)
 		(fp_line
@@ -1113,7 +1119,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Capacitor_SMD:C_0603_1608Metric"
 			(at 0 0 90)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -1137,7 +1143,7 @@
 				)
 			)
 		)
-		(property "Description" "Unpolarized capacitor, small symbol"
+		(property "Description" ""
 			(at 0 0 90)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -1149,7 +1155,9 @@
 				)
 			)
 		)
+		(property ki_fp_filters "C_*")
 		(path "/1b01b2d2-9760-4465-ac21-14f77ca39726")
+		(sheetname "Root")
 		(sheetfile "1280_modem.kicad_sch")
 		(attr smd)
 		(fp_line
@@ -1322,7 +1330,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "MountingHole:MountingHole_3.2mm_M3_Pad_Via"
 			(at 0 0 0)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -1346,7 +1354,7 @@
 				)
 			)
 		)
-		(property "Description" "Mounting Hole with connection"
+		(property "Description" ""
 			(at 0 0 0)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -1358,7 +1366,9 @@
 				)
 			)
 		)
+		(property ki_fp_filters "MountingHole*Pad*")
 		(path "/c3e41ed4-c4af-421d-8ca8-02b7233b8e0a")
+		(sheetname "Root")
 		(sheetfile "1280_modem.kicad_sch")
 		(attr exclude_from_pos_files)
 		(fp_circle
@@ -1522,7 +1532,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Inductor_SMD:L_0805_2012Metric_Pad1.15x1.40mm_HandSolder"
 			(at 0 0 -90)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -1546,7 +1556,7 @@
 				)
 			)
 		)
-		(property "Description" "Ferrite bead, small symbol"
+		(property "Description" ""
 			(at 0 0 -90)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -1558,7 +1568,9 @@
 				)
 			)
 		)
+		(property ki_fp_filters "Inductor_* L_* *Ferrite*")
 		(path "/be7f3084-9992-4f5e-be1a-12ec69225721")
+		(sheetname "Root")
 		(sheetfile "1280_modem.kicad_sch")
 		(attr smd)
 		(fp_line
@@ -2550,7 +2562,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Package_TO_SOT_SMD:SOT-23"
 			(at 0 0 -90)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -2562,7 +2574,7 @@
 				)
 			)
 		)
-		(property "Datasheet" ""
+		(property "Datasheet" "http://www.onsemi.com/pub_link/Collateral/NUP2105L-D.PDF"
 			(at 0 0 -90)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -2574,7 +2586,7 @@
 				)
 			)
 		)
-		(property "Description" "Dual Line CAN Bus Protector, 24Vrwm, Automotive Grade"
+		(property "Description" ""
 			(at 0 0 -90)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -2586,7 +2598,9 @@
 				)
 			)
 		)
+		(property ki_fp_filters "SOT?23*")
 		(path "/9c719c34-abcd-4c87-9c1e-7e189491f73f")
+		(sheetname "Root")
 		(sheetfile "1280_modem.kicad_sch")
 		(attr smd)
 		(fp_line
@@ -2800,7 +2814,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Package_TO_SOT_SMD:SOT-23"
 			(at 0 0 90)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -2812,7 +2826,7 @@
 				)
 			)
 		)
-		(property "Datasheet" ""
+		(property "Datasheet" "http://www.onsemi.com/pub_link/Collateral/NUP2105L-D.PDF"
 			(at 0 0 90)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -2824,7 +2838,7 @@
 				)
 			)
 		)
-		(property "Description" "Dual Line CAN Bus Protector, 24Vrwm, Automotive Grade"
+		(property "Description" ""
 			(at 0 0 90)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -2836,7 +2850,9 @@
 				)
 			)
 		)
+		(property ki_fp_filters "SOT?23*")
 		(path "/cf3a0a8f-cd88-4125-806f-39687e215694")
+		(sheetname "Root")
 		(sheetfile "1280_modem.kicad_sch")
 		(attr smd)
 		(fp_line
@@ -3051,7 +3067,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Resistor_SMD:R_0402_1005Metric"
 			(at 0 0 45)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -3075,7 +3091,7 @@
 				)
 			)
 		)
-		(property "Description" "Resistor, small symbol"
+		(property "Description" ""
 			(at 0 0 45)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -3087,7 +3103,9 @@
 				)
 			)
 		)
+		(property ki_fp_filters "R_*")
 		(path "/a8732ed3-a0e4-419f-954f-fedf315a2004")
+		(sheetname "Root")
 		(sheetfile "1280_modem.kicad_sch")
 		(attr smd)
 		(fp_line
@@ -3259,7 +3277,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Capacitor_SMD:C_0603_1608Metric"
 			(at 0 0 -90)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -3283,7 +3301,7 @@
 				)
 			)
 		)
-		(property "Description" "Unpolarized capacitor, small symbol"
+		(property "Description" ""
 			(at 0 0 -90)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -3295,7 +3313,9 @@
 				)
 			)
 		)
+		(property ki_fp_filters "C_*")
 		(path "/5d5e5cdf-2901-4e1c-bd04-0e931cf8f9d4")
+		(sheetname "Root")
 		(sheetfile "1280_modem.kicad_sch")
 		(attr smd)
 		(fp_line
@@ -3467,7 +3487,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Capacitor_SMD:C_0603_1608Metric"
 			(at 0 0 -90)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -3491,7 +3511,7 @@
 				)
 			)
 		)
-		(property "Description" "Unpolarized capacitor, small symbol"
+		(property "Description" ""
 			(at 0 0 -90)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -3503,7 +3523,9 @@
 				)
 			)
 		)
+		(property ki_fp_filters "C_*")
 		(path "/a3c4cd5f-f962-43ce-aadd-8ea111ee2c7b")
+		(sheetname "Root")
 		(sheetfile "1280_modem.kicad_sch")
 		(attr smd)
 		(fp_line
@@ -3675,7 +3697,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Package_TO_SOT_SMD:SOT-23"
 			(at 0 0 90)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -3687,7 +3709,7 @@
 				)
 			)
 		)
-		(property "Datasheet" ""
+		(property "Datasheet" "http://www.aosmd.com/pdfs/datasheet/AO3401A.pdf"
 			(at 0 0 90)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -3699,7 +3721,7 @@
 				)
 			)
 		)
-		(property "Description" "-4.0A Id, -30V Vds, P-Channel MOSFET, SOT-23"
+		(property "Description" ""
 			(at 0 0 90)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -3711,7 +3733,9 @@
 				)
 			)
 		)
+		(property ki_fp_filters "SOT?23*")
 		(path "/fd855ce5-aaeb-4ec4-bf2e-2e76f092010b")
+		(sheetname "Root")
 		(sheetfile "1280_modem.kicad_sch")
 		(attr smd)
 		(fp_line
@@ -3925,7 +3949,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Resistor_SMD:R_0603_1608Metric"
 			(at 0 0 0)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -3949,7 +3973,7 @@
 				)
 			)
 		)
-		(property "Description" "Resistor, small symbol"
+		(property "Description" ""
 			(at 0 0 0)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -3961,7 +3985,9 @@
 				)
 			)
 		)
+		(property ki_fp_filters "R_*")
 		(path "/93db09e0-bfee-4f77-a599-7df580b882b7")
+		(sheetname "Root")
 		(sheetfile "1280_modem.kicad_sch")
 		(attr smd)
 		(fp_line
@@ -4133,7 +4159,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Capacitor_SMD:C_0402_1005Metric"
 			(at 0 0 -45)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -4157,7 +4183,7 @@
 				)
 			)
 		)
-		(property "Description" "Unpolarized capacitor, small symbol"
+		(property "Description" ""
 			(at 0 0 -45)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -4169,7 +4195,9 @@
 				)
 			)
 		)
+		(property ki_fp_filters "C_*")
 		(path "/897c2a8d-f8ee-406a-8362-91fd6587be69")
+		(sheetname "Root")
 		(sheetfile "1280_modem.kicad_sch")
 		(attr smd)
 		(fp_line
@@ -4341,7 +4369,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Capacitor_SMD:C_0603_1608Metric"
 			(at 0 0 0)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -4365,7 +4393,7 @@
 				)
 			)
 		)
-		(property "Description" "Unpolarized capacitor, small symbol"
+		(property "Description" ""
 			(at 0 0 0)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -4377,7 +4405,9 @@
 				)
 			)
 		)
+		(property ki_fp_filters "C_*")
 		(path "/56807c97-5e3f-4278-bc77-3c1c9e02f306")
+		(sheetname "Root")
 		(sheetfile "1280_modem.kicad_sch")
 		(attr smd)
 		(fp_line
@@ -4550,7 +4580,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "sky65383:SKY6538311"
 			(at 0 0 90)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -4562,7 +4592,7 @@
 				)
 			)
 		)
-		(property "Datasheet" ""
+		(property "Datasheet" "https://componentsearchengine.com/Datasheets/1/SKY65383-11.pdf"
 			(at 0 0 90)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -4574,7 +4604,7 @@
 				)
 			)
 		)
-		(property "Description" "HIGH POWER 2.4-GHZ FEM"
+		(property "Description" ""
 			(at 0 0 90)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -4647,6 +4677,7 @@
 			)
 		)
 		(path "/de8a8cd3-01a6-4953-a795-b94641dd1218")
+		(sheetname "Root")
 		(sheetfile "1280_modem.kicad_sch")
 		(attr smd)
 		(fp_line
@@ -5153,7 +5184,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Capacitor_SMD:C_0603_1608Metric"
 			(at 0 0 -90)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -5177,7 +5208,7 @@
 				)
 			)
 		)
-		(property "Description" "Unpolarized capacitor, small symbol"
+		(property "Description" ""
 			(at 0 0 -90)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -5189,7 +5220,9 @@
 				)
 			)
 		)
+		(property ki_fp_filters "C_*")
 		(path "/ef404b82-64fb-4fdb-9869-4d7fcde6799d")
+		(sheetname "Root")
 		(sheetfile "1280_modem.kicad_sch")
 		(attr smd)
 		(fp_line
@@ -5361,7 +5394,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Capacitor_SMD:C_0603_1608Metric"
 			(at 0 0 -90)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -5385,7 +5418,7 @@
 				)
 			)
 		)
-		(property "Description" "Unpolarized capacitor, small symbol"
+		(property "Description" ""
 			(at 0 0 -90)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -5397,7 +5430,9 @@
 				)
 			)
 		)
+		(property ki_fp_filters "C_*")
 		(path "/5554e0cc-b1db-4e27-9773-f887abb74362")
+		(sheetname "Root")
 		(sheetfile "1280_modem.kicad_sch")
 		(attr smd)
 		(fp_line
@@ -5569,7 +5604,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Capacitor_SMD:C_0603_1608Metric"
 			(at 0 0 90)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -5593,7 +5628,7 @@
 				)
 			)
 		)
-		(property "Description" "Unpolarized capacitor, small symbol"
+		(property "Description" ""
 			(at 0 0 90)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -5605,7 +5640,9 @@
 				)
 			)
 		)
+		(property ki_fp_filters "C_*")
 		(path "/20f86e1c-a939-4f00-8b79-fc066cc31f79")
+		(sheetname "Root")
 		(sheetfile "1280_modem.kicad_sch")
 		(attr smd)
 		(fp_line
@@ -5777,7 +5814,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Resistor_SMD:R_0603_1608Metric"
 			(at 0 0 180)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -5801,7 +5838,7 @@
 				)
 			)
 		)
-		(property "Description" "Resistor, small symbol"
+		(property "Description" ""
 			(at 0 0 180)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -5813,7 +5850,9 @@
 				)
 			)
 		)
+		(property ki_fp_filters "R_*")
 		(path "/ff74ae06-6458-46af-92bb-b3580a438206")
+		(sheetname "Root")
 		(sheetfile "1280_modem.kicad_sch")
 		(attr smd)
 		(fp_line
@@ -5985,7 +6024,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Capacitor_SMD:C_0603_1608Metric"
 			(at 0 0 90)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -6009,7 +6048,7 @@
 				)
 			)
 		)
-		(property "Description" "Unpolarized capacitor, small symbol"
+		(property "Description" ""
 			(at 0 0 90)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -6021,7 +6060,9 @@
 				)
 			)
 		)
+		(property ki_fp_filters "C_*")
 		(path "/66c65a92-3bc5-4bea-93c8-8d0c182d3999")
+		(sheetname "Root")
 		(sheetfile "1280_modem.kicad_sch")
 		(attr smd)
 		(fp_line
@@ -6193,7 +6234,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Capacitor_SMD:C_0603_1608Metric"
 			(at 0 0 0)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -6217,7 +6258,7 @@
 				)
 			)
 		)
-		(property "Description" "Unpolarized capacitor, small symbol"
+		(property "Description" ""
 			(at 0 0 0)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -6229,7 +6270,9 @@
 				)
 			)
 		)
+		(property ki_fp_filters "C_*")
 		(path "/74536d9b-dbb0-4c82-a9bb-522afddf333e")
+		(sheetname "Root")
 		(sheetfile "1280_modem.kicad_sch")
 		(attr smd)
 		(fp_line
@@ -6401,7 +6444,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Capacitor_SMD:C_0603_1608Metric"
 			(at 0 0 90)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -6425,7 +6468,7 @@
 				)
 			)
 		)
-		(property "Description" "Unpolarized capacitor, small symbol"
+		(property "Description" ""
 			(at 0 0 90)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -6437,7 +6480,9 @@
 				)
 			)
 		)
+		(property ki_fp_filters "C_*")
 		(path "/a66a8965-43a5-4d21-b2fd-87b1ed713912")
+		(sheetname "Root")
 		(sheetfile "1280_modem.kicad_sch")
 		(attr smd)
 		(fp_line
@@ -6609,7 +6654,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Capacitor_SMD:C_0603_1608Metric"
 			(at 0 0 90)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -6633,7 +6678,7 @@
 				)
 			)
 		)
-		(property "Description" "Unpolarized capacitor, small symbol"
+		(property "Description" ""
 			(at 0 0 90)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -6645,7 +6690,9 @@
 				)
 			)
 		)
+		(property ki_fp_filters "C_*")
 		(path "/34c06a41-a5fc-453b-b0a3-7ab6b6483a08")
+		(sheetname "Root")
 		(sheetfile "1280_modem.kicad_sch")
 		(attr smd)
 		(fp_line
@@ -6817,7 +6864,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Capacitor_SMD:C_0603_1608Metric"
 			(at 0 0 -90)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -6841,7 +6888,7 @@
 				)
 			)
 		)
-		(property "Description" "Unpolarized capacitor, small symbol"
+		(property "Description" ""
 			(at 0 0 -90)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -6853,7 +6900,9 @@
 				)
 			)
 		)
+		(property ki_fp_filters "C_*")
 		(path "/84e22990-6d2e-4a29-ad3f-2b97e1a2b78b")
+		(sheetname "Root")
 		(sheetfile "1280_modem.kicad_sch")
 		(attr smd)
 		(fp_line
@@ -7026,7 +7075,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "sx1281:QFN50P400X400X100-25N-D"
 			(at 0 0 0)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -7038,7 +7087,7 @@
 				)
 			)
 		)
-		(property "Datasheet" ""
+		(property "Datasheet" "https://www.arrow.com/en/products/sx1281imltrt/semtech"
 			(at 0 0 0)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -7050,7 +7099,7 @@
 				)
 			)
 		)
-		(property "Description" "RF Transceiver PreProduction Sample Wireless Transceiver"
+		(property "Description" ""
 			(at 0 0 0)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -7123,6 +7172,7 @@
 			)
 		)
 		(path "/894d2d93-130b-4376-9598-135787d4adfe")
+		(sheetname "Root")
 		(sheetfile "1280_modem.kicad_sch")
 		(clearance 0.17)
 		(attr smd)
@@ -7562,7 +7612,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Package_TO_SOT_SMD:SOT-23-5"
 			(at 0 0 90)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -7574,7 +7624,7 @@
 				)
 			)
 		)
-		(property "Datasheet" ""
+		(property "Datasheet" "https://www.ti.com/lit/ds/symlink/tps7a05.pdf"
 			(at 0 0 90)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -7586,7 +7636,7 @@
 				)
 			)
 		)
-		(property "Description" "200-mA Ultra-Low-Iq LDO, 0.8V, SOT-23-5"
+		(property "Description" ""
 			(at 0 0 90)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -7598,7 +7648,9 @@
 				)
 			)
 		)
+		(property ki_fp_filters "SOT?23*")
 		(path "/5bae9241-da48-42b0-8c07-981ee6775804")
+		(sheetname "Root")
 		(sheetfile "1280_modem.kicad_sch")
 		(attr smd)
 		(fp_line
@@ -7832,7 +7884,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Capacitor_SMD:C_0603_1608Metric"
 			(at 0 0 -90)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -7856,7 +7908,7 @@
 				)
 			)
 		)
-		(property "Description" "Unpolarized capacitor, small symbol"
+		(property "Description" ""
 			(at 0 0 -90)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -7868,7 +7920,9 @@
 				)
 			)
 		)
+		(property ki_fp_filters "C_*")
 		(path "/10b175b3-0448-45e4-87ed-d3d8f7b3f343")
+		(sheetname "Root")
 		(sheetfile "1280_modem.kicad_sch")
 		(attr smd)
 		(fp_line
@@ -8040,7 +8094,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Capacitor_SMD:C_0603_1608Metric"
 			(at 0 0 180)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -8064,7 +8118,7 @@
 				)
 			)
 		)
-		(property "Description" "Unpolarized capacitor, small symbol"
+		(property "Description" ""
 			(at 0 0 180)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -8076,7 +8130,9 @@
 				)
 			)
 		)
+		(property ki_fp_filters "C_*")
 		(path "/8d88ce09-a60f-49de-a6ba-346e222e0755")
+		(sheetname "Root")
 		(sheetfile "1280_modem.kicad_sch")
 		(attr smd)
 		(fp_line
@@ -8248,7 +8304,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Capacitor_SMD:C_0603_1608Metric"
 			(at 0 0 -90)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -8272,7 +8328,7 @@
 				)
 			)
 		)
-		(property "Description" "Unpolarized capacitor, small symbol"
+		(property "Description" ""
 			(at 0 0 -90)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -8284,7 +8340,9 @@
 				)
 			)
 		)
+		(property ki_fp_filters "C_*")
 		(path "/03da1a1a-51f6-4b7b-891a-66b99c6e6025")
+		(sheetname "Root")
 		(sheetfile "1280_modem.kicad_sch")
 		(attr smd)
 		(fp_line
@@ -8456,7 +8514,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Capacitor_SMD:C_0603_1608Metric"
 			(at 0 0 -90)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -8480,7 +8538,7 @@
 				)
 			)
 		)
-		(property "Description" "Unpolarized capacitor, small symbol"
+		(property "Description" ""
 			(at 0 0 -90)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -8492,7 +8550,9 @@
 				)
 			)
 		)
+		(property ki_fp_filters "C_*")
 		(path "/37ced676-95a2-44b4-a56d-cf3cbd8c5e04")
+		(sheetname "Root")
 		(sheetfile "1280_modem.kicad_sch")
 		(attr smd)
 		(fp_line
@@ -8665,7 +8725,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Resistor_SMD:R_0402_1005Metric"
 			(at 0 0 135)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -8689,7 +8749,7 @@
 				)
 			)
 		)
-		(property "Description" "Resistor, small symbol"
+		(property "Description" ""
 			(at 0 0 135)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -8701,7 +8761,9 @@
 				)
 			)
 		)
+		(property ki_fp_filters "R_*")
 		(path "/e74dbd28-73db-4090-b58e-ae4425284b27")
+		(sheetname "Root")
 		(sheetfile "1280_modem.kicad_sch")
 		(attr smd)
 		(fp_line
@@ -8874,7 +8936,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Connector_Coaxial:SMA_Amphenol_901-143_Horizontal"
 			(at 0 0 0)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -8886,7 +8948,7 @@
 				)
 			)
 		)
-		(property "Datasheet" ""
+		(property "Datasheet" " ~"
 			(at 0 0 0)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -8898,7 +8960,7 @@
 				)
 			)
 		)
-		(property "Description" "coaxial connector (BNC, SMA, SMB, SMC, Cinch/RCA, LEMO, ...)"
+		(property "Description" ""
 			(at 0 0 0)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -8910,7 +8972,9 @@
 				)
 			)
 		)
+		(property ki_fp_filters "*BNC* *SMA* *SMB* *SMC* *Cinch* *LEMO*")
 		(path "/e2c3a84e-e151-4daf-9486-8c600b4fe3cb")
+		(sheetname "Root")
 		(sheetfile "1280_modem.kicad_sch")
 		(attr through_hole)
 		(fp_line
@@ -9320,7 +9384,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Crystal:Crystal_SMD_2016-4Pin_2.0x1.6mm"
 			(at 0 0 90)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -9344,7 +9408,7 @@
 				)
 			)
 		)
-		(property "Description" "Four pin crystal, GND on pins 2 and 4"
+		(property "Description" ""
 			(at 0 0 90)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -9368,7 +9432,9 @@
 				)
 			)
 		)
+		(property ki_fp_filters "Crystal*")
 		(path "/bd5174c7-2f8a-4e4e-aa70-9cad3869a5c0")
+		(sheetname "Root")
 		(sheetfile "1280_modem.kicad_sch")
 		(attr smd)
 		(fp_line
@@ -9608,7 +9674,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Capacitor_SMD:C_0402_1005Metric"
 			(at 0 0 -90)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -9632,7 +9698,7 @@
 				)
 			)
 		)
-		(property "Description" "Unpolarized capacitor, small symbol"
+		(property "Description" ""
 			(at 0 0 -90)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -9644,7 +9710,9 @@
 				)
 			)
 		)
+		(property ki_fp_filters "C_*")
 		(path "/423c0ce3-eeb6-4c7a-b348-64faa909b71f")
+		(sheetname "Root")
 		(sheetfile "1280_modem.kicad_sch")
 		(attr smd)
 		(fp_line
@@ -9816,7 +9884,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Capacitor_SMD:C_0603_1608Metric"
 			(at 0 0 0)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -9840,7 +9908,7 @@
 				)
 			)
 		)
-		(property "Description" "Unpolarized capacitor, small symbol"
+		(property "Description" ""
 			(at 0 0 0)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -9852,7 +9920,9 @@
 				)
 			)
 		)
+		(property ki_fp_filters "C_*")
 		(path "/e99d11a8-c274-4fd1-a50d-3ad55685c5c4")
+		(sheetname "Root")
 		(sheetfile "1280_modem.kicad_sch")
 		(attr smd)
 		(fp_line
@@ -10024,7 +10094,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Capacitor_SMD:C_0603_1608Metric"
 			(at 0 0 -90)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -10048,7 +10118,7 @@
 				)
 			)
 		)
-		(property "Description" "Unpolarized capacitor, small symbol"
+		(property "Description" ""
 			(at 0 0 -90)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -10060,7 +10130,9 @@
 				)
 			)
 		)
+		(property ki_fp_filters "C_*")
 		(path "/5db330b5-cef2-40ee-96d1-2fd83fb03ac6")
+		(sheetname "Root")
 		(sheetfile "1280_modem.kicad_sch")
 		(attr smd)
 		(fp_line
@@ -10232,7 +10304,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Capacitor_SMD:C_0603_1608Metric"
 			(at 0 0 90)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -10256,7 +10328,7 @@
 				)
 			)
 		)
-		(property "Description" "Unpolarized capacitor, small symbol"
+		(property "Description" ""
 			(at 0 0 90)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -10268,7 +10340,9 @@
 				)
 			)
 		)
+		(property ki_fp_filters "C_*")
 		(path "/c46ca26d-1455-4620-bcf1-1afa935aa886")
+		(sheetname "Root")
 		(sheetfile "1280_modem.kicad_sch")
 		(attr smd)
 		(fp_line
@@ -10440,7 +10514,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Capacitor_SMD:C_0603_1608Metric"
 			(at 0 0 -90)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -10464,7 +10538,7 @@
 				)
 			)
 		)
-		(property "Description" "Unpolarized capacitor, small symbol"
+		(property "Description" ""
 			(at 0 0 -90)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -10476,7 +10550,9 @@
 				)
 			)
 		)
+		(property ki_fp_filters "C_*")
 		(path "/3cca250d-e2fa-4831-821c-35bbacecece6")
+		(sheetname "Root")
 		(sheetfile "1280_modem.kicad_sch")
 		(attr smd)
 		(fp_line
@@ -11650,7 +11726,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Package_TO_SOT_SMD:SOT-23"
 			(at 0 0 90)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -11662,7 +11738,7 @@
 				)
 			)
 		)
-		(property "Datasheet" ""
+		(property "Datasheet" "http://www.aosmd.com/pdfs/datasheet/AO3401A.pdf"
 			(at 0 0 90)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -11674,7 +11750,7 @@
 				)
 			)
 		)
-		(property "Description" "-4.0A Id, -30V Vds, P-Channel MOSFET, SOT-23"
+		(property "Description" ""
 			(at 0 0 90)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -11686,7 +11762,9 @@
 				)
 			)
 		)
+		(property ki_fp_filters "SOT?23*")
 		(path "/8525020a-fa2e-4d2c-aad4-260f4b3b9820")
+		(sheetname "Root")
 		(sheetfile "1280_modem.kicad_sch")
 		(attr smd)
 		(fp_line
@@ -11900,7 +11978,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Resistor_SMD:R_0603_1608Metric"
 			(at 0 0 -90)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -11924,7 +12002,7 @@
 				)
 			)
 		)
-		(property "Description" "Resistor, small symbol"
+		(property "Description" ""
 			(at 0 0 -90)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -11936,7 +12014,9 @@
 				)
 			)
 		)
+		(property ki_fp_filters "R_*")
 		(path "/79f86792-c228-4a4a-830b-b2c818657b85")
+		(sheetname "Root")
 		(sheetfile "1280_modem.kicad_sch")
 		(attr smd)
 		(fp_line
@@ -12108,7 +12188,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Resistor_SMD:R_0603_1608Metric"
 			(at 0 0 90)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -12132,7 +12212,7 @@
 				)
 			)
 		)
-		(property "Description" "Resistor, small symbol"
+		(property "Description" ""
 			(at 0 0 90)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -12144,7 +12224,9 @@
 				)
 			)
 		)
+		(property ki_fp_filters "R_*")
 		(path "/1853d9d7-7376-4eeb-81f5-151304fa6f85")
+		(sheetname "Root")
 		(sheetfile "1280_modem.kicad_sch")
 		(attr smd)
 		(fp_line
@@ -12804,7 +12886,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Inductor_SMD:L_0805_2012Metric_Pad1.15x1.40mm_HandSolder"
 			(at 0 0 180)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -12828,7 +12910,7 @@
 				)
 			)
 		)
-		(property "Description" "Ferrite bead, small symbol"
+		(property "Description" ""
 			(at 0 0 180)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -12840,7 +12922,9 @@
 				)
 			)
 		)
+		(property ki_fp_filters "Inductor_* L_* *Ferrite*")
 		(path "/7b810cad-84bd-477b-8ec8-521e6d81c13d")
+		(sheetname "Root")
 		(sheetfile "1280_modem.kicad_sch")
 		(attr smd)
 		(fp_line
@@ -13012,7 +13096,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Package_TO_SOT_SMD:TSOT-23-8"
 			(at 0 0 -90)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -13024,7 +13108,7 @@
 				)
 			)
 		)
-		(property "Datasheet" ""
+		(property "Datasheet" "http://www.ti.com/lit/ds/symlink/tcan337.pdf"
 			(at 0 0 -90)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -13036,7 +13120,7 @@
 				)
 			)
 		)
-		(property "Description" "High-Speed CAN Transceiver, 1Mbps, 3.3V supply, low power standby mode, shutdown mode, SOT-23-8/SOIC-8"
+		(property "Description" ""
 			(at 0 0 -90)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -13048,7 +13132,9 @@
 				)
 			)
 		)
+		(property ki_fp_filters "*TSOT?23* *SOIC*3.9x4.9mm*P1.27mm*")
 		(path "/ef40e4dc-c06e-4155-b3f7-dfedd0abb7e1")
+		(sheetname "Root")
 		(sheetfile "1280_modem.kicad_sch")
 		(clearance 0.15)
 		(attr smd)
@@ -13313,7 +13399,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Capacitor_SMD:C_0603_1608Metric"
 			(at 0 0 180)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -13337,7 +13423,7 @@
 				)
 			)
 		)
-		(property "Description" "Unpolarized capacitor, small symbol"
+		(property "Description" ""
 			(at 0 0 180)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -13349,7 +13435,9 @@
 				)
 			)
 		)
+		(property ki_fp_filters "C_*")
 		(path "/a140029f-2e0d-4cae-9f58-f392411aa59b")
+		(sheetname "Root")
 		(sheetfile "1280_modem.kicad_sch")
 		(attr smd)
 		(fp_line
@@ -13521,7 +13609,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Capacitor_SMD:C_0603_1608Metric"
 			(at 0 0 180)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -13545,7 +13633,7 @@
 				)
 			)
 		)
-		(property "Description" "Unpolarized capacitor, small symbol"
+		(property "Description" ""
 			(at 0 0 180)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -13557,7 +13645,9 @@
 				)
 			)
 		)
+		(property ki_fp_filters "C_*")
 		(path "/b8475429-b058-44ba-b0f8-7fb0fd8d134e")
+		(sheetname "Root")
 		(sheetfile "1280_modem.kicad_sch")
 		(attr smd)
 		(fp_line
@@ -13729,7 +13819,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Package_TO_SOT_SMD:SOT-23"
 			(at 0 0 -90)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -13741,7 +13831,7 @@
 				)
 			)
 		)
-		(property "Datasheet" ""
+		(property "Datasheet" "http://www.onsemi.com/pub_link/Collateral/NUP2105L-D.PDF"
 			(at 0 0 -90)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -13753,7 +13843,7 @@
 				)
 			)
 		)
-		(property "Description" "Dual Line CAN Bus Protector, 24Vrwm, Automotive Grade"
+		(property "Description" ""
 			(at 0 0 -90)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -13765,7 +13855,9 @@
 				)
 			)
 		)
+		(property ki_fp_filters "SOT?23*")
 		(path "/05faa8a6-46cc-4a57-b702-81e55c4d0759")
+		(sheetname "Root")
 		(sheetfile "1280_modem.kicad_sch")
 		(attr smd)
 		(fp_line
@@ -13980,7 +14072,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "MountingHole:MountingHole_3.2mm_M3_Pad_Via"
 			(at 0 0 0)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -14004,7 +14096,7 @@
 				)
 			)
 		)
-		(property "Description" "Mounting Hole with connection"
+		(property "Description" ""
 			(at 0 0 0)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -14016,7 +14108,9 @@
 				)
 			)
 		)
+		(property ki_fp_filters "MountingHole*Pad*")
 		(path "/a48e4488-24c6-42a4-9146-108c0aaf3353")
+		(sheetname "Root")
 		(sheetfile "1280_modem.kicad_sch")
 		(attr exclude_from_pos_files)
 		(fp_circle
@@ -14180,7 +14274,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "RF_Antenna:Texas_SWRA117D_2.4GHz_Left"
 			(at 0 0 0)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -14204,7 +14298,7 @@
 				)
 			)
 		)
-		(property "Description" "Dipole antenna"
+		(property "Description" ""
 			(at 0 0 0)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -14217,6 +14311,7 @@
 			)
 		)
 		(path "/7106e944-fe7c-4b20-82ec-b21e41fdfc8b")
+		(sheetname "Root")
 		(sheetfile "1280_modem.kicad_sch")
 		(attr exclude_from_pos_files)
 		(net_tie_pad_groups "1,2")
@@ -14440,7 +14535,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Package_TO_SOT_SMD:SOT-23"
 			(at 0 0 -90)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -14452,7 +14547,7 @@
 				)
 			)
 		)
-		(property "Datasheet" ""
+		(property "Datasheet" "http://www.onsemi.com/pub_link/Collateral/NUP2105L-D.PDF"
 			(at 0 0 -90)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -14464,7 +14559,7 @@
 				)
 			)
 		)
-		(property "Description" "Dual Line CAN Bus Protector, 24Vrwm, Automotive Grade"
+		(property "Description" ""
 			(at 0 0 -90)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -14476,7 +14571,9 @@
 				)
 			)
 		)
+		(property ki_fp_filters "SOT?23*")
 		(path "/1666b748-8d70-402d-9ccc-a0fb5143e6e3")
+		(sheetname "Root")
 		(sheetfile "1280_modem.kicad_sch")
 		(attr smd)
 		(fp_line
@@ -14690,7 +14787,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Capacitor_SMD:C_0603_1608Metric"
 			(at 0 0 180)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -14714,7 +14811,7 @@
 				)
 			)
 		)
-		(property "Description" "Unpolarized capacitor, small symbol"
+		(property "Description" ""
 			(at 0 0 180)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -14726,7 +14823,9 @@
 				)
 			)
 		)
+		(property ki_fp_filters "C_*")
 		(path "/404c0726-2dc2-47f8-b125-db2753642851")
+		(sheetname "Root")
 		(sheetfile "1280_modem.kicad_sch")
 		(attr smd)
 		(fp_line
@@ -14898,7 +14997,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Capacitor_SMD:C_0603_1608Metric"
 			(at 0 0 180)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -14922,7 +15021,7 @@
 				)
 			)
 		)
-		(property "Description" "Unpolarized capacitor, small symbol"
+		(property "Description" ""
 			(at 0 0 180)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -14934,7 +15033,9 @@
 				)
 			)
 		)
+		(property ki_fp_filters "C_*")
 		(path "/24299fff-81ec-4e78-a27e-71572377f506")
+		(sheetname "Root")
 		(sheetfile "1280_modem.kicad_sch")
 		(attr smd)
 		(fp_line
@@ -15107,7 +15208,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Jumper:SolderJumper-2_P1.3mm_Open_TrianglePad1.0x1.5mm"
 			(at 0 0 90)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -15131,7 +15232,7 @@
 				)
 			)
 		)
-		(property "Description" "Solder Jumper, 2-pole, open"
+		(property "Description" ""
 			(at 0 0 90)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -15143,7 +15244,9 @@
 				)
 			)
 		)
+		(property ki_fp_filters "SolderJumper*Open*")
 		(path "/6ad9d418-75fe-4560-ad2b-c5a2e6b9281c")
+		(sheetname "Root")
 		(sheetfile "1280_modem.kicad_sch")
 		(attr exclude_from_pos_files)
 		(fp_line
@@ -15304,7 +15407,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "lmr50410:SOT95P280X145-6N"
 			(at 0 0 180)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -15316,7 +15419,7 @@
 				)
 			)
 		)
-		(property "Datasheet" ""
+		(property "Datasheet" "https://www.ti.com/lit/ds/symlink/lmr50410-q1.pdf?ts=1599768400389&ref_url=https%253A%252F%252Fwww.ti.com%252Fstore%252Fti%252Fen%252Fp%252Fproduct%252F%253Fp%253DLMR50410YQDBVRQ1"
 			(at 0 0 180)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -15328,7 +15431,7 @@
 				)
 			)
 		)
-		(property "Description" "Switching Voltage Regulators Automotive qualified SIMPLE SWITCHER 4-V to 36-V, 1-A synchronous step-down converter 6-SOT-23 -40 to 150"
+		(property "Description" ""
 			(at 0 0 180)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -15401,6 +15504,7 @@
 			)
 		)
 		(path "/4ef9f3fc-de45-48c9-a125-f6253acb0c28")
+		(sheetname "Root")
 		(sheetfile "1280_modem.kicad_sch")
 		(attr smd)
 		(fp_line
@@ -15649,7 +15753,7 @@
 				)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "dea202450bt1261:DEA202450BT1261A2"
 			(at 0 0 90)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -15661,7 +15765,7 @@
 				)
 			)
 		)
-		(property "Datasheet" ""
+		(property "Datasheet" "https://componentsearchengine.com/Datasheets/1/DEA202450BT-1261A2.pdf"
 			(at 0 0 90)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -15673,7 +15777,7 @@
 				)
 			)
 		)
-		(property "Description" "Filters, Pass Band=2400 to 2500MHz, Zc=50se | 50se"
+		(property "Description" ""
 			(at 0 0 90)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -15746,6 +15850,7 @@
 			)
 		)
 		(path "/8c2afa1a-3906-4ba3-875e-811fbb138007")
+		(sheetname "Root")
 		(sheetfile "1280_modem.kicad_sch")
 		(attr smd)
 		(fp_line
@@ -15969,7 +16074,7 @@
 				(justify mirror)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "LED_SMD:LED_0805_2012Metric"
 			(at 0 0 90)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -15993,7 +16098,7 @@
 				)
 			)
 		)
-		(property "Description" "Light emitting diode, small symbol"
+		(property "Description" ""
 			(at 0 0 90)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -16005,7 +16110,9 @@
 				)
 			)
 		)
+		(property ki_fp_filters "LED* LED_SMD:* LED_THT:*")
 		(path "/d871a1d5-1995-4683-81c4-6204e845942e")
+		(sheetname "Root")
 		(sheetfile "1280_modem.kicad_sch")
 		(attr smd)
 		(fp_line
@@ -16203,7 +16310,7 @@
 				(justify mirror)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Connector_USB:USB_C_Receptacle_Palconn_UTC16-G"
 			(at 0 0 90)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -16215,7 +16322,7 @@
 				)
 			)
 		)
-		(property "Datasheet" ""
+		(property "Datasheet" "https://www.usb.org/sites/default/files/documents/usb_type-c.zip"
 			(at 0 0 90)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -16227,7 +16334,7 @@
 				)
 			)
 		)
-		(property "Description" "USB 2.0-only Type-C Receptacle connector"
+		(property "Description" ""
 			(at 0 0 90)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -16252,7 +16359,9 @@
 				(justify mirror)
 			)
 		)
+		(property ki_fp_filters "USB*C*Receptacle*")
 		(path "/325f2806-7b89-4f2d-9595-7765213b0e5e")
+		(sheetname "Root")
 		(sheetfile "1280_modem.kicad_sch")
 		(attr smd)
 		(fp_line
@@ -16663,7 +16772,7 @@
 				(justify mirror)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Capacitor_SMD:C_0603_1608Metric"
 			(at 0 0 90)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -16687,7 +16796,7 @@
 				)
 			)
 		)
-		(property "Description" "Unpolarized capacitor, small symbol"
+		(property "Description" ""
 			(at 0 0 90)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -16699,7 +16808,9 @@
 				)
 			)
 		)
+		(property ki_fp_filters "C_*")
 		(path "/3f56c414-9277-4982-bf44-53fec06c3332")
+		(sheetname "Root")
 		(sheetfile "1280_modem.kicad_sch")
 		(attr smd)
 		(fp_line
@@ -16874,7 +16985,7 @@
 				(justify mirror)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Resistor_SMD:R_0603_1608Metric"
 			(at 0 0 -90)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -16898,7 +17009,7 @@
 				)
 			)
 		)
-		(property "Description" "Resistor, small symbol"
+		(property "Description" ""
 			(at 0 0 -90)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -16910,7 +17021,9 @@
 				)
 			)
 		)
+		(property ki_fp_filters "R_*")
 		(path "/e0a9689a-be92-4f38-b60c-d819b6e7493e")
+		(sheetname "Root")
 		(sheetfile "1280_modem.kicad_sch")
 		(attr smd)
 		(fp_line
@@ -17085,7 +17198,7 @@
 				(justify mirror)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Resistor_SMD:R_0603_1608Metric"
 			(at 0 0 180)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -17109,7 +17222,7 @@
 				)
 			)
 		)
-		(property "Description" "Resistor, small symbol"
+		(property "Description" ""
 			(at 0 0 180)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -17121,7 +17234,9 @@
 				)
 			)
 		)
+		(property ki_fp_filters "R_*")
 		(path "/a1a83b60-6075-4ea9-b4f5-d7bb21362df7")
+		(sheetname "Root")
 		(sheetfile "1280_modem.kicad_sch")
 		(attr smd)
 		(fp_line
@@ -17296,7 +17411,7 @@
 				(justify mirror)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Crystal:Crystal_SMD_2016-4Pin_2.0x1.6mm"
 			(at 0 0 0)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -17320,7 +17435,7 @@
 				)
 			)
 		)
-		(property "Description" "Four pin crystal, GND on pins 2 and 4"
+		(property "Description" ""
 			(at 0 0 0)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -17345,7 +17460,9 @@
 				(justify mirror)
 			)
 		)
+		(property ki_fp_filters "Crystal*")
 		(path "/075dfbcc-3565-43a8-aac7-f6b6f785be21")
+		(sheetname "Root")
 		(sheetfile "1280_modem.kicad_sch")
 		(attr smd)
 		(fp_line
@@ -17866,7 +17983,7 @@
 				(justify mirror)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Resistor_SMD:R_0603_1608Metric"
 			(at 0 0 90)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -17890,7 +18007,7 @@
 				)
 			)
 		)
-		(property "Description" "Resistor, small symbol"
+		(property "Description" ""
 			(at 0 0 90)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -17902,7 +18019,9 @@
 				)
 			)
 		)
+		(property ki_fp_filters "R_*")
 		(path "/0907957a-f027-4ff9-af10-e0d5fd66a213")
+		(sheetname "Root")
 		(sheetfile "1280_modem.kicad_sch")
 		(attr smd)
 		(fp_line
@@ -18077,7 +18196,7 @@
 				(justify mirror)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Package_QFP:LQFP-48_7x7mm_P0.5mm"
 			(at 0 0 -135)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -18089,7 +18208,7 @@
 				)
 			)
 		)
-		(property "Datasheet" ""
+		(property "Datasheet" "https://www.st.com/resource/en/datasheet/stm32u575cg.pdf"
 			(at 0 0 -135)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -18101,7 +18220,7 @@
 				)
 			)
 		)
-		(property "Description" "STMicroelectronics Arm Cortex-M33 MCU, 1024KB flash, 786KB RAM, 160 MHz, 1.71-3.6V, 37 GPIO, LQFP48"
+		(property "Description" ""
 			(at 0 0 -135)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -18113,7 +18232,9 @@
 				)
 			)
 		)
+		(property ki_fp_filters "LQFP*7x7mm*P0.5mm*")
 		(path "/c0e27298-5d7b-462d-a79a-4d454d577043")
+		(sheetname "Root")
 		(sheetfile "1280_modem.kicad_sch")
 		(attr smd)
 		(fp_line
@@ -18554,7 +18675,7 @@
 			(layers "B.Cu" "B.Paste" "B.Mask")
 			(roundrect_rratio 0.25)
 			(net 5 "/OSC_IN")
-			(pinfunction "PH0")
+			(pinfunction "RCC_OSC_IN")
 			(pintype "bidirectional")
 			(uuid "2d9f9bbc-9aee-425f-aeac-06b9c0c92c3d")
 		)
@@ -18564,7 +18685,7 @@
 			(layers "B.Cu" "B.Paste" "B.Mask")
 			(roundrect_rratio 0.25)
 			(net 6 "/OSC_OUT")
-			(pinfunction "PH1")
+			(pinfunction "RCC_OSC_OUT")
 			(pintype "bidirectional")
 			(uuid "554d21fa-d66b-4e9e-8479-c4778e692b80")
 		)
@@ -18654,7 +18775,7 @@
 			(layers "B.Cu" "B.Paste" "B.Mask")
 			(roundrect_rratio 0.25)
 			(net 20 "/SCK")
-			(pinfunction "PA5")
+			(pinfunction "SPI1_SCK")
 			(pintype "bidirectional")
 			(uuid "caec2ab4-3c2e-4569-8865-1208662b32dd")
 		)
@@ -18664,7 +18785,7 @@
 			(layers "B.Cu" "B.Paste" "B.Mask")
 			(roundrect_rratio 0.25)
 			(net 18 "/MISO")
-			(pinfunction "PA6")
+			(pinfunction "SPI1_MISO")
 			(pintype "bidirectional")
 			(uuid "3bdcbd96-7759-486c-8473-b04e179c0476")
 		)
@@ -18674,7 +18795,7 @@
 			(layers "B.Cu" "B.Paste" "B.Mask")
 			(roundrect_rratio 0.25)
 			(net 19 "/MOSI")
-			(pinfunction "PA7")
+			(pinfunction "SPI1_MOSI")
 			(pintype "bidirectional")
 			(uuid "1a8b21db-3d53-448e-8770-65cc31aae2b4")
 		)
@@ -18694,7 +18815,7 @@
 			(layers "B.Cu" "B.Paste" "B.Mask")
 			(roundrect_rratio 0.25)
 			(net 57 "/THERM")
-			(pinfunction "PB1")
+			(pinfunction "ADC1_IN16")
 			(pintype "bidirectional")
 			(uuid "60fb2128-6142-4365-b5e0-d406d28b68f0")
 		)
@@ -18824,7 +18945,7 @@
 			(layers "B.Cu" "B.Paste" "B.Mask")
 			(roundrect_rratio 0.25)
 			(net 50 "/USB_D_N")
-			(pinfunction "PA11")
+			(pinfunction "USB_OTG_FS_DM")
 			(pintype "bidirectional")
 			(uuid "7ebc0e32-05d7-4b25-8ab9-42f2ff5b9cd8")
 		)
@@ -18834,7 +18955,7 @@
 			(layers "B.Cu" "B.Paste" "B.Mask")
 			(roundrect_rratio 0.25)
 			(net 51 "/USB_D_P")
-			(pinfunction "PA12")
+			(pinfunction "USB_OTG_FS_DP")
 			(pintype "bidirectional")
 			(uuid "33d8279e-acc2-43c8-9ef6-7aabdfa792d7")
 		)
@@ -18844,7 +18965,7 @@
 			(layers "B.Cu" "B.Paste" "B.Mask")
 			(roundrect_rratio 0.25)
 			(net 28 "/SW_DIO")
-			(pinfunction "PA13")
+			(pinfunction "DEBUG_JTMS-SWDIO")
 			(pintype "bidirectional")
 			(uuid "c36b0ed5-00d9-45dc-bb07-49957a81b41c")
 		)
@@ -18874,7 +18995,7 @@
 			(layers "B.Cu" "B.Paste" "B.Mask")
 			(roundrect_rratio 0.25)
 			(net 27 "/SW_CLK")
-			(pinfunction "PA14")
+			(pinfunction "DEBUG_JTCK-SWCLK")
 			(pintype "bidirectional")
 			(uuid "0b9c05b8-2150-4370-a23c-f6b49422b1e6")
 		)
@@ -18954,7 +19075,7 @@
 			(layers "B.Cu" "B.Paste" "B.Mask")
 			(roundrect_rratio 0.25)
 			(net 52 "/CAN_RX")
-			(pinfunction "PB8")
+			(pinfunction "FDCAN1_RX")
 			(pintype "bidirectional")
 			(uuid "4061fcda-194c-425d-bc35-d8ec1511b9a3")
 		)
@@ -18964,7 +19085,7 @@
 			(layers "B.Cu" "B.Paste" "B.Mask")
 			(roundrect_rratio 0.25)
 			(net 53 "/CAN_TX")
-			(pinfunction "PB9")
+			(pinfunction "FDCAN1_TX")
 			(pintype "bidirectional")
 			(uuid "7c034869-e1ea-4123-bd9f-a435da475d54")
 		)
@@ -19030,7 +19151,7 @@
 				(justify mirror)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "LED_SMD:LED_0805_2012Metric"
 			(at 0 0 90)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -19054,7 +19175,7 @@
 				)
 			)
 		)
-		(property "Description" "Light emitting diode, small symbol"
+		(property "Description" ""
 			(at 0 0 90)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -19066,7 +19187,9 @@
 				)
 			)
 		)
+		(property ki_fp_filters "LED* LED_SMD:* LED_THT:*")
 		(path "/75e39bba-a26d-41c8-8ad4-4384b95d8fd5")
+		(sheetname "Root")
 		(sheetfile "1280_modem.kicad_sch")
 		(attr smd)
 		(fp_line
@@ -19263,7 +19386,7 @@
 				(justify mirror)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Resistor_SMD:R_0603_1608Metric"
 			(at 0 0 0)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -19287,7 +19410,7 @@
 				)
 			)
 		)
-		(property "Description" "Resistor, small symbol"
+		(property "Description" ""
 			(at 0 0 0)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -19299,7 +19422,9 @@
 				)
 			)
 		)
+		(property ki_fp_filters "R_*")
 		(path "/324a2b8c-2543-43ca-b4ef-09ee2b6efc40")
+		(sheetname "Root")
 		(sheetfile "1280_modem.kicad_sch")
 		(attr smd)
 		(fp_line
@@ -19474,7 +19599,7 @@
 				(justify mirror)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "LED_SMD:LED_RGB_1210"
 			(at 0 0 90)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -19498,7 +19623,7 @@
 				)
 			)
 		)
-		(property "Description" "RGB LED, anode/red/green/blue"
+		(property "Description" ""
 			(at 0 0 90)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -19510,7 +19635,9 @@
 				)
 			)
 		)
+		(property ki_fp_filters "LED* LED_SMD:* LED_THT:*")
 		(path "/13c73c28-1388-4260-a6ff-cd27cd2b40a7")
+		(sheetname "Root")
 		(sheetfile "1280_modem.kicad_sch")
 		(attr smd)
 		(fp_line
@@ -19867,7 +19994,7 @@
 				(justify mirror)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Package_TO_SOT_SMD:SOT-23-6"
 			(at 0 0 180)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -19879,7 +20006,7 @@
 				)
 			)
 		)
-		(property "Datasheet" ""
+		(property "Datasheet" "https://www.st.com/resource/en/datasheet/usblc6-2.pdf"
 			(at 0 0 180)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -19891,7 +20018,7 @@
 				)
 			)
 		)
-		(property "Description" "Very low capacitance ESD protection diode, 2 data-line, SOT-23-6"
+		(property "Description" ""
 			(at 0 0 180)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -19903,7 +20030,9 @@
 				)
 			)
 		)
+		(property ki_fp_filters "SOT?23*")
 		(path "/cfbc0a6a-ace7-48b8-86e5-0b2400e08eb3")
+		(sheetname "Root")
 		(sheetfile "1280_modem.kicad_sch")
 		(attr smd)
 		(fp_line
@@ -20151,7 +20280,7 @@
 				(justify mirror)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Connector_JST:JST_GH_SM06B-GHS-TB_1x06-1MP_P1.25mm_Horizontal"
 			(at 0 0 180)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -20175,7 +20304,7 @@
 				)
 			)
 		)
-		(property "Description" "Generic connectable mounting pin connector, single row, 01x06, script generated (kicad-library-utils/schlib/autogen/connector/)"
+		(property "Description" ""
 			(at 0 0 180)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -20187,7 +20316,9 @@
 				)
 			)
 		)
+		(property ki_fp_filters "Connector*:*_1x??-1MP*")
 		(path "/a8e51005-a619-466f-bed2-42c9866e8400")
+		(sheetname "Root")
 		(sheetfile "1280_modem.kicad_sch")
 		(attr smd)
 		(fp_line
@@ -20484,7 +20615,7 @@
 				(justify mirror)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Capacitor_SMD:C_0603_1608Metric"
 			(at 0 0 -45)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -20508,7 +20639,7 @@
 				)
 			)
 		)
-		(property "Description" "Unpolarized capacitor, small symbol"
+		(property "Description" ""
 			(at 0 0 -45)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -20520,7 +20651,9 @@
 				)
 			)
 		)
+		(property ki_fp_filters "C_*")
 		(path "/7435331c-7ab2-415d-aa29-7138e465f9b7")
+		(sheetname "Root")
 		(sheetfile "1280_modem.kicad_sch")
 		(attr smd)
 		(fp_line
@@ -20695,7 +20828,7 @@
 				(justify mirror)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Resistor_SMD:R_0603_1608Metric"
 			(at 0 0 180)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -20719,7 +20852,7 @@
 				)
 			)
 		)
-		(property "Description" "Resistor, small symbol"
+		(property "Description" ""
 			(at 0 0 180)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -20731,7 +20864,9 @@
 				)
 			)
 		)
+		(property ki_fp_filters "R_*")
 		(path "/ef57d9cb-ddce-4af6-908c-604735f45d78")
+		(sheetname "Root")
 		(sheetfile "1280_modem.kicad_sch")
 		(attr smd)
 		(fp_line
@@ -20906,7 +21041,7 @@
 				(justify mirror)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Resistor_SMD:R_0805_2012Metric_Pad1.20x1.40mm_HandSolder"
 			(at 0 0 90)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -20930,7 +21065,7 @@
 				)
 			)
 		)
-		(property "Description" "Temperature dependent resistor, negative temperature coefficient"
+		(property "Description" ""
 			(at 0 0 90)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -20942,7 +21077,9 @@
 				)
 			)
 		)
+		(property ki_fp_filters "*NTC* *Thermistor* PIN?ARRAY* bornier* *Terminal?Block* R_*")
 		(path "/461b81a8-d5d2-4085-a446-9863aed6ec3c")
+		(sheetname "Root")
 		(sheetfile "1280_modem.kicad_sch")
 		(attr smd)
 		(fp_line
@@ -21118,7 +21255,7 @@
 				(justify mirror)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Connector_JST:JST_SH_SM06B-SRSS-TB_1x06-1MP_P1.00mm_Horizontal"
 			(at 0 0 90)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -21142,7 +21279,7 @@
 				)
 			)
 		)
-		(property "Description" "Generic connectable mounting pin connector, single row, 01x06, script generated (kicad-library-utils/schlib/autogen/connector/)"
+		(property "Description" ""
 			(at 0 0 90)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -21154,7 +21291,9 @@
 				)
 			)
 		)
+		(property ki_fp_filters "Connector*:*_1x??-1MP*")
 		(path "/d4ef306b-ceff-4510-90d9-12b52c8ddf8c")
+		(sheetname "Root")
 		(sheetfile "1280_modem.kicad_sch")
 		(attr smd)
 		(fp_line
@@ -21452,7 +21591,7 @@
 				(justify mirror)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Connector_JST:JST_GH_SM04B-GHS-TB_1x04-1MP_P1.25mm_Horizontal"
 			(at 0 0 180)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -21476,7 +21615,7 @@
 				)
 			)
 		)
-		(property "Description" "Generic connectable mounting pin connector, single row, 01x04, script generated (kicad-library-utils/schlib/autogen/connector/)"
+		(property "Description" ""
 			(at 0 0 180)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -21488,7 +21627,9 @@
 				)
 			)
 		)
+		(property ki_fp_filters "Connector*:*_1x??-1MP*")
 		(path "/9414768e-28a9-4a84-80c5-c3444580afe7")
+		(sheetname "Root")
 		(sheetfile "1280_modem.kicad_sch")
 		(attr smd)
 		(fp_line
@@ -22033,7 +22174,7 @@
 				(justify mirror)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Resistor_SMD:R_0603_1608Metric"
 			(at 0 0 0)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -22057,7 +22198,7 @@
 				)
 			)
 		)
-		(property "Description" "Resistor, small symbol"
+		(property "Description" ""
 			(at 0 0 0)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -22069,7 +22210,9 @@
 				)
 			)
 		)
+		(property ki_fp_filters "R_*")
 		(path "/cb007ff3-8123-41c9-87d6-69c387a2622a")
+		(sheetname "Root")
 		(sheetfile "1280_modem.kicad_sch")
 		(attr smd)
 		(fp_line
@@ -22244,7 +22387,7 @@
 				(justify mirror)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Capacitor_SMD:C_0603_1608Metric"
 			(at 0 0 -45)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -22268,7 +22411,7 @@
 				)
 			)
 		)
-		(property "Description" "Unpolarized capacitor, small symbol"
+		(property "Description" ""
 			(at 0 0 -45)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -22280,7 +22423,9 @@
 				)
 			)
 		)
+		(property ki_fp_filters "C_*")
 		(path "/9dcd6005-1eba-4ad0-84ef-99ad3a4e4126")
+		(sheetname "Root")
 		(sheetfile "1280_modem.kicad_sch")
 		(attr smd)
 		(fp_line
@@ -22456,7 +22601,7 @@
 				(justify mirror)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "MountingHole:MountingHole_3.2mm_M3_Pad_Via"
 			(at 0 0 180)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -22480,7 +22625,7 @@
 				)
 			)
 		)
-		(property "Description" "Mounting Hole with connection"
+		(property "Description" ""
 			(at 0 0 180)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -22492,7 +22637,9 @@
 				)
 			)
 		)
+		(property ki_fp_filters "MountingHole*Pad*")
 		(path "/e645ad86-1e5c-4978-bb5a-d724f52bc3b9")
+		(sheetname "Root")
 		(sheetfile "1280_modem.kicad_sch")
 		(attr exclude_from_pos_files)
 		(fp_circle
@@ -22659,7 +22806,7 @@
 				(justify mirror)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Resistor_SMD:R_0603_1608Metric"
 			(at 0 0 -90)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -22683,7 +22830,7 @@
 				)
 			)
 		)
-		(property "Description" "Resistor, small symbol"
+		(property "Description" ""
 			(at 0 0 -90)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -22695,7 +22842,9 @@
 				)
 			)
 		)
+		(property ki_fp_filters "R_*")
 		(path "/f988fcf0-0774-43d4-b2f4-33dc32dae91c")
+		(sheetname "Root")
 		(sheetfile "1280_modem.kicad_sch")
 		(attr smd)
 		(fp_line
@@ -22870,7 +23019,7 @@
 				(justify mirror)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Capacitor_SMD:C_0603_1608Metric"
 			(at 0 0 135)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -22894,7 +23043,7 @@
 				)
 			)
 		)
-		(property "Description" "Unpolarized capacitor, small symbol"
+		(property "Description" ""
 			(at 0 0 135)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -22906,7 +23055,9 @@
 				)
 			)
 		)
+		(property ki_fp_filters "C_*")
 		(path "/1ec738f6-63c8-4171-8a8b-c69102879d42")
+		(sheetname "Root")
 		(sheetfile "1280_modem.kicad_sch")
 		(attr smd)
 		(fp_line
@@ -23081,7 +23232,7 @@
 				(justify mirror)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Capacitor_SMD:C_0603_1608Metric"
 			(at 0 0 135)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -23105,7 +23256,7 @@
 				)
 			)
 		)
-		(property "Description" "Unpolarized capacitor, small symbol"
+		(property "Description" ""
 			(at 0 0 135)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -23117,7 +23268,9 @@
 				)
 			)
 		)
+		(property ki_fp_filters "C_*")
 		(path "/6142359a-0408-4599-ba94-fd7fea3e6796")
+		(sheetname "Root")
 		(sheetfile "1280_modem.kicad_sch")
 		(attr smd)
 		(fp_line
@@ -23292,7 +23445,7 @@
 				(justify mirror)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Capacitor_SMD:C_0603_1608Metric"
 			(at 0 0 135)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -23316,7 +23469,7 @@
 				)
 			)
 		)
-		(property "Description" "Unpolarized capacitor, small symbol"
+		(property "Description" ""
 			(at 0 0 135)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -23328,7 +23481,9 @@
 				)
 			)
 		)
+		(property ki_fp_filters "C_*")
 		(path "/0e7e88fa-d037-4607-8bf8-3d728a299f99")
+		(sheetname "Root")
 		(sheetfile "1280_modem.kicad_sch")
 		(attr smd)
 		(fp_line
@@ -23503,7 +23658,7 @@
 				(justify mirror)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Resistor_SMD:R_0603_1608Metric"
 			(at 0 0 -90)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -23527,7 +23682,7 @@
 				)
 			)
 		)
-		(property "Description" "Resistor, small symbol"
+		(property "Description" ""
 			(at 0 0 -90)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -23539,7 +23694,9 @@
 				)
 			)
 		)
+		(property ki_fp_filters "R_*")
 		(path "/b38b8458-0d0b-4673-949f-3f0cb0c4e348")
+		(sheetname "Root")
 		(sheetfile "1280_modem.kicad_sch")
 		(attr smd)
 		(fp_line
@@ -23715,7 +23872,7 @@
 				(justify mirror)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "MountingHole:MountingHole_3.2mm_M3_Pad_Via"
 			(at 0 0 180)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -23739,7 +23896,7 @@
 				)
 			)
 		)
-		(property "Description" "Mounting Hole with connection"
+		(property "Description" ""
 			(at 0 0 180)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -23751,7 +23908,9 @@
 				)
 			)
 		)
+		(property ki_fp_filters "MountingHole*Pad*")
 		(path "/dd5555c8-a91d-47e3-aeae-04b5e4afce5c")
+		(sheetname "Root")
 		(sheetfile "1280_modem.kicad_sch")
 		(attr exclude_from_pos_files)
 		(fp_circle
@@ -23918,7 +24077,7 @@
 				(justify mirror)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Resistor_SMD:R_0603_1608Metric"
 			(at 0 0 0)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -23942,7 +24101,7 @@
 				)
 			)
 		)
-		(property "Description" "Resistor, small symbol"
+		(property "Description" ""
 			(at 0 0 0)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -23954,7 +24113,9 @@
 				)
 			)
 		)
+		(property ki_fp_filters "R_*")
 		(path "/a814b1bf-5bfb-400f-af01-707d220ba84a")
+		(sheetname "Root")
 		(sheetfile "1280_modem.kicad_sch")
 		(attr smd)
 		(fp_line
@@ -24129,7 +24290,7 @@
 				(justify mirror)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Resistor_SMD:R_0603_1608Metric"
 			(at 0 0 180)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -24153,7 +24314,7 @@
 				)
 			)
 		)
-		(property "Description" "Resistor, small symbol"
+		(property "Description" ""
 			(at 0 0 180)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -24165,7 +24326,9 @@
 				)
 			)
 		)
+		(property ki_fp_filters "R_*")
 		(path "/8f2d179e-03c2-4ba7-8414-aff7806c77e1")
+		(sheetname "Root")
 		(sheetfile "1280_modem.kicad_sch")
 		(attr smd)
 		(fp_line
@@ -24340,7 +24503,7 @@
 				(justify mirror)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Resistor_SMD:R_0603_1608Metric"
 			(at 0 0 90)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -24364,7 +24527,7 @@
 				)
 			)
 		)
-		(property "Description" "Resistor, small symbol"
+		(property "Description" ""
 			(at 0 0 90)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -24376,7 +24539,9 @@
 				)
 			)
 		)
+		(property ki_fp_filters "R_*")
 		(path "/24e75090-18ca-403b-b47a-17a0abdb2389")
+		(sheetname "Root")
 		(sheetfile "1280_modem.kicad_sch")
 		(attr smd)
 		(fp_line
@@ -24551,7 +24716,7 @@
 				(justify mirror)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Capacitor_SMD:C_0603_1608Metric"
 			(at 0 0 0)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -24575,7 +24740,7 @@
 				)
 			)
 		)
-		(property "Description" "Unpolarized capacitor, small symbol"
+		(property "Description" ""
 			(at 0 0 0)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -24587,7 +24752,9 @@
 				)
 			)
 		)
+		(property ki_fp_filters "C_*")
 		(path "/3017c5f6-7e4c-44be-8710-5b5a09a0ce45")
+		(sheetname "Root")
 		(sheetfile "1280_modem.kicad_sch")
 		(attr smd)
 		(fp_line
@@ -24762,7 +24929,7 @@
 				(justify mirror)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Resistor_SMD:R_0603_1608Metric"
 			(at 0 0 90)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -24786,7 +24953,7 @@
 				)
 			)
 		)
-		(property "Description" "Resistor, small symbol"
+		(property "Description" ""
 			(at 0 0 90)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -24798,7 +24965,9 @@
 				)
 			)
 		)
+		(property ki_fp_filters "R_*")
 		(path "/3a7233a0-5f93-42cc-95e5-d33724001208")
+		(sheetname "Root")
 		(sheetfile "1280_modem.kicad_sch")
 		(attr smd)
 		(fp_line
@@ -24973,7 +25142,7 @@
 				(justify mirror)
 			)
 		)
-		(property "Footprint" ""
+		(property "Footprint" "Resistor_SMD:R_0603_1608Metric"
 			(at 0 0 180)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -24997,7 +25166,7 @@
 				)
 			)
 		)
-		(property "Description" "Resistor, small symbol"
+		(property "Description" ""
 			(at 0 0 180)
 			(unlocked yes)
 			(layer "F.Fab")
@@ -25009,7 +25178,9 @@
 				)
 			)
 		)
+		(property ki_fp_filters "R_*")
 		(path "/47974b3a-b5e8-41ab-b209-4ea2563ac0a4")
+		(sheetname "Root")
 		(sheetfile "1280_modem.kicad_sch")
 		(attr smd)
 		(fp_line
@@ -30791,20 +30962,20 @@
 		(uuid "31601f30-6c61-4661-a430-0eb0f47d3cd0")
 	)
 	(segment
-		(start 98.8568 81.026)
-		(end 100.1143 81.026)
+		(start 99.2401 80.6427)
+		(end 98.8568 81.026)
 		(width 0.2)
 		(layer "F.Cu")
 		(net 52)
-		(uuid "58dfde63-6851-4683-a0a5-7e06b2531c6b")
+		(uuid "37a37795-09e1-4db3-827e-b46a33669830")
 	)
 	(segment
-		(start 100.1143 81.026)
-		(end 100.4976 80.6427)
+		(start 100.4976 80.6427)
+		(end 99.2401 80.6427)
 		(width 0.2)
 		(layer "F.Cu")
 		(net 52)
-		(uuid "5b263b3b-1fde-4e32-bd21-1c6f3ca28247")
+		(uuid "b415ddb9-4836-437c-97fb-8b26ba4da3ee")
 	)
 	(via
 		(at 114.575 70.839138)
