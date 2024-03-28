@@ -24802,7 +24802,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "14p"
+		(property "Value" "18p"
 			(at 100.33 96.52 0)
 			(effects
 				(font
@@ -25845,8 +25845,9 @@
 				(justify left)
 			)
 		)
-		(property "Value" "14p"
+		(property "Value" "18p"
 			(at 120.65 97.1613 0)
+			(do_not_autoplace yes)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -25921,7 +25922,7 @@
 				(justify right)
 			)
 		)
-		(property "Value" "13p"
+		(property "Value" "18p"
 			(at 217.17 86.3663 0)
 			(effects
 				(font
@@ -26607,7 +26608,7 @@
 				(justify right)
 			)
 		)
-		(property "Value" "13p"
+		(property "Value" "18p"
 			(at 201.93 86.3663 0)
 			(effects
 				(font
@@ -31653,7 +31654,7 @@
 				(hide yes)
 			)
 		)
-		(property "mfn" "CX2016SA48000H0FLJG1"
+		(property "mfn" "FW520WFMT1"
 			(at 209.55 78.74 0)
 			(effects
 				(font
@@ -34108,7 +34109,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "TCAN334"
+		(property "Value" "TCAN334GDCN"
 			(at 199.0441 162.56 0)
 			(effects
 				(font
