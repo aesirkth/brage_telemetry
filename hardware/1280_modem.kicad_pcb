@@ -1311,7 +1311,7 @@
 			(at 0 -4.2 0)
 			(layer "F.SilkS")
 			(hide yes)
-			(uuid "b43386d4-36ce-4d11-b8f9-817078b71f00")
+			(uuid "f2e63c53-0060-4149-88d1-0e709a735230")
 			(effects
 				(font
 					(size 1 1)
@@ -1322,7 +1322,7 @@
 		(property "Value" "MountingHole_Pad"
 			(at 0 4.2 0)
 			(layer "F.Fab")
-			(uuid "39e0ffa1-24e5-4aa1-8f3b-9eb4b284e5ac")
+			(uuid "5dd6bfd5-a759-4f7a-ad28-202c336ab352")
 			(effects
 				(font
 					(size 1 1)
@@ -1335,7 +1335,7 @@
 			(unlocked yes)
 			(layer "F.Fab")
 			(hide yes)
-			(uuid "a63f0a11-2fc8-4f1e-9b19-a8e1ab39aabc")
+			(uuid "d9166542-a0a2-4d48-9676-b474580608bf")
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -1347,7 +1347,7 @@
 			(unlocked yes)
 			(layer "F.Fab")
 			(hide yes)
-			(uuid "2621c439-44c3-4412-baee-75370f4a752f")
+			(uuid "d9e98f4b-67f8-43a0-9f17-95b0d13f0856")
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -1359,17 +1359,14 @@
 			(unlocked yes)
 			(layer "F.Fab")
 			(hide yes)
-			(uuid "4e24780d-72bd-4ec3-a611-391150ee47ee")
+			(uuid "f76cd92e-ef6e-48d8-95bd-880e6f175822")
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
 			)
 		)
-		(property ki_fp_filters "MountingHole*Pad*")
 		(path "/c3e41ed4-c4af-421d-8ca8-02b7233b8e0a")
-		(sheetname "Root")
-		(sheetfile "1280_modem.kicad_sch")
 		(attr exclude_from_pos_files)
 		(fp_circle
 			(center 0 0)
@@ -1380,7 +1377,7 @@
 			)
 			(fill none)
 			(layer "Cmts.User")
-			(uuid "2e8a9720-523d-4d8e-8c8a-36c704101ae1")
+			(uuid "29cba49f-4d6a-433d-a11a-aed8d52a0c30")
 		)
 		(fp_circle
 			(center 0 0)
@@ -1391,12 +1388,12 @@
 			)
 			(fill none)
 			(layer "F.CrtYd")
-			(uuid "eb602b22-1cf9-4bcc-b235-19578036eaa5")
+			(uuid "effc1362-1c5e-4fcc-9c63-407a141160a8")
 		)
 		(fp_text user "${REFERENCE}"
 			(at 0 0 0)
 			(layer "F.Fab")
-			(uuid "a41ef3ef-cb14-44ac-a139-d216cc03fc27")
+			(uuid "25d72d06-1b2d-4f48-afee-72d831311a1f")
 			(effects
 				(font
 					(size 1 1)
@@ -1413,7 +1410,8 @@
 			(net 65 "Net-(H2-Pad1)")
 			(pinfunction "1")
 			(pintype "input")
-			(uuid "5d050e4f-7b76-4f7f-8152-b045a1aa6adb")
+			(zone_connect 2)
+			(uuid "a9d04424-7bcf-44cb-89d3-866daf86cc86")
 		)
 		(pad "1" thru_hole circle
 			(at -1.697056 -1.697056)
@@ -1424,7 +1422,8 @@
 			(net 65 "Net-(H2-Pad1)")
 			(pinfunction "1")
 			(pintype "input")
-			(uuid "ea89ff80-f435-46da-8004-c67d030c8621")
+			(zone_connect 2)
+			(uuid "633bc4a1-7f8e-4f7b-bdee-05704f19315a")
 		)
 		(pad "1" thru_hole circle
 			(at -1.697056 1.697056)
@@ -1435,7 +1434,8 @@
 			(net 65 "Net-(H2-Pad1)")
 			(pinfunction "1")
 			(pintype "input")
-			(uuid "2e665e68-65ac-4c7f-a7eb-4c1773f24657")
+			(zone_connect 2)
+			(uuid "f69dd67c-992f-4274-ae7f-1ffb6e623ac1")
 		)
 		(pad "1" thru_hole circle
 			(at 0 -2.4)
@@ -1446,7 +1446,8 @@
 			(net 65 "Net-(H2-Pad1)")
 			(pinfunction "1")
 			(pintype "input")
-			(uuid "fa748cf4-dfbd-4e1e-859a-b3ea241c248a")
+			(zone_connect 2)
+			(uuid "211573cb-8a0d-40d0-bae8-aa029cc61919")
 		)
 		(pad "1" thru_hole circle
 			(at 0 0)
@@ -1457,7 +1458,7 @@
 			(net 65 "Net-(H2-Pad1)")
 			(pinfunction "1")
 			(pintype "input")
-			(uuid "768a67b2-a4f1-4807-983f-36ebe981530b")
+			(uuid "072ef65a-0675-46a5-a056-eaf53c01a94a")
 		)
 		(pad "1" thru_hole circle
 			(at 0 2.4)
@@ -1468,7 +1469,8 @@
 			(net 65 "Net-(H2-Pad1)")
 			(pinfunction "1")
 			(pintype "input")
-			(uuid "3fa46597-abc9-4dff-933d-db0e9c1f485c")
+			(zone_connect 2)
+			(uuid "6cfecbac-d94f-4cfd-b370-c353556a5323")
 		)
 		(pad "1" thru_hole circle
 			(at 1.697056 -1.697056)
@@ -1479,7 +1481,8 @@
 			(net 65 "Net-(H2-Pad1)")
 			(pinfunction "1")
 			(pintype "input")
-			(uuid "66547d56-01ad-439c-bf58-456e061c6e8b")
+			(zone_connect 2)
+			(uuid "06d0538a-54ad-4e47-a1ea-d86e84b03a6c")
 		)
 		(pad "1" thru_hole circle
 			(at 1.697056 1.697056)
@@ -1490,7 +1493,8 @@
 			(net 65 "Net-(H2-Pad1)")
 			(pinfunction "1")
 			(pintype "input")
-			(uuid "20136a79-9005-4f95-80b5-49deec5aef63")
+			(zone_connect 2)
+			(uuid "03477502-d857-45f4-80a4-66a6650c9011")
 		)
 		(pad "1" thru_hole circle
 			(at 2.4 0)
@@ -1501,7 +1505,8 @@
 			(net 65 "Net-(H2-Pad1)")
 			(pinfunction "1")
 			(pintype "input")
-			(uuid "7e1553f2-2936-44df-86fb-7f22ebe2c582")
+			(zone_connect 2)
+			(uuid "d772debc-7653-4ae5-b212-259ed0fd7d44")
 		)
 	)
 	(footprint "Inductor_SMD:L_0805_2012Metric_Pad1.15x1.40mm_HandSolder"
@@ -3107,7 +3112,7 @@
 		(path "/a8732ed3-a0e4-419f-954f-fedf315a2004")
 		(sheetname "Root")
 		(sheetfile "1280_modem.kicad_sch")
-		(attr smd)
+		(attr smd dnp)
 		(fp_line
 			(start -0.153641 -0.38)
 			(end 0.153641 -0.38)
@@ -3266,7 +3271,7 @@
 				)
 			)
 		)
-		(property "Value" "10u"
+		(property "Value" "1u"
 			(at 0 1.43 90)
 			(layer "F.Fab")
 			(uuid "91e2df45-ff66-473e-be81-e6aafcdaca04")
@@ -3686,7 +3691,7 @@
 				)
 			)
 		)
-		(property "Value" "AO3401A"
+		(property "Value" " DMP3056L-7 "
 			(at 0 2.4 90)
 			(layer "F.Fab")
 			(uuid "426e98fb-0f15-4650-b659-2bee82c05984")
@@ -4199,7 +4204,7 @@
 		(path "/897c2a8d-f8ee-406a-8362-91fd6587be69")
 		(sheetname "Root")
 		(sheetfile "1280_modem.kicad_sch")
-		(attr smd)
+		(attr smd dnp)
 		(fp_line
 			(start -0.107836 0.36)
 			(end 0.107836 0.36)
@@ -4358,7 +4363,7 @@
 				)
 			)
 		)
-		(property "Value" "100n"
+		(property "Value" "10n"
 			(at 0 1.43 0)
 			(layer "F.Fab")
 			(uuid "b81668e7-cef6-4256-ac26-cee28da13b51")
@@ -5173,7 +5178,7 @@
 				)
 			)
 		)
-		(property "Value" "10p"
+		(property "Value" "18p"
 			(at 0 1.43 90)
 			(layer "F.Fab")
 			(uuid "defffdf0-6086-459f-b57b-26fed8eda925")
@@ -5383,7 +5388,7 @@
 				)
 			)
 		)
-		(property "Value" "13p"
+		(property "Value" "18p"
 			(at 0 1.43 90)
 			(layer "F.Fab")
 			(uuid "6a9903f4-c1a0-4194-86e7-6229f3292787")
@@ -6223,7 +6228,7 @@
 				)
 			)
 		)
-		(property "Value" "470n"
+		(property "Value" "1u"
 			(at 0 1.43 0)
 			(layer "F.Fab")
 			(uuid "9aeff71c-7d37-442b-af8a-9058fc658a33")
@@ -6433,7 +6438,7 @@
 				)
 			)
 		)
-		(property "Value" "10p"
+		(property "Value" "18p"
 			(at 0 1.43 90)
 			(layer "F.Fab")
 			(uuid "d65beb0c-f510-44ac-944a-0fa7be0e3a4f")
@@ -8503,7 +8508,7 @@
 				)
 			)
 		)
-		(property "Value" "10p"
+		(property "Value" "18p"
 			(at 0 1.43 90)
 			(layer "F.Fab")
 			(uuid "4ebf60c0-905c-4b07-bb8e-85d8aa19d88f")
@@ -9420,7 +9425,7 @@
 				)
 			)
 		)
-		(property "mfn" "CX2016SA48000H0FLJG1"
+		(property "mfn" "FW520WFMT1"
 			(at 0 0 0)
 			(layer "F.Fab")
 			(hide yes)
@@ -9714,7 +9719,7 @@
 		(path "/423c0ce3-eeb6-4c7a-b348-64faa909b71f")
 		(sheetname "Root")
 		(sheetfile "1280_modem.kicad_sch")
-		(attr smd)
+		(attr smd dnp)
 		(fp_line
 			(start -0.107836 0.36)
 			(end 0.107836 0.36)
@@ -11715,7 +11720,7 @@
 				)
 			)
 		)
-		(property "Value" "AO3401A"
+		(property "Value" " DMP3056L-7 "
 			(at 0 2.4 90)
 			(layer "F.Fab")
 			(uuid "2db671e8-88a1-4838-a65b-2b2877963da1")
@@ -13085,7 +13090,7 @@
 				)
 			)
 		)
-		(property "Value" "TCAN334"
+		(property "Value" "TCAN334GDCN"
 			(at 0 2.4 90)
 			(layer "F.Fab")
 			(uuid "4bfcb1ef-88c0-4eb0-88ed-83672af2d1c5")
@@ -14053,7 +14058,7 @@
 			(at 0 -4.2 0)
 			(layer "F.SilkS")
 			(hide yes)
-			(uuid "55fac38a-5819-475c-b121-dd00e64acc34")
+			(uuid "23282c2e-983c-4ba2-b9b6-1d053181c129")
 			(effects
 				(font
 					(size 1 1)
@@ -14064,7 +14069,7 @@
 		(property "Value" "MountingHole_Pad"
 			(at 0 4.2 0)
 			(layer "F.Fab")
-			(uuid "a8a1d899-c337-46a4-beda-ce31a10e7a5f")
+			(uuid "4ac70216-2b8f-485c-954a-03656883b26c")
 			(effects
 				(font
 					(size 1 1)
@@ -14077,7 +14082,7 @@
 			(unlocked yes)
 			(layer "F.Fab")
 			(hide yes)
-			(uuid "8360e8de-c2f7-4193-85e7-f092d8629509")
+			(uuid "7b154df7-1d38-4bb3-b561-395986ff4a21")
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -14089,7 +14094,7 @@
 			(unlocked yes)
 			(layer "F.Fab")
 			(hide yes)
-			(uuid "f1cda2d1-b061-4f73-9dc1-ce92b4a65d2b")
+			(uuid "4b1e6e75-df55-4fd9-9a1b-a7d8cf3073dd")
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -14101,17 +14106,14 @@
 			(unlocked yes)
 			(layer "F.Fab")
 			(hide yes)
-			(uuid "314b17c0-1355-4dbf-ac19-392e1e2df8b7")
+			(uuid "18cce2f2-cb20-498f-ba10-f26c0c8275fd")
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
 			)
 		)
-		(property ki_fp_filters "MountingHole*Pad*")
 		(path "/a48e4488-24c6-42a4-9146-108c0aaf3353")
-		(sheetname "Root")
-		(sheetfile "1280_modem.kicad_sch")
 		(attr exclude_from_pos_files)
 		(fp_circle
 			(center 0 0)
@@ -14122,7 +14124,7 @@
 			)
 			(fill none)
 			(layer "Cmts.User")
-			(uuid "4a3f69df-1077-4098-809b-0df4d60bed4c")
+			(uuid "c6f69e6c-497c-494f-9988-4f5f7db2ed7b")
 		)
 		(fp_circle
 			(center 0 0)
@@ -14133,12 +14135,12 @@
 			)
 			(fill none)
 			(layer "F.CrtYd")
-			(uuid "5ef75a4b-0fd8-4e7b-a577-863df38ab6a7")
+			(uuid "a70dc813-54a4-4754-9d2e-7d4dc28dfd51")
 		)
 		(fp_text user "${REFERENCE}"
 			(at 0 0 0)
 			(layer "F.Fab")
-			(uuid "5b3e5bfb-bd25-4496-bf81-40a72da9cbd7")
+			(uuid "7c29cafd-8691-41f3-9267-2ae0e13e336d")
 			(effects
 				(font
 					(size 1 1)
@@ -14155,7 +14157,8 @@
 			(net 64 "Net-(H1-Pad1)")
 			(pinfunction "1")
 			(pintype "input")
-			(uuid "4f3edac0-ad97-4c65-a9fb-a5835c8c80f8")
+			(zone_connect 2)
+			(uuid "60394755-ff6f-4d22-9be2-99de63b8bd6f")
 		)
 		(pad "1" thru_hole circle
 			(at -1.697056 -1.697056)
@@ -14166,7 +14169,8 @@
 			(net 64 "Net-(H1-Pad1)")
 			(pinfunction "1")
 			(pintype "input")
-			(uuid "20ff50b8-05dd-4680-b81a-f96f25f2db78")
+			(zone_connect 2)
+			(uuid "65e7da09-d04e-4f92-a037-9122d43b3ce7")
 		)
 		(pad "1" thru_hole circle
 			(at -1.697056 1.697056)
@@ -14177,7 +14181,8 @@
 			(net 64 "Net-(H1-Pad1)")
 			(pinfunction "1")
 			(pintype "input")
-			(uuid "30a53cb3-cafa-4467-bcc7-c6f18880a4d5")
+			(zone_connect 2)
+			(uuid "950ac06e-a05b-463a-8897-9ba80cd3a53a")
 		)
 		(pad "1" thru_hole circle
 			(at 0 -2.4)
@@ -14188,7 +14193,8 @@
 			(net 64 "Net-(H1-Pad1)")
 			(pinfunction "1")
 			(pintype "input")
-			(uuid "4bb94def-a432-4965-98ce-df2a5c854c5a")
+			(zone_connect 2)
+			(uuid "975c5c43-1cd5-4659-aa1a-448f2f062e35")
 		)
 		(pad "1" thru_hole circle
 			(at 0 0)
@@ -14199,7 +14205,7 @@
 			(net 64 "Net-(H1-Pad1)")
 			(pinfunction "1")
 			(pintype "input")
-			(uuid "27e001bd-6ca8-4f16-bb92-dbe87c0c8a94")
+			(uuid "f483b10c-86e7-4ee2-a254-bd917812a168")
 		)
 		(pad "1" thru_hole circle
 			(at 0 2.4)
@@ -14210,7 +14216,8 @@
 			(net 64 "Net-(H1-Pad1)")
 			(pinfunction "1")
 			(pintype "input")
-			(uuid "08f14ac4-6c67-43b6-903e-75b7480d1283")
+			(zone_connect 2)
+			(uuid "b8b3568b-e88a-4a32-a63a-a5cb59ca0e98")
 		)
 		(pad "1" thru_hole circle
 			(at 1.697056 -1.697056)
@@ -14221,7 +14228,8 @@
 			(net 64 "Net-(H1-Pad1)")
 			(pinfunction "1")
 			(pintype "input")
-			(uuid "9cbb3e41-5761-4303-b62c-f858a7e21f25")
+			(zone_connect 2)
+			(uuid "6320234b-b25c-4c8e-b922-e8e474a4a9be")
 		)
 		(pad "1" thru_hole circle
 			(at 1.697056 1.697056)
@@ -14232,7 +14240,8 @@
 			(net 64 "Net-(H1-Pad1)")
 			(pinfunction "1")
 			(pintype "input")
-			(uuid "212bcc52-3e14-4160-9f44-46c9bd96e0ee")
+			(zone_connect 2)
+			(uuid "e6401600-1f05-4a37-81b1-7ce5a994e2d7")
 		)
 		(pad "1" thru_hole circle
 			(at 2.4 0)
@@ -14243,7 +14252,8 @@
 			(net 64 "Net-(H1-Pad1)")
 			(pinfunction "1")
 			(pintype "input")
-			(uuid "4b6e3457-d375-4fcb-8da6-823ad48a4e44")
+			(zone_connect 2)
+			(uuid "36266cc0-ab77-46dd-8c87-4a128f860a0f")
 		)
 	)
 	(footprint "RF_Antenna:Texas_SWRA117D_2.4GHz_Left"
@@ -14776,7 +14786,7 @@
 				)
 			)
 		)
-		(property "Value" "13p"
+		(property "Value" "18p"
 			(at 0 1.43 0)
 			(layer "F.Fab")
 			(uuid "df3ce52a-a84c-4396-a15c-b7e87735f427")
@@ -16760,7 +16770,7 @@
 				(justify mirror)
 			)
 		)
-		(property "Value" "14p"
+		(property "Value" "18p"
 			(at 0 -1.43 90)
 			(layer "B.Fab")
 			(uuid "9e66da01-916b-4c8e-b6cb-54076c1ea16f")
@@ -20603,7 +20613,7 @@
 				(justify mirror)
 			)
 		)
-		(property "Value" "4u7"
+		(property "Value" "100n"
 			(at 0 -1.43 135)
 			(layer "B.Fab")
 			(uuid "c8b3d124-ef65-4c21-a0ef-db9de3ed2d07")
@@ -22580,7 +22590,7 @@
 			(at 0 4.2 0)
 			(layer "B.SilkS")
 			(hide yes)
-			(uuid "719bdb38-366c-495e-9b01-5b87fb9b48ff")
+			(uuid "e294cab1-7b86-407e-8fad-67724785826e")
 			(effects
 				(font
 					(size 1 1)
@@ -22592,7 +22602,7 @@
 		(property "Value" "MountingHole_Pad"
 			(at 0 -4.2 0)
 			(layer "B.Fab")
-			(uuid "bf335ae2-32f1-4b92-ac1f-79d5f9aa11e8")
+			(uuid "541278ed-8079-49bb-9e02-cfe086afa157")
 			(effects
 				(font
 					(size 1 1)
@@ -22606,7 +22616,7 @@
 			(unlocked yes)
 			(layer "F.Fab")
 			(hide yes)
-			(uuid "159a5e39-1fa1-4ff1-aedf-5ece37966ec5")
+			(uuid "ef07beb5-d678-4d55-a35e-ee38d2c5e447")
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -22618,7 +22628,7 @@
 			(unlocked yes)
 			(layer "F.Fab")
 			(hide yes)
-			(uuid "8227264d-0c91-4327-829d-4357548c2505")
+			(uuid "28801375-bff1-4d0a-83ce-a698c27736f2")
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -22630,17 +22640,14 @@
 			(unlocked yes)
 			(layer "F.Fab")
 			(hide yes)
-			(uuid "07767e87-1f51-46bd-91b1-95ea4ef453ed")
+			(uuid "2886db5f-925d-47fa-b1ac-8b493f066dab")
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
 			)
 		)
-		(property ki_fp_filters "MountingHole*Pad*")
 		(path "/e645ad86-1e5c-4978-bb5a-d724f52bc3b9")
-		(sheetname "Root")
-		(sheetfile "1280_modem.kicad_sch")
 		(attr exclude_from_pos_files)
 		(fp_circle
 			(center 0 0)
@@ -22651,7 +22658,7 @@
 			)
 			(fill none)
 			(layer "Cmts.User")
-			(uuid "188b9167-a3b9-4d4e-b21d-2a59b814de47")
+			(uuid "4e1e1ceb-c2c9-40ac-89b3-2b6414c87118")
 		)
 		(fp_circle
 			(center 0 0)
@@ -22662,12 +22669,12 @@
 			)
 			(fill none)
 			(layer "B.CrtYd")
-			(uuid "36e05d0d-eea4-48d3-bf88-dab4517e6eb7")
+			(uuid "da6cb273-3d12-48bf-9088-90f19dc28715")
 		)
 		(fp_text user "${REFERENCE}"
 			(at 0 0 0)
 			(layer "B.Fab")
-			(uuid "4a95b6c5-6e7d-4984-be96-dcd8d8b96c95")
+			(uuid "ce5a04e0-aefd-4e40-b7da-a31f7d44b563")
 			(effects
 				(font
 					(size 1 1)
@@ -22685,7 +22692,8 @@
 			(net 63 "Net-(H4-Pad1)")
 			(pinfunction "1")
 			(pintype "input")
-			(uuid "8f4ce54b-1cbe-4cb8-84c5-146b2008d3ac")
+			(zone_connect 2)
+			(uuid "56d64b7f-1f32-407a-9145-46f502a7ffc5")
 		)
 		(pad "1" thru_hole circle
 			(at -1.697056 -1.697056 180)
@@ -22696,7 +22704,8 @@
 			(net 63 "Net-(H4-Pad1)")
 			(pinfunction "1")
 			(pintype "input")
-			(uuid "ef508160-13bc-4b6c-b7b6-477e94d9f364")
+			(zone_connect 2)
+			(uuid "e3ad9f5d-a8e7-4e8f-8229-52f41b4460c9")
 		)
 		(pad "1" thru_hole circle
 			(at -1.697056 1.697056 180)
@@ -22707,7 +22716,8 @@
 			(net 63 "Net-(H4-Pad1)")
 			(pinfunction "1")
 			(pintype "input")
-			(uuid "520c1668-9b53-4ce2-8913-1bb7f17e8eed")
+			(zone_connect 2)
+			(uuid "d8916940-7ef3-495b-8e5c-b3a976f44b3b")
 		)
 		(pad "1" thru_hole circle
 			(at 0 -2.4 180)
@@ -22718,7 +22728,8 @@
 			(net 63 "Net-(H4-Pad1)")
 			(pinfunction "1")
 			(pintype "input")
-			(uuid "a0b5cca5-95bd-4e73-8884-24b867a6bd1d")
+			(zone_connect 2)
+			(uuid "c176fe37-f801-4d6f-9465-15fd68817a2f")
 		)
 		(pad "1" thru_hole circle
 			(at 0 0 180)
@@ -22729,7 +22740,7 @@
 			(net 63 "Net-(H4-Pad1)")
 			(pinfunction "1")
 			(pintype "input")
-			(uuid "1fc936fa-d371-4f68-8b4e-d659c88cbe97")
+			(uuid "77f4e563-3020-4ae5-8dbd-43e43f40cd35")
 		)
 		(pad "1" thru_hole circle
 			(at 0 2.4 180)
@@ -22740,7 +22751,8 @@
 			(net 63 "Net-(H4-Pad1)")
 			(pinfunction "1")
 			(pintype "input")
-			(uuid "a22adbd1-2b59-4681-a4b5-7ee93db8ba36")
+			(zone_connect 2)
+			(uuid "ef938178-a986-42d7-a224-158e29fda85b")
 		)
 		(pad "1" thru_hole circle
 			(at 1.697056 -1.697056 180)
@@ -22751,7 +22763,8 @@
 			(net 63 "Net-(H4-Pad1)")
 			(pinfunction "1")
 			(pintype "input")
-			(uuid "2bec3bf7-9a0e-4479-9611-1e179414b091")
+			(zone_connect 2)
+			(uuid "13bec56e-19cf-4093-8e2c-e6cd89259c68")
 		)
 		(pad "1" thru_hole circle
 			(at 1.697056 1.697056 180)
@@ -22762,7 +22775,8 @@
 			(net 63 "Net-(H4-Pad1)")
 			(pinfunction "1")
 			(pintype "input")
-			(uuid "307afa94-1208-4c52-a39c-32fcc2451b44")
+			(zone_connect 2)
+			(uuid "ad0d2ae5-f03f-498c-8edd-c109258fef17")
 		)
 		(pad "1" thru_hole circle
 			(at 2.4 0 180)
@@ -22773,7 +22787,8 @@
 			(net 63 "Net-(H4-Pad1)")
 			(pinfunction "1")
 			(pintype "input")
-			(uuid "7ff1ec83-d92d-429b-bea0-f06f35dbdd16")
+			(zone_connect 2)
+			(uuid "c8797621-b4c5-4a2d-a284-dc3881b4bbce")
 		)
 	)
 	(footprint "Resistor_SMD:R_0603_1608Metric"
@@ -23220,7 +23235,7 @@
 				(justify mirror)
 			)
 		)
-		(property "Value" "4u7"
+		(property "Value" "100n"
 			(at 0 -1.43 135)
 			(layer "B.Fab")
 			(uuid "b71e42c2-64a0-409b-946b-357880473e12")
@@ -23851,7 +23866,7 @@
 			(at 0 4.2 0)
 			(layer "B.SilkS")
 			(hide yes)
-			(uuid "1f428ecf-5998-4e18-8f19-99865211678b")
+			(uuid "7b9470f1-ca16-45bf-90b2-527ab262d27c")
 			(effects
 				(font
 					(size 1 1)
@@ -23863,7 +23878,7 @@
 		(property "Value" "MountingHole_Pad"
 			(at 0 -4.2 0)
 			(layer "B.Fab")
-			(uuid "975a4711-4d2e-48ec-9b08-cce666b19173")
+			(uuid "fdadb27a-70ba-41f5-83fe-de9b11f058a1")
 			(effects
 				(font
 					(size 1 1)
@@ -23877,7 +23892,7 @@
 			(unlocked yes)
 			(layer "F.Fab")
 			(hide yes)
-			(uuid "d1a2c51e-1d9a-4ecb-b913-c9f6c87ca127")
+			(uuid "88209ce1-57c1-4497-9ea7-3217152661ea")
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -23889,7 +23904,7 @@
 			(unlocked yes)
 			(layer "F.Fab")
 			(hide yes)
-			(uuid "c559823c-e582-4ece-9dfc-c0e3cfca30bf")
+			(uuid "d4f97dff-782e-41e9-99de-5ee0f8ee5e09")
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -23901,17 +23916,14 @@
 			(unlocked yes)
 			(layer "F.Fab")
 			(hide yes)
-			(uuid "6d15670c-c30e-4e6d-88c3-b83a6b15c046")
+			(uuid "ace7fc69-1659-4e59-99df-9c2cc6fba889")
 			(effects
 				(font
 					(size 1.27 1.27)
 				)
 			)
 		)
-		(property ki_fp_filters "MountingHole*Pad*")
 		(path "/dd5555c8-a91d-47e3-aeae-04b5e4afce5c")
-		(sheetname "Root")
-		(sheetfile "1280_modem.kicad_sch")
 		(attr exclude_from_pos_files)
 		(fp_circle
 			(center 0 0)
@@ -23922,7 +23934,7 @@
 			)
 			(fill none)
 			(layer "Cmts.User")
-			(uuid "e9f194cc-1832-4bed-97f3-4196b45139d4")
+			(uuid "a187f0e5-291c-4812-ab64-d90157adccf8")
 		)
 		(fp_circle
 			(center 0 0)
@@ -23933,12 +23945,12 @@
 			)
 			(fill none)
 			(layer "B.CrtYd")
-			(uuid "c15cef86-cb66-4944-8469-7bfd6c1a53a0")
+			(uuid "ad2501b2-e1c2-4c40-a4cf-cef874290202")
 		)
 		(fp_text user "${REFERENCE}"
 			(at 0 0 0)
 			(layer "B.Fab")
-			(uuid "9507de3a-2564-4145-933d-a8ddff98cd3e")
+			(uuid "b8a3d252-c7f3-434f-959d-217df448e200")
 			(effects
 				(font
 					(size 1 1)
@@ -23956,7 +23968,8 @@
 			(net 66 "Net-(H3-Pad1)")
 			(pinfunction "1")
 			(pintype "input")
-			(uuid "99c91aa9-2992-4af5-84ff-6bd661984e5c")
+			(zone_connect 2)
+			(uuid "1aaf992b-7b98-4acd-81d7-09a3adca3465")
 		)
 		(pad "1" thru_hole circle
 			(at -1.697056 -1.697056 180)
@@ -23967,7 +23980,8 @@
 			(net 66 "Net-(H3-Pad1)")
 			(pinfunction "1")
 			(pintype "input")
-			(uuid "0841907b-fb9c-4299-ad32-79b83e385869")
+			(zone_connect 2)
+			(uuid "3a4d76b1-8475-4e56-b754-ee6ca9a00579")
 		)
 		(pad "1" thru_hole circle
 			(at -1.697056 1.697056 180)
@@ -23978,7 +23992,8 @@
 			(net 66 "Net-(H3-Pad1)")
 			(pinfunction "1")
 			(pintype "input")
-			(uuid "5651b470-fc3a-4cce-8859-c336088e525e")
+			(zone_connect 2)
+			(uuid "2d43f575-a883-4ccb-89bb-75ee212f0d13")
 		)
 		(pad "1" thru_hole circle
 			(at 0 -2.4 180)
@@ -23989,7 +24004,8 @@
 			(net 66 "Net-(H3-Pad1)")
 			(pinfunction "1")
 			(pintype "input")
-			(uuid "68c283f2-3355-4531-be78-265537bccb51")
+			(zone_connect 2)
+			(uuid "5a5270d2-b41f-40c2-815c-b97a4641bb29")
 		)
 		(pad "1" thru_hole circle
 			(at 0 0 180)
@@ -24000,7 +24016,7 @@
 			(net 66 "Net-(H3-Pad1)")
 			(pinfunction "1")
 			(pintype "input")
-			(uuid "a17c97db-a646-4eaa-bde1-c17807bca679")
+			(uuid "fe7113e7-eaab-40d6-86ef-acf541f116f0")
 		)
 		(pad "1" thru_hole circle
 			(at 0 2.4 180)
@@ -24011,7 +24027,8 @@
 			(net 66 "Net-(H3-Pad1)")
 			(pinfunction "1")
 			(pintype "input")
-			(uuid "2fa107c4-b0b7-4b56-a1cf-717184ed933a")
+			(zone_connect 2)
+			(uuid "1c324424-e305-4182-bf09-6fe3c4fcb5a1")
 		)
 		(pad "1" thru_hole circle
 			(at 1.697056 -1.697056 180)
@@ -24022,7 +24039,8 @@
 			(net 66 "Net-(H3-Pad1)")
 			(pinfunction "1")
 			(pintype "input")
-			(uuid "ddd732ab-6c66-4abb-a8e7-deb103130c74")
+			(zone_connect 2)
+			(uuid "b34a3563-f1fb-4ad7-9dc8-106dca84b9cf")
 		)
 		(pad "1" thru_hole circle
 			(at 1.697056 1.697056 180)
@@ -24033,7 +24051,8 @@
 			(net 66 "Net-(H3-Pad1)")
 			(pinfunction "1")
 			(pintype "input")
-			(uuid "51ac9024-d5a2-4ae9-9864-7e981632185b")
+			(zone_connect 2)
+			(uuid "63a355e8-5cf1-477f-8ec2-792e85f993c4")
 		)
 		(pad "1" thru_hole circle
 			(at 2.4 0 180)
@@ -24044,7 +24063,8 @@
 			(net 66 "Net-(H3-Pad1)")
 			(pinfunction "1")
 			(pintype "input")
-			(uuid "03d6e696-4bf5-41aa-bcfa-d95d142fe951")
+			(zone_connect 2)
+			(uuid "cc3f346d-676f-4b25-b5e2-b6aaeb64498c")
 		)
 	)
 	(footprint "Resistor_SMD:R_0603_1608Metric"
@@ -24704,7 +24724,7 @@
 				(justify mirror)
 			)
 		)
-		(property "Value" "14p"
+		(property "Value" "18p"
 			(at 0 -1.43 0)
 			(layer "B.Fab")
 			(uuid "16fc5a3f-0cf6-438b-9f05-8c70194a0984")

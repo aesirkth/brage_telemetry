@@ -531,7 +531,17 @@
       "version": 3
     },
     "net_colors": null,
-    "netclass_assignments": null,
+    "netclass_assignments": {
+      "/RF_IO": "50ohm",
+      "/USB_D_N": "90ohm_d",
+      "/USB_D_P": "90ohm_d",
+      "/USB_ESD_N": "90ohm_d",
+      "/USB_ESD_P": "90ohm_d",
+      "Net-(AE1-Pad1)": "50ohm",
+      "Net-(FL1-IN)": "50ohm",
+      "Net-(FL1-OUT)": "50ohm",
+      "Net-(J2-In)": "50ohm"
+    },
     "netclass_patterns": []
   },
   "pcbnew": {

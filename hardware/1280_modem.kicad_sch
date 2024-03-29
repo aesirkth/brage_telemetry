@@ -21160,17 +21160,6 @@
 	)
 	(text "ok"
 		(exclude_from_sim no)
-		(at 195.58 46.99 0)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-			(justify left bottom)
-		)
-		(uuid "b99f4773-0c8c-4e3e-8114-7b589a33a0e2")
-	)
-	(text "ok"
-		(exclude_from_sim no)
 		(at 60.96 189.23 0)
 		(effects
 			(font
@@ -25347,7 +25336,7 @@
 		(fields_autoplaced yes)
 		(uuid "37ced676-95a2-44b4-a56d-cf3cbd8c5e04")
 		(property "Reference" "C17"
-			(at 26.67 267.9763 0)
+			(at 26.67 267.9762 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -25355,8 +25344,8 @@
 				(justify left)
 			)
 		)
-		(property "Value" "10p"
-			(at 26.67 270.5163 0)
+		(property "Value" "18p"
+			(at 26.67 270.5162 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -26049,7 +26038,7 @@
 		(exclude_from_sim no)
 		(in_bom yes)
 		(on_board yes)
-		(dnp no)
+		(dnp yes)
 		(uuid "423c0ce3-eeb6-4c7a-b348-64faa909b71f")
 		(property "Reference" "C32"
 			(at 124.46 254.0063 0)
@@ -26677,7 +26666,7 @@
 				)
 			)
 		)
-		(property "Value" "100n"
+		(property "Value" "10n"
 			(at 207.0163 57.15 90)
 			(effects
 				(font
@@ -27015,7 +27004,7 @@
 		(fields_autoplaced yes)
 		(uuid "5d5e5cdf-2901-4e1c-bd04-0e931cf8f9d4")
 		(property "Reference" "C27"
-			(at 175.26 218.4336 0)
+			(at 175.26 218.4335 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -27023,8 +27012,8 @@
 				(justify right)
 			)
 		)
-		(property "Value" "10u"
-			(at 175.26 220.9736 0)
+		(property "Value" "1u"
+			(at 175.26 220.9735 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -27155,7 +27144,7 @@
 		(fields_autoplaced yes)
 		(uuid "6142359a-0408-4599-ba94-fd7fea3e6796")
 		(property "Reference" "C11"
-			(at 137.16 41.9163 0)
+			(at 137.16 41.9162 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -27163,8 +27152,8 @@
 				(justify left)
 			)
 		)
-		(property "Value" "4u7"
-			(at 137.16 44.4563 0)
+		(property "Value" "100n"
+			(at 137.16 44.4562 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -27854,7 +27843,7 @@
 		(fields_autoplaced yes)
 		(uuid "7435331c-7ab2-415d-aa29-7138e465f9b7")
 		(property "Reference" "C11"
-			(at 147.32 41.9163 0)
+			(at 147.32 41.9162 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -27862,8 +27851,8 @@
 				(justify left)
 			)
 		)
-		(property "Value" "4u7"
-			(at 147.32 44.4563 0)
+		(property "Value" "100n"
+			(at 147.32 44.4562 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -27930,7 +27919,7 @@
 		(fields_autoplaced yes)
 		(uuid "74536d9b-dbb0-4c82-a9bb-522afddf333e")
 		(property "Reference" "C7"
-			(at 222.25 115.5763 0)
+			(at 222.25 115.5762 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -27938,8 +27927,8 @@
 				(justify left)
 			)
 		)
-		(property "Value" "470n"
-			(at 222.25 118.1163 0)
+		(property "Value" "1u"
+			(at 222.25 118.1162 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -28557,7 +28546,7 @@
 				)
 			)
 		)
-		(property "Value" "AO3401A"
+		(property "Value" " DMP3056L-7 "
 			(at 209.55 269.24 90)
 			(effects
 				(font
@@ -28944,7 +28933,7 @@
 		(exclude_from_sim no)
 		(in_bom yes)
 		(on_board yes)
-		(dnp no)
+		(dnp yes)
 		(uuid "897c2a8d-f8ee-406a-8362-91fd6587be69")
 		(property "Reference" "C33"
 			(at 115.57 237.4837 0)
@@ -30627,7 +30616,7 @@
 		(fields_autoplaced yes)
 		(uuid "a66a8965-43a5-4d21-b2fd-87b1ed713912")
 		(property "Reference" "C15"
-			(at 45.72 193.0463 0)
+			(at 45.72 193.0462 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -30635,8 +30624,8 @@
 				(justify left)
 			)
 		)
-		(property "Value" "10p"
-			(at 45.72 195.5863 0)
+		(property "Value" "18p"
+			(at 45.72 195.5862 0)
 			(effects
 				(font
 					(size 1.27 1.27)
@@ -30835,7 +30824,7 @@
 		(exclude_from_sim no)
 		(in_bom yes)
 		(on_board yes)
-		(dnp no)
+		(dnp yes)
 		(fields_autoplaced yes)
 		(uuid "a8732ed3-a0e4-419f-954f-fedf315a2004")
 		(property "Reference" "R4"
@@ -34039,7 +34028,7 @@
 				(justify left)
 			)
 		)
-		(property "Value" "10p"
+		(property "Value" "18p"
 			(at 55.88 195.5863 0)
 			(effects
 				(font
@@ -34687,7 +34676,7 @@
 				)
 			)
 		)
-		(property "Value" "AO3401A"
+		(property "Value" " DMP3056L-7 "
 			(at 209.55 238.76 90)
 			(effects
 				(font
