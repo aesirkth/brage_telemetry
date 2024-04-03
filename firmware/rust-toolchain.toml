@@ -1,0 +1,6 @@
+# rust-toolchain.toml
+
+[toolchain]
+channel = "nightly-2024-03-20"
+components = [ "rust-src", "rustfmt", "llvm-tools", "miri" ]
+targets = ["thumbv8m.main-none-eabihf"]
