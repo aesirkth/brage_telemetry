@@ -569,6 +569,14 @@ where
 
         Ok(())
     }
+
+    pub fn start_ranging_receive(&mut self, data: &[u8]) -> Result<(), <Hal as base::HalError>::E> {
+        Ok(())
+    }
+
+    pub fn start_ranging_transmit(&mut self, data: &[u8]) -> Result<(), <Hal as base::HalError>::E> {
+        Ok(())
+    }
 }
 
 // impl<Hal> DelayNs for Sx128x<Hal>
@@ -810,8 +818,7 @@ where
     /// Check for transmit completion
     fn check_transmit(&mut self) -> Result<bool, Self::Error> {
         // Poll on DIO and short-circuit if not asserted
-        #[cfg(feature = "poll_irq")]
-        if self.hal.get_dio()? == PinState::Low {
+        if self.hal.get_dio1()? == false {
             return Ok(false);
         }
 

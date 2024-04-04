@@ -11,6 +11,8 @@ pub mod gfsk;
 use gfsk::{GfskChannel, GfskConfig};
 pub mod lora;
 use lora::{LoRaChannel, LoRaConfig};
+pub mod ranging;
+use ranging::{RangingConfig};
 
 pub mod common;
 
