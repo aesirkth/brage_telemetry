@@ -11,13 +11,9 @@ use embassy_stm32::time::Hertz;
 use embassy_stm32::gpio::{Input, Level, Output, Pull, Speed};
 use embassy_stm32::exti::ExtiInput;
 
-use embedded_hal::delay::DelayNs;
 use panic_probe as _;
 
 mod sx_hal;
-
-use radio::{Transmit, Receive};
-use radio_sx128x::Sx128x;
 
 embassy_stm32::bind_interrupts!(struct Irqs {
     OTG_FS => embassy_stm32::usb::InterruptHandler<USB_OTG_FS>;
@@ -34,14 +30,14 @@ async fn logger_task(driver: embassy_stm32::usb::Driver<'static, USB_OTG_FS>) ->
 }
 
 #[embassy_executor::task]
-async fn can_reader_task(can_rx: embassy_stm32::can::BufferedFdCanReceiver) -> ! {
+async fn can_reader_task(_can_rx: embassy_stm32::can::BufferedFdCanReceiver) -> ! {
     loop {
 
     }
 }
 
 #[embassy_executor::task]
-async fn can_writer_task(can_tx: embassy_stm32::can::BufferedFdCanSender) -> ! {
+async fn can_writer_task(_can_tx: embassy_stm32::can::BufferedFdCanSender) -> ! {
     loop {
 
     }

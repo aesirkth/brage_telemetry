@@ -2,7 +2,7 @@
 
 use core::fmt::Debug;
 
-use log::{error, trace};
+use log::trace;
 
 use crate::{device::*, Error};
 

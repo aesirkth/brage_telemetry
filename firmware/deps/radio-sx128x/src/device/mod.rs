@@ -12,7 +12,7 @@ use gfsk::{GfskChannel, GfskConfig};
 pub mod lora;
 use lora::{LoRaChannel, LoRaConfig};
 pub mod ranging;
-use ranging::{RangingConfig};
+// use ranging::{RangingConfig};
 
 pub mod common;
 
@@ -224,16 +224,6 @@ pub enum State {
     Unknown = 0x07,
 }
 
-impl radio::RadioState for State {
-    fn idle() -> Self {
-        Self::StandbyXosc
-    }
-
-    fn sleep() -> Self {
-        Self::Sleep
-    }
-}
-
 impl core::convert::TryFrom<u8> for State {
     type Error = ();
 
@@ -311,12 +301,6 @@ pub struct PacketInfo {
     pub packet_status: PacketStatus,
     pub tx_rx_status: TxRxStatus,
     pub sync_addr_status: u8,
-}
-
-impl radio::ReceiveInfo for PacketInfo {
-    fn rssi(&self) -> i16 {
-        self.rssi
-    }
 }
 
 impl Default for PacketInfo {

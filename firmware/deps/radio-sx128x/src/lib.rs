@@ -15,13 +15,9 @@ extern crate std;
 
 // use base::Base;
 
-#[cfg(not(feature = "defmt"))]
+#[allow(unused_imports)]
 use log::{debug, error, trace, warn};
 
-#[cfg(feature = "defmt")]
-use defmt::{debug, error, trace, warn};
-
-pub use radio::{Channel as _, Interrupts as _, State as _};
 
 pub mod base;
 
@@ -570,34 +566,18 @@ where
         Ok(())
     }
 
-    pub fn start_ranging_receive(&mut self, data: &[u8]) -> Result<(), <Hal as base::HalError>::E> {
+    pub fn start_ranging_receive(&mut self, _response: &[u8]) -> Result<(), <Hal as base::HalError>::E> {
         Ok(())
     }
 
-    pub fn start_ranging_transmit(&mut self, data: &[u8]) -> Result<(), <Hal as base::HalError>::E> {
+    pub fn start_ranging_transmit(&mut self, _data: &[u8]) -> Result<(), <Hal as base::HalError>::E> {
         Ok(())
     }
-}
 
-// impl<Hal> DelayNs for Sx128x<Hal>
-// where
-//     Hal: base::Hal,
-// {
-//     fn delay_ns(&mut self, t: u32) {
-//         self.hal.delay_ns(t);
-//     }
-// }
 
-/// `radio::State` implementation for the SX128x
-impl<Hal> radio::State for Sx128x<Hal>
-where
-    Hal: base::Hal,
-{
-    type State = State;
-    type Error = <Hal as base::HalError>::E;
 
     /// Fetch device state
-    fn get_state(&mut self) -> Result<Self::State, Self::Error> {
+    pub fn get_state(&mut self) -> Result<State, <Hal as base::HalError>::E> {
         let mut d = [0u8; 1];
         self.hal.read_cmd(Commands::GetStatus as u8, &mut d)?;
 
@@ -615,7 +595,7 @@ where
     }
 
     /// Set device state
-    fn set_state(&mut self, state: Self::State) -> Result<(), Self::Error> {
+    pub fn set_state(&mut self, state: State) -> Result<(), <Hal as base::HalError>::E> {
         let command = match state {
             State::Tx => Commands::SetTx,
             State::Rx => Commands::SetRx,
@@ -631,17 +611,9 @@ where
 
         self.hal.write_cmd(command as u8, &[0u8])
     }
-}
-
-/// `radio::Busy` implementation for the SX128x
-impl<Hal> radio::Busy for Sx128x<Hal>
-where
-    Hal: base::Hal,
-{
-    type Error = <Hal as base::HalError>::E;
 
     /// Fetch device state
-    fn is_busy(&mut self) -> Result<bool, Self::Error> {
+    pub fn is_busy(&mut self) -> Result<bool, <Hal as base::HalError>::E> {
         let irq = self.get_interrupts(false)?;
 
         if irq.contains(Irq::SYNCWORD_VALID)
@@ -652,20 +624,9 @@ where
 
         Ok(false)
     }
-}
-
-/// `radio::Channel` implementation for the SX128x
-impl<Hal> radio::Channel for Sx128x<Hal>
-where
-    Hal: base::Hal,
-{
-    /// Channel consists of an operating frequency and packet mode
-    type Channel = Channel;
-
-    type Error = <Hal as base::HalError>::E;
 
     /// Set operating channel
-    fn set_channel(&mut self, ch: &Self::Channel) -> Result<(), Self::Error> {
+    pub fn set_channel(&mut self, ch: &Channel) -> Result<(), <Hal as base::HalError>::E> {
         use Channel::*;
 
         debug!("Setting channel config: {:?}", ch);
@@ -697,32 +658,14 @@ where
         self.hal
             .write_cmd(Commands::SetModulationParams as u8, &data)
     }
-}
 
-/// `radio::Power` implementation for the SX128x
-impl<Hal> radio::Power for Sx128x<Hal>
-where
-    Hal: base::Hal,
-{
-    type Error = <Hal as base::HalError>::E;
-
-    /// Set TX power in dBm
-    fn set_power(&mut self, power: i8) -> Result<(), <Hal as base::HalError>::E> {
+    pub fn set_power(&mut self, power: i8) -> Result<(), <Hal as base::HalError>::E> {
         let ramp_time = self.config.pa_config.ramp_time;
         self.set_power_ramp(power, ramp_time)
     }
-}
-
-/// `radio::Interrupts` implementation for the SX128x
-impl<Hal> radio::Interrupts for Sx128x<Hal>
-where
-    Hal: base::Hal,
-{
-    type Irq = Irq;
-    type Error = <Hal as base::HalError>::E;
 
     /// Fetch (and optionally clear) current interrupts
-    fn get_interrupts(&mut self, clear: bool) -> Result<Self::Irq, Self::Error> {
+    pub fn get_interrupts(&mut self, clear: bool) -> Result<Irq, <Hal as base::HalError>::E> {
         let mut data = [0u8; 2];
 
         self.hal.read_cmd(Commands::GetIrqStatus as u8, &mut data)?;
@@ -738,17 +681,9 @@ where
 
         Ok(irq)
     }
-}
-
-/// `radio::Transmit` implementation for the SX128x
-impl<Hal> radio::Transmit for Sx128x<Hal>
-where
-    Hal: base::Hal,
-{
-    type Error = <Hal as base::HalError>::E;
 
     /// Start transmitting a packet
-    fn start_transmit(&mut self, data: &[u8]) -> Result<(), Self::Error> {
+    pub fn start_transmit(&mut self, data: &[u8]) -> Result<(), <Hal as base::HalError>::E> {
         debug!("TX start");
 
         // Set state to idle before we write configuration
@@ -816,7 +751,7 @@ where
     }
 
     /// Check for transmit completion
-    fn check_transmit(&mut self) -> Result<bool, Self::Error> {
+    pub fn check_transmit(&mut self) -> Result<bool, <Hal as base::HalError>::E> {
         // Poll on DIO and short-circuit if not asserted
         if self.hal.get_dio1()? == false {
             return Ok(false);
@@ -837,21 +772,9 @@ where
             Ok(false)
         }
     }
-}
-
-/// `radio::Receive` implementation for the SX128x
-impl<Hal> radio::Receive for Sx128x<Hal>
-where
-    Hal: base::Hal,
-{
-    /// Receive info structure
-    type Info = PacketInfo;
-
-    /// RF Error object
-    type Error = <Hal as base::HalError>::E;
 
     /// Start radio in receive mode
-    fn start_receive(&mut self) -> Result<(), Self::Error> {
+    pub fn start_receive(&mut self) -> Result<(), <Hal as base::HalError>::E> {
         debug!("RX start");
 
         // Set state to idle before we write configuration
@@ -921,7 +844,7 @@ where
     }
 
     /// Check for a received packet
-    fn check_receive(&mut self, restart: bool) -> Result<bool, Self::Error> {
+    pub fn check_receive(&mut self, restart: bool) -> Result<bool, <Hal as base::HalError>::E> {
         // Poll on DIO and short-circuit if not asserted
         #[cfg(feature = "poll_irq")]
         if self.hal.get_dio()? == PinState::Low {
@@ -960,7 +883,7 @@ where
     }
 
     /// Fetch a received packet
-    fn get_received(&mut self, data: &mut [u8]) -> Result<(usize, Self::Info), Self::Error> {
+    pub fn get_received(&mut self, data: &mut [u8]) -> Result<(usize, PacketInfo), <Hal as base::HalError>::E> {
         // Fetch RX buffer information
         let (ptr, len) = self.get_rx_buffer_status()?;
 
@@ -978,7 +901,7 @@ where
         self.hal.read_buff(ptr, &mut data[..len as usize])?;
 
         // Fetch related information
-        let mut info = Self::Info::default();
+        let mut info = PacketInfo::default();
         self.get_packet_info(&mut info)?;
 
         trace!("RX data: {:?} info: {:?}", &data[..len as usize], info);
@@ -986,28 +909,12 @@ where
         // Return read length
         Ok((len as usize, info))
     }
-}
-
-/// `radio::Rssi` implementation for the SX128x
-impl<Hal> radio::Rssi for Sx128x<Hal>
-where
-    Hal: base::Hal,
-{
-    type Error = <Hal as base::HalError>::E;
 
     /// Poll for the current channel RSSI
     /// This should only be called when in receive mode
-    fn poll_rssi(&mut self) -> Result<i16, <Hal as base::HalError>::E> {
+    pub fn poll_rssi(&mut self) -> Result<i16, <Hal as base::HalError>::E> {
         let mut raw = [0u8; 1];
         self.hal.read_cmd(Commands::GetRssiInst as u8, &mut raw)?;
         Ok(-(raw[0] as i16) / 2)
-    }
-}
-
-#[cfg(test)]
-mod tests {
-    #[test]
-    fn it_works() {
-        assert_eq!(2 + 2, 4);
     }
 }

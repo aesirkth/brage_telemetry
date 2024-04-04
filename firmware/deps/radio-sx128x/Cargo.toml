@@ -16,7 +16,7 @@ defmt-info = []
 defmt-warn = []
 defmt-error = []
 
-std = [ "radio/std", "driver-pal/mock", "failure/std", "hex", "thiserror" ]
+std = ["driver-pal/mock", "failure/std", "hex", "thiserror" ]
 poll-irq = []
 patch-unknown-state = []
 tests = [ "driver-pal/mock" ]
@@ -24,7 +24,6 @@ tests = [ "driver-pal/mock" ]
 default = [ "std", "serde", "driver-pal/hal-cp2130", "driver-pal/hal-linux", "patch-unknown-state" ]
 
 [dependencies]
-radio = { version = "0.11.1", default_features = false }
 embedded-hal = "1.0"
 defmt = {version = "0.3.5", optional = true }
 

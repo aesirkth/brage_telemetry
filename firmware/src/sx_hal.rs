@@ -7,6 +7,7 @@ use radio_sx128x::base::Hal;
 // Assume Error and PinState are defined or imported from somewhere
 use radio_sx128x::Error;
 
+#[allow(unused_imports)]
 use log::{error, warn, info, debug, trace};
 
 
