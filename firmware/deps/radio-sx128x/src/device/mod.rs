@@ -53,7 +53,7 @@ pub struct Config {
     pub xtal_freq: u32,
 
     /// Timeout for blocking / polling internal methods
-    pub timeout_ms: u32,
+    // pub timeout_ms: u32,
 
     /// Skip firmware version validation
     pub skip_version_check: bool,
@@ -67,13 +67,13 @@ impl Default for Config {
                 power: 10,
                 ramp_time: RampTime::Ramp20Us,
             },
-            packet_type: PacketType::None,
+            packet_type: PacketType::LoRa,
             modem: Modem::LoRa(LoRaConfig::default()),
             channel: Channel::LoRa(LoRaChannel::default()),
             //timeout: Timeout::Configurable{ step: TickSize::TickSize1000us, count: 1000 },
             rf_timeout: Timeout::Single,
             xtal_freq: 52000000,
-            timeout_ms: 100,
+            // timeout_ms: 100,
             skip_version_check: false,
         }
     }

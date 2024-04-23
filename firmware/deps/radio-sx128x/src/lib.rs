@@ -26,7 +26,7 @@ use device::*;
 pub use device::{Config, State};
 
 pub mod prelude;
-
+use arrayvec::ArrayVec;
 
 
 /// Sx128x device object
@@ -137,21 +137,21 @@ where
     <Hal as base::Hal>::PinError: Debug + 'static,
 {
     /// Create a new Sx128x instance over a generic Hal implementation
-    pub fn new(
+    pub async fn new(
         hal: Hal,
         config: &Config,
     ) -> Result<Self, Error<<Hal as base::Hal>::CommsError, <Hal as base::Hal>::PinError>> {
-        let mut sx128x = Self::build(hal);
+        let mut sx128x = Self::build(hal).await;
 
         debug!("Resetting device");
 
         // Reset IC
-        sx128x.hal.reset()?;
+        sx128x.hal.reset().await?;
 
         debug!("Checking firmware version");
 
         // Check communication with the radio
-        let firmware_version = sx128x.firmware_version()?;
+        let firmware_version = sx128x.firmware_version().await?;
 
         if firmware_version == 0xFFFF || firmware_version == 0x0000 {
             return Err(Error::NoComms);
@@ -168,28 +168,52 @@ where
         }
 
         // TODO: do we need to calibrate things here?
-        //sx128x.calibrate(CalibrationParams::default())?;
+        sx128x.calibrate(CalibrationParams::all()).await?;
 
         debug!("Configuring device");
 
         // Configure device prior to use
-        sx128x.configure(config)?;
+        sx128x.configure(config).await?;
 
         // Ensure state is idle
-        sx128x.set_state(State::StandbyRc)?;
+        sx128x.set_state(State::StandbyRc).await?;
+
+        // Enable IRQs
+        let irqs = Irq::RX_DONE
+        | Irq::CRC_ERROR
+        | Irq::RX_TX_TIMEOUT
+        | Irq::SYNCWORD_ERROR
+        | Irq::HEADER_ERROR
+        | Irq::RANGING_MASTER_RESULT_TIMEOUT
+        | Irq::RANGING_MASTER_RESULT_VALID;
+
+        let dio1_irqs = Irq::TX_DONE
+        | Irq::RX_TX_TIMEOUT;
+
+        let dio2_irqs = Irq::RX_DONE
+        | Irq::CRC_ERROR
+        | Irq::RX_TX_TIMEOUT
+        | Irq::SYNCWORD_ERROR
+        | Irq::HEADER_ERROR;
+
+
+        let dio3_irqs = Irq::RANGING_MASTER_RESULT_TIMEOUT
+        | Irq::RANGING_MASTER_RESULT_VALID;
+
+        sx128x.set_irq_dio_mask(irqs, dio1_irqs, dio2_irqs, dio3_irqs).await?;
 
         Ok(sx128x)
     }
 
-    pub fn reset(&mut self) -> Result<(), <Hal as base::HalError>::E> {
+    pub async fn reset(&mut self) -> Result<(), <Hal as base::HalError>::E> {
         debug!("Resetting device");
 
-        self.hal.reset()?;
+        self.hal.reset().await?;
 
         Ok(())
     }
 
-    pub(crate) fn build(hal: Hal) -> Self {
+    pub(crate) async fn build(hal: Hal) -> Self {
         Sx128x {
             config: Config::default(),
             packet_type: PacketType::None,
@@ -197,9 +221,9 @@ where
         }
     }
 
-    pub fn configure(&mut self, config: &Config) -> Result<(), <Hal as base::HalError>::E> {
+    pub async fn configure(&mut self, config: &Config) -> Result<(), <Hal as base::HalError>::E> {
         // Switch to standby mode
-        self.set_state(State::StandbyRc)?;
+        self.set_state(State::StandbyRc).await?;
 
         // Check configs match
         match (&config.modem, &config.channel) {
@@ -210,43 +234,43 @@ where
         }
 
         // Update regulator mode
-        self.set_regulator_mode(config.regulator_mode)?;
+        self.set_regulator_mode(config.regulator_mode).await?;
         self.config.regulator_mode = config.regulator_mode;
 
         // Update modem and channel configuration
-        self.set_channel(&config.channel)?;
+        self.set_channel(&config.channel).await?;
         self.config.channel = config.channel.clone();
 
-        self.configure_modem(&config.modem)?;
+        self.configure_modem(&config.modem).await?;
         self.config.modem = config.modem.clone();
 
         // Update power amplifier configuration
-        self.set_power_ramp(config.pa_config.power, config.pa_config.ramp_time)?;
+        self.set_power_ramp(config.pa_config.power, config.pa_config.ramp_time).await?;
         self.config.pa_config = config.pa_config.clone();
 
         Ok(())
     }
 
-    pub fn firmware_version(&mut self) -> Result<u16, <Hal as base::HalError>::E> {
+    pub async fn firmware_version(&mut self) -> Result<u16, <Hal as base::HalError>::E> {
         let mut d = [0u8; 2];
 
         self.hal
-            .read_regs(Registers::LrFirmwareVersionMsb as u16, &mut d)?;
+            .read_regs(Registers::LrFirmwareVersionMsb as u16, &mut d).await?;
 
         Ok((d[0] as u16) << 8 | (d[1] as u16))
     }
 
-    pub fn set_frequency(&mut self, f: u32) -> Result<(), <Hal as base::HalError>::E> {
+    pub async fn set_frequency(&mut self, f: u32) -> Result<(), <Hal as base::HalError>::E> {
         let c = self.config.freq_to_steps(f as f32) as u32;
 
         trace!("Setting frequency ({:?} MHz, {} index)", f / 1000 / 1000, c);
 
         let data: [u8; 3] = [(c >> 16) as u8, (c >> 8) as u8, c as u8];
 
-        self.hal.write_cmd(Commands::SetRfFrequency as u8, &data)
+        self.hal.write_cmd(Commands::SetRfFrequency as u8, &data).await
     }
 
-    pub(crate) fn set_power_ramp(
+    pub(crate) async fn set_power_ramp(
         &mut self,
         power: i8,
         ramp: RampTime,
@@ -271,22 +295,22 @@ where
         self.config.pa_config.ramp_time = ramp;
 
         self.hal
-            .write_cmd(Commands::SetTxParams as u8, &[power_reg, ramp as u8])
+            .write_cmd(Commands::SetTxParams as u8, &[power_reg, ramp as u8]).await
     }
 
     /// Set IRQ mask
-    pub fn set_irq_mask(&mut self, irq: Irq) -> Result<(), <Hal as base::HalError>::E> {
+    pub async fn set_irq_mask(&mut self, irq: Irq) -> Result<(), <Hal as base::HalError>::E> {
         trace!("Setting IRQ mask: {:?}", irq);
 
         let raw = irq.bits();
         self.hal.write_cmd(
             Commands::SetDioIrqParams as u8,
             &[(raw >> 8) as u8, (raw & 0xff) as u8],
-        )
+        ).await
     }
 
     /// Set the IRQ and DIO masks
-    pub fn set_irq_dio_mask(
+    pub async fn set_irq_dio_mask(
         &mut self,
         irq: Irq,
         dio1: DioMask,
@@ -317,10 +341,10 @@ where
             (raw_dio3 & 0xff) as u8,
         ];
 
-        self.hal.write_cmd(Commands::SetDioIrqParams as u8, &data)
+        self.hal.write_cmd(Commands::SetDioIrqParams as u8, &data).await
     }
 
-    pub(crate) fn configure_modem(
+    pub(crate) async fn configure_modem(
         &mut self,
         config: &Modem,
     ) -> Result<(), <Hal as base::HalError>::E> {
@@ -333,7 +357,7 @@ where
         if self.packet_type != packet_type {
             trace!("Setting packet type: {:?}", packet_type);
             self.hal
-                .write_cmd(Commands::SetPacketType as u8, &[packet_type as u8])?;
+                .write_cmd(Commands::SetPacketType as u8, &[packet_type as u8]).await?;
             self.packet_type = packet_type;
         }
 
@@ -377,20 +401,20 @@ where
             None => [0u8; 7],
         };
 
-        self.hal.write_cmd(Commands::SetPacketParams as u8, &data)?;
+        self.hal.write_cmd(Commands::SetPacketParams as u8, &data).await?;
 
         // Apply patches
         match config {
             Flrc(c) if c.patch_syncword => {
                 // Apply sync-word patch for FLRC mode
-                self.patch_flrc_syncword()?;
+                self.patch_flrc_syncword().await?;
             }
             Gfsk(c) if c.patch_preamble => {
                 // Write preamble length for GFSK mode
                 self.hal.write_reg(
                     Registers::GfskBlePreambleLength as u16,
                     c.preamble_length as u8,
-                )?;
+                ).await?;
             }
             _ => (),
         }
@@ -398,17 +422,17 @@ where
         Ok(())
     }
 
-    pub(crate) fn get_rx_buffer_status(&mut self) -> Result<(u8, u8), <Hal as base::HalError>::E> {
+    pub(crate) async fn get_rx_buffer_status(&mut self) -> Result<(u8, u8), <Hal as base::HalError>::E> {
         use device::lora::LoRaHeader;
 
         let mut status = [0u8; 2];
 
         self.hal
-            .read_cmd(Commands::GetRxBufferStatus as u8, &mut status)?;
+            .read_cmd(Commands::GetRxBufferStatus as u8, &mut status).await?;
 
         let len = match &self.config.modem {
             Modem::LoRa(c) => match c.header_type {
-                LoRaHeader::Implicit => self.hal.read_reg(Registers::LrPayloadLength as u16)?,
+                LoRaHeader::Implicit => self.hal.read_reg(Registers::LrPayloadLength as u16).await?,
                 LoRaHeader::Explicit => status[0],
             },
             // BLE status[0] does not include 2-byte PDU header
@@ -423,13 +447,13 @@ where
         Ok((rx_buff_ptr, len))
     }
 
-    pub(crate) fn get_packet_info(
+    pub(crate) async fn get_packet_info(
         &mut self,
         info: &mut PacketInfo,
     ) -> Result<(), <Hal as base::HalError>::E> {
         let mut data = [0u8; 5];
         self.hal
-            .read_cmd(Commands::GetPacketStatus as u8, &mut data)?;
+            .read_cmd(Commands::GetPacketStatus as u8, &mut data).await?;
 
         info.packet_status = PacketStatus::from_bits_truncate(data[2]);
         info.tx_rx_status = TxRxStatus::from_bits_truncate(data[3]);
@@ -457,23 +481,23 @@ where
         Ok(())
     }
 
-    pub fn calibrate(&mut self, c: CalibrationParams) -> Result<(), <Hal as base::HalError>::E> {
+    pub async fn calibrate(&mut self, c: CalibrationParams) -> Result<(), <Hal as base::HalError>::E> {
         trace!("Calibrate {:?}", c);
-        self.hal.write_cmd(Commands::Calibrate as u8, &[c.bits()])
+        self.hal.write_cmd(Commands::Calibrate as u8, &[c.bits()]).await
     }
 
-    pub(crate) fn set_regulator_mode(
+    pub(crate) async fn set_regulator_mode(
         &mut self,
         r: RegulatorMode,
     ) -> Result<(), <Hal as base::HalError>::E> {
         trace!("Set regulator mode {:?}", r);
         self.hal
-            .write_cmd(Commands::SetRegulatorMode as u8, &[r as u8])
+            .write_cmd(Commands::SetRegulatorMode as u8, &[r as u8]).await
     }
 
     // TODO: this could got into a mode config object maybe?
     #[allow(dead_code)]
-    pub(crate) fn set_auto_tx(&mut self, a: AutoTx) -> Result<(), <Hal as base::HalError>::E> {
+    pub(crate) async fn set_auto_tx(&mut self, a: AutoTx) -> Result<(), <Hal as base::HalError>::E> {
         let data = match a {
             AutoTx::Enabled(timeout_us) => {
                 let compensated = timeout_us - AUTO_RX_TX_OFFSET;
@@ -481,22 +505,22 @@ where
             }
             AutoTx::Disabled => [0u8; 2],
         };
-        self.hal.write_cmd(Commands::SetAutoTx as u8, &data)
+        self.hal.write_cmd(Commands::SetAutoTx as u8, &data).await
     }
 
-    pub(crate) fn set_buff_base_addr(
+    pub(crate) async fn set_buff_base_addr(
         &mut self,
         tx: u8,
         rx: u8,
     ) -> Result<(), <Hal as base::HalError>::E> {
         trace!("Set buff base address (tx: {}, rx: {})", tx, rx);
         self.hal
-            .write_cmd(Commands::SetBufferBaseAddress as u8, &[tx, rx])
+            .write_cmd(Commands::SetBufferBaseAddress as u8, &[tx, rx]).await
     }
 
     /// Set the sychronization mode for a given index (1-3).
     /// This is 5-bytes for GFSK mode and 4-bytes for FLRC and BLE modes.
-    pub fn set_syncword(
+    pub async fn set_syncword(
         &mut self,
         index: u8,
         value: &[u8],
@@ -548,38 +572,38 @@ where
         }
 
         // Write sync word
-        self.hal.write_regs(addr, value)?;
+        self.hal.write_regs(addr, value).await?;
 
         Ok(())
     }
 
     /// Apply patch for sync-word match errata in FLRC mode
-    fn patch_flrc_syncword(&mut self) -> Result<(), <Hal as base::HalError>::E> {
+    async fn patch_flrc_syncword(&mut self) -> Result<(), <Hal as base::HalError>::E> {
         // If we're in FLRC mode, patch to force 100% match on syncwords
         // because otherwise the 4 bit threshold is too low
         if let PacketType::Flrc = &self.packet_type {
-            let r = self.hal.read_reg(Registers::LrSyncWordTolerance as u16)?;
+            let r = self.hal.read_reg(Registers::LrSyncWordTolerance as u16).await?;
             self.hal
-                .write_reg(Registers::LrSyncWordTolerance as u16, r & 0xF0)?;
+                .write_reg(Registers::LrSyncWordTolerance as u16, r & 0xF0).await?;
         }
 
         Ok(())
     }
 
-    pub fn start_ranging_receive(&mut self, _response: &[u8]) -> Result<(), <Hal as base::HalError>::E> {
+    pub async fn start_ranging_receive(&mut self, _response: &[u8]) -> Result<(), <Hal as base::HalError>::E> {
         Ok(())
     }
 
-    pub fn start_ranging_transmit(&mut self, _data: &[u8]) -> Result<(), <Hal as base::HalError>::E> {
+    pub async fn start_ranging_transmit(&mut self, _data: &[u8], _id: u32) -> Result<(), <Hal as base::HalError>::E> {
         Ok(())
     }
 
 
 
     /// Fetch device state
-    pub fn get_state(&mut self) -> Result<State, <Hal as base::HalError>::E> {
+    pub async fn get_state(&mut self) -> Result<State, <Hal as base::HalError>::E> {
         let mut d = [0u8; 1];
-        self.hal.read_cmd(Commands::GetStatus as u8, &mut d)?;
+        self.hal.read_cmd(Commands::GetStatus as u8, &mut d).await?;
 
         trace!("raw state: {}", d[0]);
 
@@ -595,11 +619,11 @@ where
     }
 
     /// Set device state
-    pub fn set_state(&mut self, state: State) -> Result<(), <Hal as base::HalError>::E> {
+    pub async fn set_state(&mut self, state: State) -> Result<(), <Hal as base::HalError>::E> {
         let command = match state {
             State::Tx => Commands::SetTx,
             State::Rx => Commands::SetRx,
-            //State::Cad => Commands::SetCad,
+            // State::Cad => Commands::SetCad,
             State::Fs => Commands::SetFs,
             State::StandbyRc | State::StandbyXosc => Commands::SetStandby,
             State::Sleep => Commands::SetSleep,
@@ -609,12 +633,12 @@ where
 
         trace!("Setting state {:?} ({})", state, command);
 
-        self.hal.write_cmd(command as u8, &[0u8])
+        self.hal.write_cmd(command as u8, &[0u8]).await
     }
 
     /// Fetch device state
-    pub fn is_busy(&mut self) -> Result<bool, <Hal as base::HalError>::E> {
-        let irq = self.get_interrupts(false)?;
+    pub async fn is_busy(&mut self) -> Result<bool, <Hal as base::HalError>::E> {
+        let irq = self.get_interrupts(false).await?;
 
         if irq.contains(Irq::SYNCWORD_VALID)
             && !(irq.contains(Irq::RX_DONE) || irq.contains(Irq::CRC_ERROR))
@@ -626,7 +650,7 @@ where
     }
 
     /// Set operating channel
-    pub fn set_channel(&mut self, ch: &Channel) -> Result<(), <Hal as base::HalError>::E> {
+    pub async fn set_channel(&mut self, ch: &Channel) -> Result<(), <Hal as base::HalError>::E> {
         use Channel::*;
 
         debug!("Setting channel config: {:?}", ch);
@@ -637,13 +661,13 @@ where
             return Err(Error::InvalidFrequency);
         }
 
-        self.set_frequency(freq)?;
+        self.set_frequency(freq).await?;
 
         // First update packet type (if required)
         let packet_type = PacketType::from(ch);
         if self.packet_type != packet_type {
             self.hal
-                .write_cmd(Commands::SetPacketType as u8, &[packet_type as u8])?;
+                .write_cmd(Commands::SetPacketType as u8, &[packet_type as u8]).await?;
             self.packet_type = packet_type;
         }
 
@@ -656,23 +680,23 @@ where
         };
 
         self.hal
-            .write_cmd(Commands::SetModulationParams as u8, &data)
+            .write_cmd(Commands::SetModulationParams as u8, &data).await
     }
 
-    pub fn set_power(&mut self, power: i8) -> Result<(), <Hal as base::HalError>::E> {
+    pub async fn set_power(&mut self, power: i8) -> Result<(), <Hal as base::HalError>::E> {
         let ramp_time = self.config.pa_config.ramp_time;
-        self.set_power_ramp(power, ramp_time)
+        self.set_power_ramp(power, ramp_time).await
     }
 
     /// Fetch (and optionally clear) current interrupts
-    pub fn get_interrupts(&mut self, clear: bool) -> Result<Irq, <Hal as base::HalError>::E> {
+    pub async fn get_interrupts(&mut self, clear: bool) -> Result<Irq, <Hal as base::HalError>::E> {
         let mut data = [0u8; 2];
 
-        self.hal.read_cmd(Commands::GetIrqStatus as u8, &mut data)?;
+        self.hal.read_cmd(Commands::GetIrqStatus as u8, &mut data).await?;
         let irq = Irq::from_bits((data[0] as u16) << 8 | data[1] as u16).unwrap();
 
         if clear && !irq.is_empty() {
-            self.hal.write_cmd(Commands::ClearIrqStatus as u8, &data)?;
+            self.hal.write_cmd(Commands::ClearIrqStatus as u8, &data).await?;
         }
 
         if !irq.is_empty() {
@@ -683,21 +707,21 @@ where
     }
 
     /// Start transmitting a packet
-    pub fn start_transmit(&mut self, data: &[u8]) -> Result<(), <Hal as base::HalError>::E> {
+    pub async fn start_transmit(&mut self, data: &[u8]) -> Result<(), <Hal as base::HalError>::E> {
         debug!("TX start");
 
         // Set state to idle before we write configuration
-        self.set_state(State::StandbyRc)?;
+        self.set_state(State::StandbyRc).await?;
 
-        let s = self.get_state()?;
-        debug!("TX setup state: {:?}", s);
+        // let s = self.get_state().await?;
+        // debug!("TX setup state: {:?}", s);
 
         // Set packet mode
         let mut modem_config = self.config.modem.clone();
         modem_config.set_payload_len(data.len() as u8);
 
-        if let Err(e) = self.configure_modem(&modem_config) {
-            if let Ok(s) = self.get_state() {
+        if let Err(e) = self.configure_modem(&modem_config).await {
+            if let Ok(s) = self.get_state().await {
                 error!("TX error setting modem (state: {:?})", s);
             } else {
                 error!("TX error setting modem",);
@@ -705,9 +729,10 @@ where
             return Err(e);
         }
 
+
         // Reset buffer addr
-        if let Err(e) = self.set_buff_base_addr(0, 0) {
-            if let Ok(s) = self.get_state() {
+        if let Err(e) = self.set_buff_base_addr(0, data.len() as u8).await {
+            if let Ok(s) = self.get_state().await {
                 error!("TX error setting buffer base addr (state: {:?})", s);
             } else {
                 error!("TX error setting buffer base addr",);
@@ -718,14 +743,16 @@ where
 
         // Write data to be sent
         debug!("TX data: {:?}", data);
-        self.hal.write_buff(0, data)?;
+        self.hal.write_buff(0, data).await?;
 
         // Configure ranging if used
+        // handle in separate function instead
         if PacketType::Ranging == self.packet_type {
-            self.hal.write_cmd(
-                Commands::SetRangingRole as u8,
-                &[RangingRole::Initiator as u8],
-            )?;
+            core::unreachable!();
+            // self.hal.write_cmd(
+            //     Commands::SetRangingRole as u8,
+            //     &[RangingRole::Initiator as u8],
+            // ).await?;
         }
 
         // Setup timout
@@ -736,31 +763,36 @@ where
         ];
 
         // Enable IRQs
-        let irqs = Irq::TX_DONE | Irq::CRC_ERROR | Irq::RX_TX_TIMEOUT;
-        self.set_irq_dio_mask(irqs, irqs, DioMask::empty(), DioMask::empty())?;
+        let irqs = Irq::TX_DONE
+            | Irq::RX_TX_TIMEOUT;
+        self.set_irq_dio_mask(irqs, irqs, DioMask::empty(), DioMask::empty()).await?;
 
         // Enter transmit mode
-        self.hal.write_cmd(Commands::SetTx as u8, &config)?;
+        self.hal.write_cmd(Commands::SetTx as u8, &config).await?;
 
         trace!("TX start issued");
 
-        let state = self.get_state()?;
-        trace!("State: {:?}", state);
+        // let state = self.get_state().await?;
+        // trace!("State: {:?}", state);
 
         Ok(())
     }
 
+    pub async fn wait_transmit_done(&mut self, timeout_ms: Option<u64>) -> Result<(), <Hal as base::HalError>::E> {
+        self.hal.wait_dio1(timeout_ms).await
+    }
+
     /// Check for transmit completion
-    pub fn check_transmit(&mut self) -> Result<bool, <Hal as base::HalError>::E> {
+    pub async fn check_transmit(&mut self) -> Result<bool, <Hal as base::HalError>::E> {
         // Poll on DIO and short-circuit if not asserted
-        if self.hal.get_dio1()? == false {
-            return Ok(false);
-        }
+        // if self.hal.get_dio1().await? == false {
+        //     return Ok(false);
+        // }
 
-        let irq = self.get_interrupts(true)?;
-        let state = self.get_state()?;
+        let irq = self.get_interrupts(true).await?;
+        // let state = self.get_state().await?;
 
-        trace!("TX poll (irq: {:?}, state: {:?})", irq, state);
+        // trace!("TX poll (irq: {:?}, state: {:?})", irq, state);
 
         if irq.contains(Irq::TX_DONE) {
             debug!("TX complete");
@@ -774,18 +806,23 @@ where
     }
 
     /// Start radio in receive mode
-    pub fn start_receive(&mut self) -> Result<(), <Hal as base::HalError>::E> {
+    pub async fn start_receive(&mut self, response: Option<ArrayVec<u8, 256>>) -> Result<(), <Hal as base::HalError>::E> {
         debug!("RX start");
 
         // Set state to idle before we write configuration
-        self.set_state(State::StandbyRc)?;
+        self.set_state(State::StandbyRc).await?;
 
-        let s = self.get_state()?;
-        debug!("RX setup state: {:?}", s);
+        // let s = self.get_state().await?;
+        // debug!("RX setup state: {:?}", s);
+
+        let tx_offset = match response {
+            Some(buf) => if buf.is_empty() {0} else {256 - buf.len()},
+            None => 0
+        };
 
         // Reset buffer addr
-        if let Err(e) = self.set_buff_base_addr(0, 0) {
-            if let Ok(s) = self.get_state() {
+        if let Err(e) = self.set_buff_base_addr(tx_offset, 0).await {
+            if let Ok(s) = self.get_state().await {
                 error!("RX error setting buffer base addr (state: {:?})", s);
             } else {
                 error!("RX error setting buffer base addr",);
@@ -797,8 +834,8 @@ where
         // TODO: surely this should not bre required _every_ receive?
         let modem_config = self.config.modem.clone();
 
-        if let Err(e) = self.configure_modem(&modem_config) {
-            if let Ok(s) = self.get_state() {
+        if let Err(e) = self.configure_modem(&modem_config).await {
+            if let Ok(s) = self.get_state().await {
                 error!("RX error setting configuration (state: {:?})", s);
             } else {
                 error!("RX error setting configuration",);
@@ -808,10 +845,11 @@ where
 
         // Configure ranging if used
         if PacketType::Ranging == self.packet_type {
-            self.hal.write_cmd(
-                Commands::SetRangingRole as u8,
-                &[RangingRole::Responder as u8],
-            )?;
+            core::unreachable!();
+            // self.hal.write_cmd(
+            //     Commands::SetRangingRole as u8,
+            //     &[RangingRole::Responder as u8],
+            // ).await?;
         }
 
         // Setup timout
@@ -825,33 +863,34 @@ where
         let irqs = Irq::RX_DONE
             | Irq::CRC_ERROR
             | Irq::RX_TX_TIMEOUT
-            | Irq::SYNCWORD_VALID
             | Irq::SYNCWORD_ERROR
-            | Irq::HEADER_VALID
-            | Irq::HEADER_ERROR
-            | Irq::PREAMBLE_DETECTED;
+            | Irq::HEADER_ERROR;
 
-        self.set_irq_dio_mask(irqs, irqs, DioMask::empty(), DioMask::empty())?;
+        self.set_irq_dio_mask(irqs, irqs, DioMask::empty(), DioMask::empty()).await?;
 
         // Enter transmit mode
-        self.hal.write_cmd(Commands::SetRx as u8, &config)?;
+        self.hal.write_cmd(Commands::SetRx as u8, &config).await?;
 
-        let state = self.get_state()?;
+        // let state = self.get_state().await?;
 
-        debug!("RX started (state: {:?})", state);
+        // debug!("RX started (state: {:?})", state);
 
         Ok(())
     }
 
-    /// Check for a received packet
-    pub fn check_receive(&mut self, restart: bool) -> Result<bool, <Hal as base::HalError>::E> {
-        // Poll on DIO and short-circuit if not asserted
-        #[cfg(feature = "poll_irq")]
-        if self.hal.get_dio()? == PinState::Low {
-            return Ok(false);
-        }
+    pub async fn wait_receive_done(&mut self, timeout_ms: Option<u64>) -> Result<(), <Hal as base::HalError>::E> {
+        self.hal.wait_dio1(timeout_ms).await
+    }
 
-        let irq = self.get_interrupts(true)?;
+
+    /// Check for a received packet
+    pub async fn check_receive(&mut self, restart: bool) -> Result<bool, <Hal as base::HalError>::E> {
+        // Poll on DIO and short-circuit if not asserted
+        // if self.hal.get_dio1().await? == false {
+        //     return Ok(false);
+        // }
+
+        let irq = self.get_interrupts(true).await?;
         let mut res = Ok(false);
 
         trace!("RX poll (irq: {:?})", irq);
@@ -875,7 +914,7 @@ where
         match (restart, res) {
             (true, Err(_)) => {
                 debug!("RX restarting");
-                self.start_receive()?;
+                self.start_receive().await?;
                 Ok(false)
             }
             (_, r) => r,
@@ -883,9 +922,9 @@ where
     }
 
     /// Fetch a received packet
-    pub fn get_received(&mut self, data: &mut [u8]) -> Result<(usize, PacketInfo), <Hal as base::HalError>::E> {
+    pub async fn get_received(&mut self, data: &mut [u8]) -> Result<(usize, PacketInfo), <Hal as base::HalError>::E> {
         // Fetch RX buffer information
-        let (ptr, len) = self.get_rx_buffer_status()?;
+        let (ptr, len) = self.get_rx_buffer_status().await?;
 
         debug!("RX get received, ptr: {} len: {}", ptr, len);
 
@@ -898,11 +937,11 @@ where
         // See chip errata for further details
 
         // Read from the buffer at the provided pointer
-        self.hal.read_buff(ptr, &mut data[..len as usize])?;
+        self.hal.read_buff(ptr, &mut data[..len as usize]).await?;
 
         // Fetch related information
         let mut info = PacketInfo::default();
-        self.get_packet_info(&mut info)?;
+        self.get_packet_info(&mut info).await?;
 
         trace!("RX data: {:?} info: {:?}", &data[..len as usize], info);
 
@@ -912,9 +951,9 @@ where
 
     /// Poll for the current channel RSSI
     /// This should only be called when in receive mode
-    pub fn poll_rssi(&mut self) -> Result<i16, <Hal as base::HalError>::E> {
+    pub async fn poll_rssi(&mut self) -> Result<i16, <Hal as base::HalError>::E> {
         let mut raw = [0u8; 1];
-        self.hal.read_cmd(Commands::GetRssiInst as u8, &mut raw)?;
+        self.hal.read_cmd(Commands::GetRssiInst as u8, &mut raw).await?;
         Ok(-(raw[0] as i16) / 2)
     }
 }
