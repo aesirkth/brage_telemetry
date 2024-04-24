@@ -93,7 +93,7 @@ async fn radio_task(
         led_rx.set_high();
 
         info!("start reception");
-        sx128x.start_receive().await.unwrap();
+        sx128x.start_receive(None).await.unwrap();
         match sx128x.wait_receive_done(Some(1000)).await {
             _ => ()
         };
