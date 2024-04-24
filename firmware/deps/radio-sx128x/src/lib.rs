@@ -748,11 +748,11 @@ where
         // Configure ranging if used
         // handle in separate function instead
         if PacketType::Ranging == self.packet_type {
-            core::unreachable!();
-            // self.hal.write_cmd(
-            //     Commands::SetRangingRole as u8,
-            //     &[RangingRole::Initiator as u8],
-            // ).await?;
+            // core::unreachable!();
+            self.hal.write_cmd(
+                Commands::SetRangingRole as u8,
+                &[RangingRole::Initiator as u8],
+            ).await?;
         }
 
         // Setup timout
