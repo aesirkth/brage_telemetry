@@ -17,23 +17,13 @@ use panic_probe as _;
 pub mod sx_hal;
 pub mod protocol;
 
-pub struct UartMsg {
-    length: u8,
-    data: [u8; 64]
-}
-
-pub static UART_IN: Channel<ThreadModeRawMutex, u32, 32> = Channel::new();
-pub static UART_OUT: Channel<ThreadModeRawMutex, u32, 32> = Channel::new();
+pub static UART_IN: Channel<ThreadModeRawMutex, protocol::UartMsg, 32> = Channel::new();
+pub static UART_OUT: Channel<ThreadModeRawMutex, protocol::UartMsg, 32> = Channel::new();
 
 
-pub struct CanMsg {
-    id: u16,
-    length: u8,
-    data: [u8; 64],
-}
 
-pub static CAN_OUT: Channel<ThreadModeRawMutex, CanMsg, 32> = Channel::new();
-pub static CAN_IN: Channel<ThreadModeRawMutex, CanMsg, 32> = Channel::new();
+pub static CAN_OUT: Channel<ThreadModeRawMutex, protocol::CanMsg, 32> = Channel::new();
+pub static CAN_IN: Channel<ThreadModeRawMutex, protocol::CanMsg, 32> = Channel::new();
 
 mod radio;
 mod can;
@@ -139,6 +129,4 @@ async fn main(spawner: embassy_executor::Spawner) {
     spawner.spawn(can::can_writer_task(can_tx)).unwrap();
     spawner.spawn(uart::uart_writer_task(uart_tx)).unwrap();
     spawner.spawn(uart::uart_reader_task(uart_rx)).unwrap();
-
-
 }

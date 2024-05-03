@@ -10,7 +10,10 @@ use radio_sx128x::Sx128x;
 use radio_sx128x::base::Hal;
 use radio_sx128x::device::lora;
 
+use crate::protocol::{consume_msg, verify_and_extract_messages};
 use crate::sx_hal::ChungusHal;
+
+use crate::{protocol, CAN_IN, CAN_OUT, UART_IN, UART_OUT};
 
 struct Amplifier {
     pa_en: Output<'static>,
@@ -206,9 +209,54 @@ pub async fn radio_task(
     let mut radio = Radio::new(sx128x, pa);
     radio.set_transmit_power(12).await;
     loop {
-        let tx_buf = "hejhej".as_bytes();
         let mut rx_buf: [u8; 255] = [0; 255];
-        radio.transmit_and_range(tx_buf, 0, Some(100)).await;
-        radio.receive_and_range(&mut rx_buf, Some(1000)).await;
+        if let Some((size, _packet_info)) = radio.receive_and_range(&mut rx_buf, Some(1000)).await {
+            if let Ok(mut msg_data) = verify_and_extract_messages(&rx_buf[0..size]) {
+                while let Ok((msg, new_msg_data)) = consume_msg(msg_data) {
+                    msg_data = new_msg_data;
+                    match msg {
+                        protocol::Msg::Can(can_msg) => {CAN_OUT.try_send(can_msg).unwrap_or_default();},
+                        protocol::Msg::Uart(uart_msg) => {UART_OUT.try_send(uart_msg).unwrap_or_default();},
+                    };
+                }
+            }
+        }
+
+
+        let mut tx_buf: [u8; 255] = [0; 255];
+        let mut index = 0;
+        // Collect all messages
+        loop {
+            let mut got_msg = false;
+            if let Ok(uart_msg) = UART_IN.try_receive() {
+                match protocol::append_uart_frame(&mut tx_buf, index, uart_msg) {
+                    Ok(new_index) => {
+                        index = new_index;
+                        got_msg = true;
+                    },
+                    Err(new_index) => {
+                        index = new_index;
+                    }
+                }
+            }
+
+            if let Ok(can_msg) = CAN_IN.try_receive() {
+                match protocol::append_can_frame(&mut tx_buf, index, can_msg) {
+                    Ok(new_index) => {
+                        index = new_index;
+                        got_msg = true;
+                    },
+                    Err(new_index) => {
+                        index = new_index;
+                    }
+                }
+            }
+
+            if got_msg == false {
+                break
+            }
+        }
+        let radio_packet = protocol::finish_message(&mut tx_buf, index).unwrap();
+        radio.transmit_and_range(&radio_packet, 0, Some(1000)).await;
     }
 }

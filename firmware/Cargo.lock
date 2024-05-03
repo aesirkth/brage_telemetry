@@ -3,12 +3,6 @@
 version = 3
 
 [[package]]
-name = "arrayvec"
-version = "0.7.4"
-source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "96d30a06541fbafbc7f82ed10c06164cfbd2c401138f6addd8404629c4b16711"
-
-[[package]]
 name = "autocfg"
 version = "1.2.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -51,7 +45,6 @@ checksum = "cf4b9d6a944f767f8e5e0db018570623c85f3d925ac718db4e06d0187adb21c1"
 name = "brage-firmware"
 version = "0.1.0"
 dependencies = [
- "arrayvec",
  "cortex-m",
  "cortex-m-rt",
  "crc",
@@ -64,8 +57,10 @@ dependencies = [
  "embassy-time",
  "embassy-usb",
  "embassy-usb-logger",
+ "embedded-can",
  "embedded-hal 1.0.0",
  "embedded-hal-async",
+ "embedded-io-async",
  "futures",
  "heapless",
  "log",
