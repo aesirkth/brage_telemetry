@@ -23,12 +23,16 @@ pub trait Hal {
 
     async fn get_dio2(&mut self) -> Result<bool, Error<Self::CommsError, Self::PinError>>;
 
+    async fn get_dio3(&mut self) -> Result<bool, Error<Self::CommsError, Self::PinError>>;
+
     /// Wait on radio device busy
     async fn wait_busy(&mut self) -> Result<(), Error<Self::CommsError, Self::PinError>>;
 
     async fn wait_dio1(& mut self, timeout_ms: Option<u64>) -> Result<(), Error<Self::CommsError, Self::PinError>>;
 
     async fn wait_dio2(& mut self, timeout_ms: Option<u64>) -> Result<(), Error<Self::CommsError, Self::PinError>>;
+
+    async fn wait_dio3(& mut self, timeout_ms: Option<u64>) -> Result<(), Error<Self::CommsError, Self::PinError>>;
 
     /// Delay for the specified time
     async fn delay_us(&mut self, us: u32);

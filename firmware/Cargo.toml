@@ -27,7 +27,8 @@ micromath = "2.0.0"
 log = "0.4"
 
 radio-sx128x = { path = "./deps/radio-sx128x", default-features = false }
-# radio = { version = "0.11.1", default_features = false }
+arrayvec = { version = "0.7.4", default-features = false }
+crc = "3.2.1"
 
 [patch.crates-io]
 embassy-time = { git = "https://github.com/embassy-rs/embassy", rev = "81cf9d1143d30dd7dbcbeb7d5aa6ae4aa5db8a1a" }

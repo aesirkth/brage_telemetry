@@ -11,6 +11,8 @@ pub mod gfsk;
 use gfsk::{GfskChannel, GfskConfig};
 pub mod lora;
 use lora::{LoRaChannel, LoRaConfig};
+
+use self::ranging::RangingConfig;
 pub mod ranging;
 // use ranging::{RangingConfig};
 
@@ -52,6 +54,9 @@ pub struct Config {
     /// Crystal oscillator frequency
     pub xtal_freq: u32,
 
+    /// Ranging parameters
+    pub ranging: RangingConfig,
+
     /// Timeout for blocking / polling internal methods
     // pub timeout_ms: u32,
 
@@ -75,6 +80,7 @@ impl Default for Config {
             xtal_freq: 52000000,
             // timeout_ms: 100,
             skip_version_check: false,
+            ranging: RangingConfig::default(),
         }
     }
 }
@@ -142,6 +148,7 @@ impl Modem {
             Modem::Gfsk(c) => c.payload_length = len,
             Modem::LoRa(c) => c.payload_length = len,
             Modem::Flrc(c) => c.payload_length = len,
+            Modem::Ranging(c) => c.payload_length = len,
             _ => (),
         }
     }

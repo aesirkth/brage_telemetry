@@ -22,11 +22,10 @@ use log::{debug, error, trace, warn};
 pub mod base;
 
 pub mod device;
-use device::*;
+use device::{lora::LoRaBandwidth, ranging::RangingConfig, *};
 pub use device::{Config, State};
 
 pub mod prelude;
-use arrayvec::ArrayVec;
 
 
 /// Sx128x device object
@@ -248,8 +247,12 @@ where
         self.set_power_ramp(config.pa_config.power, config.pa_config.ramp_time).await?;
         self.config.pa_config = config.pa_config.clone();
 
+        self.configure_ranging(&config.ranging).await?;
+
         Ok(())
     }
+
+
 
     pub async fn firmware_version(&mut self) -> Result<u16, <Hal as base::HalError>::E> {
         let mut d = [0u8; 2];
@@ -422,6 +425,26 @@ where
         Ok(())
     }
 
+    pub async fn set_ranging_target(&mut self, target_id: u32) -> Result<(), <Hal as base::HalError>::E>{
+        self.hal.write_regs(Registers::LrRequestRangingAddr as u16, &target_id.to_be_bytes()).await?;
+        Ok(())
+    }
+
+    pub async fn configure_ranging(&mut self,
+        conf: &RangingConfig
+    ) -> Result<(), <Hal as base::HalError>::E> {
+        self.hal.write_reg(Registers::LrRangingIdCheckLength as u16, conf.id_length as u8).await?;
+        self.hal.write_regs(Registers::LrDeviceRangingAddr as u16, &conf.device_id.to_be_bytes()).await?;
+        self.hal.write_reg(Registers::LrRangingResultConfig as u16, conf.result_type as u8).await?;
+        match conf.filter_size {
+            Some(size) => self.hal.write_reg(Registers::LrRangingFilterWindowSize as u16, size).await?,
+            None => (),
+        };
+        self.hal.write_regs(Registers::LrRangingReRxTxDelayCal as u16, &conf.calibration_value.to_be_bytes()).await?;
+
+        Ok(())
+    }
+
     pub(crate) async fn get_rx_buffer_status(&mut self) -> Result<(u8, u8), <Hal as base::HalError>::E> {
         use device::lora::LoRaHeader;
 
@@ -590,16 +613,6 @@ where
         Ok(())
     }
 
-    pub async fn start_ranging_receive(&mut self, _response: &[u8]) -> Result<(), <Hal as base::HalError>::E> {
-        Ok(())
-    }
-
-    pub async fn start_ranging_transmit(&mut self, _data: &[u8], _id: u32) -> Result<(), <Hal as base::HalError>::E> {
-        Ok(())
-    }
-
-
-
     /// Fetch device state
     pub async fn get_state(&mut self) -> Result<State, <Hal as base::HalError>::E> {
         let mut d = [0u8; 1];
@@ -763,9 +776,15 @@ where
         ];
 
         // Enable IRQs
-        let irqs = Irq::TX_DONE
+        let irq1 = Irq::TX_DONE
             | Irq::RX_TX_TIMEOUT;
-        self.set_irq_dio_mask(irqs, irqs, DioMask::empty(), DioMask::empty()).await?;
+
+        // Enable IRQs
+        let irq2 = Irq::RANGING_MASTER_RESULT_TIMEOUT
+            | Irq::RANGING_MASTER_RESULT_VALID;
+
+        let irqs = irq1 | irq2;
+        self.set_irq_dio_mask(irqs, irqs, irq2, DioMask::empty()).await?;
 
         // Enter transmit mode
         self.hal.write_cmd(Commands::SetTx as u8, &config).await?;
@@ -780,6 +799,44 @@ where
 
     pub async fn wait_transmit_done(&mut self, timeout_ms: Option<u64>) -> Result<(), <Hal as base::HalError>::E> {
         self.hal.wait_dio1(timeout_ms).await
+    }
+
+    pub async fn wait_ranging_done(&mut self, timeout_ms: Option<u64>) -> Result<(), <Hal as base::HalError>::E> {
+        self.hal.wait_dio2(timeout_ms).await
+    }
+
+    pub async fn check_ranging(&mut self) -> Result<bool, <Hal as base::HalError>::E> {
+        let irq = self.get_interrupts(true).await?;
+
+        if irq.contains(Irq::RANGING_MASTER_RESULT_VALID) {
+            Ok(true)
+        } else if irq.contains(Irq::RANGING_MASTER_RESULT_TIMEOUT) {
+            Err(self::Error::Timeout)
+        } else {
+            Ok(false)
+        }
+    }
+
+    pub async fn get_ranging_result(&mut self) -> Result<f32, <Hal as base::HalError>::E> {
+        let mut rx_buf: [u8; 3] = [0; 3];
+        self.hal.read_regs(Registers::LrRangingResultBaseAddr as u16, &mut rx_buf).await?;
+        let distance_raw: u32 = (rx_buf[0] as u32) + (rx_buf[1] as u32) << 8 + (rx_buf[2] as u32) << 16;
+
+        let bw: f32 = if let Channel::LoRa(channel) = &self.config.channel {
+            match channel.bw {
+                LoRaBandwidth::Bw400kHz => 0.4,
+                LoRaBandwidth::Bw800kHz => 0.8,
+                LoRaBandwidth::Bw1600kHz => 1.6,
+                _ => {
+                    return Err(self::Error::InvalidConfiguration)
+                }
+            }
+        } else {
+            return Err(self::Error::InvalidConfiguration);
+        };
+
+        let distance_m: f32 = (distance_raw as f32) * 150.0 / (4096.0 * bw);
+        Ok(distance_m)
     }
 
     /// Check for transmit completion
@@ -805,8 +862,8 @@ where
         }
     }
 
-    /// Start radio in receive mode
-    pub async fn start_receive(&mut self, response: Option<ArrayVec<u8, 256>>) -> Result<(), <Hal as base::HalError>::E> {
+    /// Stutort radio in receive mode
+    pub async fn start_receive(&mut self) -> Result<(), <Hal as base::HalError>::E> {
         debug!("RX start");
 
         // Set state to idle before we write configuration
@@ -815,13 +872,8 @@ where
         // let s = self.get_state().await?;
         // debug!("RX setup state: {:?}", s);
 
-        let tx_offset = match response {
-            Some(buf) => if buf.is_empty() {0} else {256 - buf.len()},
-            None => 0
-        };
-
         // Reset buffer addr
-        if let Err(e) = self.set_buff_base_addr(tx_offset, 0).await {
+        if let Err(e) = self.set_buff_base_addr(0, 0).await {
             if let Ok(s) = self.get_state().await {
                 error!("RX error setting buffer base addr (state: {:?})", s);
             } else {
@@ -845,11 +897,10 @@ where
 
         // Configure ranging if used
         if PacketType::Ranging == self.packet_type {
-            core::unreachable!();
-            // self.hal.write_cmd(
-            //     Commands::SetRangingRole as u8,
-            //     &[RangingRole::Responder as u8],
-            // ).await?;
+            self.hal.write_cmd(
+                Commands::SetRangingRole as u8,
+                &[RangingRole::Responder as u8],
+            ).await?;
         }
 
         // Setup timout
@@ -860,22 +911,32 @@ where
         ];
 
         // Enable IRQs
-        let irqs = Irq::RX_DONE
+        let irq1 = Irq::RX_DONE
             | Irq::CRC_ERROR
             | Irq::RX_TX_TIMEOUT
             | Irq::SYNCWORD_ERROR
             | Irq::HEADER_ERROR;
 
-        self.set_irq_dio_mask(irqs, irqs, DioMask::empty(), DioMask::empty()).await?;
+        let irq2 = Irq::RANGING_SLAVE_REQUEST_VALID;
+
+        let irq3 = Irq::RANGING_SLAVE_RESPONSE_DONE;
+
+        let irqs = irq1 | irq2 | irq3;
+
+        self.set_irq_dio_mask(irqs, irq1, irq2, irq3).await?;
 
         // Enter transmit mode
         self.hal.write_cmd(Commands::SetRx as u8, &config).await?;
 
-        // let state = self.get_state().await?;
-
-        // debug!("RX started (state: {:?})", state);
-
         Ok(())
+    }
+
+    pub async fn is_responding(&mut self) -> Result<bool, <Hal as base::HalError>::E>{
+        self.hal.get_dio2().await
+    }
+
+    pub async fn wait_respond_done(&mut self, timeout_ms: Option<u64>) -> Result<(), <Hal as base::HalError>::E>{
+        self.hal.wait_dio3(timeout_ms).await
     }
 
     pub async fn wait_receive_done(&mut self, timeout_ms: Option<u64>) -> Result<(), <Hal as base::HalError>::E> {
@@ -884,7 +945,7 @@ where
 
 
     /// Check for a received packet
-    pub async fn check_receive(&mut self, restart: bool) -> Result<bool, <Hal as base::HalError>::E> {
+    pub async fn check_receive(&mut self) -> Result<bool, <Hal as base::HalError>::E> {
         // Poll on DIO and short-circuit if not asserted
         // if self.hal.get_dio1().await? == false {
         //     return Ok(false);
@@ -910,15 +971,7 @@ where
             res = Ok(true);
         }
 
-        // Auto-restart on failure if enabled
-        match (restart, res) {
-            (true, Err(_)) => {
-                debug!("RX restarting");
-                self.start_receive().await?;
-                Ok(false)
-            }
-            (_, r) => r,
-        }
+        res
     }
 
     /// Fetch a received packet

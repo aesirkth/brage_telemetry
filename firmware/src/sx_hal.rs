@@ -5,7 +5,7 @@ use radio_sx128x::base::Hal;
 // Assume Error and PinState are defined or imported from somewhere
 use radio_sx128x::Error;
 
-use embassy_time::{with_timeout, TimeoutError};
+use embassy_time::with_timeout;
 
 #[allow(unused_imports)]
 use log::{error, warn, info, debug, trace};
@@ -18,6 +18,7 @@ pub struct ChungusHal<'d, T: Instance, Tx, Rx> {
     reset: Output<'d>,
     dio1: ExtiInput<'d>,
     dio2: ExtiInput<'d>,
+    dio3: ExtiInput<'d>,
 }
 
 impl<'d, T, Tx, Rx> ChungusHal<'d, T, Tx, Rx>
@@ -26,7 +27,7 @@ where
     Tx: 'd,
     Rx: 'd,
 {
-    pub fn new(spi: Spi<'d, T, Tx, Rx>, mut cs: Output<'d>, busy: ExtiInput<'d>, mut reset: Output<'d>, dio1: ExtiInput<'d>, dio2: ExtiInput<'d>) -> Self {
+    pub fn new(spi: Spi<'d, T, Tx, Rx>, mut cs: Output<'d>, busy: ExtiInput<'d>, mut reset: Output<'d>, dio1: ExtiInput<'d>, dio2: ExtiInput<'d>, dio3: ExtiInput<'d>) -> Self {
         cs.set_high();
         reset.set_high();
         Self {
@@ -36,6 +37,7 @@ where
             reset: reset,
             dio1: dio1,
             dio2: dio2,
+            dio3: dio3,
         }
     }
 }
@@ -120,6 +122,31 @@ where
     /// Fetch radio device ready / irq (DIO) pin value
     async fn get_dio2(&mut self) -> Result<bool, Error<Self::CommsError, Self::PinError>> {
         match self.dio1.get_level() {
+            embassy_stm32::gpio::Level::Low => Ok(false),
+            embassy_stm32::gpio::Level::High => Ok(true),
+        }
+    }
+
+    async fn wait_dio3(&mut self, timeout_ms: Option<u64>) -> Result<(), Error<Self::CommsError, Self::PinError>> {
+        let fut = self.dio3.wait_for_high();
+
+        match timeout_ms {
+            Some(timeout) => {
+                match with_timeout(embassy_time::Duration::from_millis(timeout), fut).await {
+                    Ok(_) => Ok(()),
+                    Err(_) => Err(Error::Timeout)
+                }
+            },
+            None => {
+                fut.await;
+                Ok(())
+            }
+        }
+    }
+
+    /// Fetch radio device ready / irq (DIO) pin value
+    async fn get_dio3(&mut self) -> Result<bool, Error<Self::CommsError, Self::PinError>> {
+        match self.dio3.get_level() {
             embassy_stm32::gpio::Level::Low => Ok(false),
             embassy_stm32::gpio::Level::High => Ok(true),
         }
