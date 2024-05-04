@@ -16,7 +16,6 @@ jobs:
 
     steps:
     - uses: actions/checkout@v4
-    - name: change directory
-      run: cd firmware
     - name: Build
       run: cargo build --verbose
+      working-directory: firmware
