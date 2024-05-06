@@ -1,6 +1,5 @@
 /// Modulation shaping parameter for GFSK, FLRC and BLE modes
 #[derive(Copy, Clone, PartialEq, Debug)]
-#[cfg_attr(feature = "serde", derive(serde::Deserialize, serde::Serialize))]
 #[cfg_attr(feature = "util", derive(clap::Parser))]
 #[cfg_attr(feature = "defmt", derive(defmt::Format))]
 pub enum ModShaping {
@@ -12,7 +11,6 @@ pub enum ModShaping {
 
 /// Preamble lengths for GFSK, FLRC modes
 #[derive(Copy, Clone, PartialEq, Debug)]
-#[cfg_attr(feature = "serde", derive(serde::Deserialize, serde::Serialize))]
 #[cfg_attr(feature = "defmt", derive(defmt::Format))]
 pub enum PreambleLength {
     /// Preamble length: 04 bits
@@ -35,7 +33,6 @@ pub enum PreambleLength {
 
 /// Bitrate-Bandwidth for GFSK and BLE modes
 #[derive(Copy, Clone, PartialEq, Debug)]
-#[cfg_attr(feature = "serde", derive(serde::Deserialize, serde::Serialize))]
 #[cfg_attr(feature = "util", derive(clap::Parser))]
 #[cfg_attr(feature = "defmt", derive(defmt::Format))]
 pub enum GfskBleBitrateBandwidth {
@@ -69,7 +66,6 @@ pub enum GfskBleBitrateBandwidth {
 
 /// Modulation Index for GFSK and BLE modes
 #[derive(Copy, Clone, PartialEq, Debug)]
-#[cfg_attr(feature = "serde", derive(serde::Deserialize, serde::Serialize))]
 #[cfg_attr(feature = "defmt", derive(defmt::Format))]
 pub enum GfskBleModIndex {
     MOD_IND_0_35 = 0,
@@ -92,7 +88,6 @@ pub enum GfskBleModIndex {
 
 /// Common radio whitening mode
 #[derive(Copy, Clone, PartialEq, Debug, strum::Display)]
-#[cfg_attr(feature = "serde", derive(serde::Deserialize, serde::Serialize))]
 #[cfg_attr(feature = "defmt", derive(defmt::Format))]
 pub enum WhiteningModes {
     RADIO_WHITENING_ON = 0x00,
@@ -100,7 +95,6 @@ pub enum WhiteningModes {
 }
 
 #[derive(Copy, Clone, PartialEq, Debug, strum::Display)]
-#[cfg_attr(feature = "serde", derive(serde::Deserialize, serde::Serialize))]
 #[cfg_attr(feature = "defmt", derive(defmt::Format))]
 pub enum SyncWordRxMatch {
     /// No correlator turned on, i.e. do not search for SyncWord
@@ -115,7 +109,6 @@ pub enum SyncWordRxMatch {
 }
 
 #[derive(Copy, Clone, PartialEq, Debug, strum::Display)]
-#[cfg_attr(feature = "serde", derive(serde::Deserialize, serde::Serialize))]
 #[cfg_attr(feature = "defmt", derive(defmt::Format))]
 pub enum GfskFlrcPacketLength {
     /// Fixed length, no header included
@@ -125,7 +118,6 @@ pub enum GfskFlrcPacketLength {
 }
 
 #[derive(Copy, Clone, PartialEq, Debug, strum::Display)]
-#[cfg_attr(feature = "serde", derive(serde::Deserialize, serde::Serialize))]
 #[cfg_attr(feature = "defmt", derive(defmt::Format))]
 pub enum GfskFlrcCrcModes {
     /// CRC disabled

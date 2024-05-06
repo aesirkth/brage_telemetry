@@ -1,5 +1,3 @@
-use defmt::{*};
-use defmt_rtt as _;
 
 use embassy_stm32::exti::ExtiInput;
 use embassy_stm32::gpio::Output;
@@ -12,6 +10,8 @@ use radio_sx128x::device::lora;
 
 use crate::protocol::{consume_msg, verify_and_extract_messages};
 use crate::sx_hal::ChungusHal;
+
+use defmt::{*};
 
 use crate::{protocol, CAN_IN, CAN_OUT, UART_IN, UART_OUT};
 
@@ -78,8 +78,19 @@ impl<T> Radio<T> where T: Hal {
         ret
     }
 
+
     pub async fn set_transmit_power(&mut self, power: i8) {
         self.sx128x.set_power(power - Self::PA_GAIN).await.unwrap();
+    }
+
+    pub async fn transmit(&mut self, data: &[u8], timeout_ms: Option<u64>) {
+        self.pa.set_transmit();
+        debug!("starting normal transmission");
+        self.sx128x.start_transmit(&data).await.unwrap();
+        if self.sx128x.wait_transmit_done(timeout_ms).await.is_err() {
+            return;
+        }
+        self.sx128x.check_transmit().await.unwrap();
     }
 
     pub async fn transmit_and_range(&mut self, data: &[u8], id: u32, timeout_ms: Option<u64>) -> Option<f32> {
@@ -87,21 +98,27 @@ impl<T> Radio<T> where T: Hal {
 
         // transmit
         self.pa.set_transmit();
-        debug!("starting transmission");
+        info!("starting ranging transmission");
+        let tx_start = embassy_time::Instant::now();
         self.sx128x.start_transmit(&data).await.unwrap();
         if self.sx128x.wait_transmit_done(timeout_ms).await.is_err() {
+            warn!("tx timeout");
             return None;
         }
+        let tx_done = embassy_time::Instant::now();
+        self.sx128x.check_transmit().await.unwrap();
 
         // receive ranging response
         self.pa.set_receive();
-        debug!("waiting for ranging response");
+        info!("waiting for ranging response");
         if self.sx128x.wait_ranging_done(timeout_ms).await.is_err() {
-            return None;
+            warn!("ranging rx timeout");
         }
-        self.pa.set_idle();
-        debug!("master ranging done");
 
+        let rx_done = embassy_time::Instant::now();
+        self.pa.set_idle();
+        info!("master ranging done");
+        info!("time {} {} {}", tx_start, tx_done, rx_done);
         // handle ranging result
         let ret = self.sx128x.check_ranging().await;
         if ret.is_err() {
@@ -147,6 +164,12 @@ impl<T> Radio<T> where T: Hal {
             debug!("got no message");
             None
         }
+    }
+
+    pub async fn transmit_and_range_two_way(&mut self, tx_data: &[u8], rx_data: &mut [u8], id: u32, timeout_ms: Option<u64>) -> Option<(f32, f32)> {
+        let distance1 = self.transmit_and_range(tx_data, id, timeout_ms).await?;
+        self.receive_and_range(rx_data, timeout_ms).await;
+        Some((0.0, 0.0))
     }
 }
 
@@ -203,6 +226,7 @@ pub async fn radio_task(
     config.skip_version_check = true;
     config.pa_config.power = -18;
 
+    info!("sexsex");
     let sx128x = radio_sx128x::Sx128x::new(hal, &config).await.unwrap();
     let pa = Amplifier::new(pa_en, pa_tx_en, pa_rx_en, led_tx, led_rx);
 
@@ -224,7 +248,9 @@ pub async fn radio_task(
 
 
         let mut tx_buf: [u8; 255] = [0; 255];
-        let mut index = 0;
+        let mut index = protocol::begin_buffer(&mut tx_buf, 0).unwrap();
+
+
         // Collect all messages
         loop {
             let mut got_msg = false;
@@ -256,7 +282,7 @@ pub async fn radio_task(
                 break
             }
         }
-        let radio_packet = protocol::finish_message(&mut tx_buf, index).unwrap();
+        let radio_packet = protocol::finish_buffer(&mut tx_buf, index).unwrap();
         radio.transmit_and_range(&radio_packet, 0, Some(1000)).await;
     }
 }

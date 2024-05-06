@@ -7,16 +7,8 @@
 use core::convert::TryFrom;
 use core::fmt::Debug;
 
-extern crate libc;
-
-#[cfg(any(test, feature = "util"))]
-#[macro_use]
-extern crate std;
-
-// use base::Base;
-
 #[allow(unused_imports)]
-use log::{debug, error, trace, warn};
+use defmt::{debug, info, warn, error, trace};
 
 
 pub mod base;
@@ -141,6 +133,8 @@ where
         config: &Config,
     ) -> Result<Self, Error<<Hal as base::Hal>::CommsError, <Hal as base::Hal>::PinError>> {
         let mut sx128x = Self::build(hal).await;
+        sx128x.hal.delay_ms(100).await;
+
 
         debug!("Resetting device");
 
@@ -229,24 +223,30 @@ where
             (Modem::LoRa(_), Channel::LoRa(_)) => (),
             (Modem::Flrc(_), Channel::Flrc(_)) => (),
             (Modem::Gfsk(_), Channel::Gfsk(_)) => (),
+            (Modem::Ranging(_), Channel::Ranging(_)) => (),
             _ => return Err(Error::InvalidConfiguration),
         }
 
+        debug!("configuring regulator");
         // Update regulator mode
         self.set_regulator_mode(config.regulator_mode).await?;
         self.config.regulator_mode = config.regulator_mode;
 
+        debug!("configuring channel");
         // Update modem and channel configuration
         self.set_channel(&config.channel).await?;
         self.config.channel = config.channel.clone();
 
+        debug!("configuring modem");
         self.configure_modem(&config.modem).await?;
         self.config.modem = config.modem.clone();
 
+        debug!("configuring pa");
         // Update power amplifier configuration
         self.set_power_ramp(config.pa_config.power, config.pa_config.ramp_time).await?;
         self.config.pa_config = config.pa_config.clone();
 
+        debug!("configuring ranging");
         self.configure_ranging(&config.ranging).await?;
 
         Ok(())
@@ -761,7 +761,6 @@ where
         // Configure ranging if used
         // handle in separate function instead
         if PacketType::Ranging == self.packet_type {
-            // core::unreachable!();
             self.hal.write_cmd(
                 Commands::SetRangingRole as u8,
                 &[RangingRole::Initiator as u8],
@@ -818,6 +817,14 @@ where
     }
 
     pub async fn get_ranging_result(&mut self) -> Result<f32, <Hal as base::HalError>::E> {
+
+        // do this weird maneuver from the datasheet first
+        self.set_state(State::StandbyXosc).await?;
+        let reg = self.hal.read_reg(Registers::LrRangingResultsFreeze as u16).await?;
+        self.hal.write_reg(Registers::LrRangingResultsFreeze as u16, reg | (1 << 1)).await?;
+
+        // maybe set the mux again??
+
         let mut rx_buf: [u8; 3] = [0; 3];
         self.hal.read_regs(Registers::LrRangingResultBaseAddr as u16, &mut rx_buf).await?;
         let distance_raw: u32 = (rx_buf[0] as u32) + (rx_buf[1] as u32) << 8 + (rx_buf[2] as u32) << 16;

@@ -22,7 +22,6 @@ pub const BUSY_TIMEOUT_MS: u32 = 500;
 
 /// Sx128x general configuration object
 #[derive(Clone, PartialEq, Debug)]
-#[cfg_attr(feature = "serde", derive(serde::Deserialize, serde::Serialize))]
 #[cfg_attr(feature = "defmt", derive(defmt::Format))]
 pub struct Config {
     /// Regulator mode configuration
@@ -131,7 +130,6 @@ impl Config {
 
 /// Radio modem configuration contains fields for each modem mode
 #[derive(Clone, PartialEq, Debug)]
-#[cfg_attr(feature = "serde", derive(serde::Deserialize, serde::Serialize))]
 #[cfg_attr(feature = "defmt", derive(defmt::Format))]
 pub enum Modem {
     Gfsk(GfskConfig),
@@ -169,7 +167,6 @@ impl From<&Modem> for PacketType {
 
 /// Radio channel configuration contains channel options for each mode
 #[derive(Clone, PartialEq, Debug)]
-#[cfg_attr(feature = "serde", derive(serde::Deserialize, serde::Serialize))]
 #[cfg_attr(feature = "defmt", derive(defmt::Format))]
 pub enum Channel {
     Gfsk(GfskChannel),
@@ -216,7 +213,6 @@ impl From<&Channel> for PacketType {
 
 /// Radio state
 #[derive(Clone, Copy, PartialEq, Debug)]
-#[cfg_attr(feature = "serde", derive(serde::Deserialize, serde::Serialize))]
 #[cfg_attr(feature = "defmt", derive(defmt::Format))]
 pub enum State {
     Sleep = 0x00,
@@ -253,7 +249,6 @@ impl core::convert::TryFrom<u8> for State {
 }
 
 #[derive(Clone, Copy, PartialEq, Debug)]
-#[cfg_attr(feature = "serde", derive(serde::Deserialize, serde::Serialize))]
 #[cfg_attr(feature = "defmt", derive(defmt::Format))]
 
 pub enum CommandStatus {
@@ -288,7 +283,6 @@ impl core::convert::TryFrom<u8> for CommandStatus {
 
 /// Power Amplifier configuration
 #[derive(Clone, PartialEq, Debug)]
-#[cfg_attr(feature = "serde", derive(serde::Deserialize, serde::Serialize))]
 #[cfg_attr(feature = "defmt", derive(defmt::Format))]
 pub struct PaConfig {
     /// Power in dBm
@@ -325,7 +319,6 @@ impl Default for PacketInfo {
 
 /// Regulator operating mode
 #[derive(Copy, Clone, PartialEq, Debug)]
-#[cfg_attr(feature = "serde", derive(serde::Deserialize, serde::Serialize))]
 #[cfg_attr(feature = "defmt", derive(defmt::Format))]
 pub enum RegulatorMode {
     /// Internal LDO
@@ -336,7 +329,6 @@ pub enum RegulatorMode {
 
 /// Power amplifier ramp time
 #[derive(Copy, Clone, PartialEq, Debug)]
-#[cfg_attr(feature = "serde", derive(serde::Deserialize, serde::Serialize))]
 #[cfg_attr(feature = "defmt", derive(defmt::Format))]
 pub enum RampTime {
     /// Ramp over 2us
@@ -359,7 +351,6 @@ pub enum RampTime {
 
 /// Packet type enumeration
 #[derive(Copy, Clone, PartialEq, Debug)]
-#[cfg_attr(feature = "serde", derive(serde::Deserialize, serde::Serialize))]
 #[cfg_attr(feature = "defmt", derive(defmt::Format))]
 pub enum PacketType {
     Gfsk = 0x00,
@@ -372,7 +363,6 @@ pub enum PacketType {
 
 /// Radio commands
 #[derive(Clone, PartialEq, Debug, strum::Display)]
-#[cfg_attr(feature = "serde", derive(serde::Deserialize, serde::Serialize))]
 #[cfg_attr(feature = "defmt", derive(defmt::Format))]
 pub enum Commands {
     GetStatus = 0xC0,
@@ -415,7 +405,6 @@ pub enum Commands {
 
 /// Radio registers
 #[derive(Clone, PartialEq, Debug, strum::Display)]
-#[cfg_attr(feature = "serde", derive(serde::Deserialize, serde::Serialize))]
 #[cfg_attr(feature = "defmt", derive(defmt::Format))]
 pub enum Registers {
     LrFirmwareVersionMsb = 0x0153,
@@ -458,7 +447,6 @@ pub const MASK_LR_ESTIMATED_FREQUENCY_ERROR: u32 = 0x0FFFFF;
 pub const AUTO_RX_TX_OFFSET: u16 = 33;
 
 #[derive(Clone, PartialEq, Debug)]
-#[cfg_attr(feature = "serde", derive(serde::Deserialize, serde::Serialize))]
 #[cfg_attr(feature = "defmt", derive(defmt::Format))]
 pub enum AutoTx {
     /// Enable AutoTX with the provided timeout in microseconds (uS)
@@ -542,7 +530,6 @@ bitflags! {
 
 /// Ranging mode role
 #[derive(Copy, Clone, PartialEq, Debug)]
-#[cfg_attr(feature = "serde", derive(serde::Deserialize, serde::Serialize))]
 #[cfg_attr(feature = "defmt", derive(defmt::Format))]
 pub enum RangingRole {
     /// Responder listens for ranging requests and responds
@@ -553,7 +540,6 @@ pub enum RangingRole {
 
 /// TickSize for timeout calculations
 #[derive(Copy, Clone, PartialEq, Debug)]
-#[cfg_attr(feature = "serde", derive(serde::Deserialize, serde::Serialize))]
 #[cfg_attr(feature = "defmt", derive(defmt::Format))]
 pub enum TickSize {
     // 15us tick size
@@ -568,7 +554,6 @@ pub enum TickSize {
 
 /// Timeout confguration for autonomous radio operations
 #[derive(Clone, PartialEq, Debug)]
-#[cfg_attr(feature = "serde", derive(serde::Deserialize, serde::Serialize))]
 #[cfg_attr(feature = "defmt", derive(defmt::Format))]
 pub enum Timeout {
     /// Single tx/rx mode

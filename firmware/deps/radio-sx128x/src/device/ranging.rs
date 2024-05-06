@@ -1,10 +1,12 @@
 #[derive(Debug, Copy, Clone, PartialEq)]
+#[cfg_attr(feature = "defmt", derive(defmt::Format))]
 pub enum RangingResultType {
     Raw = 0b00000,
     Average = 0b010000,
 }
 
 #[derive(Debug, Copy, Clone, PartialEq)]
+#[cfg_attr(feature = "defmt", derive(defmt::Format))]
 pub enum IdLength {
     IdLength08 = 0 << 6,
     IdLength16 = 1 << 6,
@@ -19,6 +21,7 @@ pub enum IdLength {
 // |    | 800  | 11486 | 11474 | 11453 | 11426 | 11417 | 11401 |
 // |    | 1600 | 13308 | 13493 | 13528 | 13515 | 13430 | 13376 |
 #[derive(Debug, Copy, Clone, PartialEq)]
+#[cfg_attr(feature = "defmt", derive(defmt::Format))]
 pub struct RangingConfig {
     pub id_length: IdLength,
     pub device_id: u32,

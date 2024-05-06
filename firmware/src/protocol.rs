@@ -10,6 +10,12 @@ pub struct UartMsg {
     pub data: [u8; 100]
 }
 
+pub struct RangingMsg {
+    pub lon: u32,
+    pub lat: u32,
+    pub distance_cm: u32,
+}
+
 pub enum Msg {
     Uart(UartMsg),
     Can(CanMsg)
@@ -22,12 +28,13 @@ const FOOTER_SIZE: usize = 2;
 
 const X25: crc::Crc<u16> = crc::Crc::<u16>::new(&crc::CRC_16_IBM_SDLC);
 
-pub fn append_header(data: &mut [u8], index: usize) -> Result<usize, usize> {
-    if data.len() - index < HEADER_SIZE + FOOTER_SIZE {
-        return Err(index)
+pub fn begin_buffer(data: &mut [u8], id: u8) -> Result<usize, usize> {
+    if data.len() < HEADER_SIZE + FOOTER_SIZE {
+        return Err(0)
     }
-    data[0..HEADER_SIZE].copy_from_slice(&"bra".as_bytes());
-    Ok(index + HEADER_SIZE)
+    data[0] = b'b';
+    data[1] = id;
+    Ok(HEADER_SIZE)
 }
 
 pub fn append_can_frame(data: &mut [u8], index: usize, msg: CanMsg) -> Result<usize, usize> {
@@ -51,7 +58,7 @@ pub fn append_uart_frame(data: &mut [u8], index: usize, msg: UartMsg) -> Result<
     Ok(index + 2 + msg.length as usize)
 }
 
-pub fn finish_message<'a>(data: &'a mut [u8], index: usize) -> Result<&'a [u8], ()> {
+pub fn finish_buffer<'a>(data: &'a mut [u8], index: usize) -> Result<&'a [u8], ()> {
     if data.len() - index < FOOTER_SIZE {
         panic!("remaing bytes are too few to encode footer");
     }

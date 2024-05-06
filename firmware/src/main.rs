@@ -4,6 +4,8 @@
 
 use defmt::{*};
 use defmt_rtt as _;
+
+
 use embassy_stm32::peripherals::{FDCAN1, USB_OTG_FS, USART2};
 use embassy_stm32::time::Hertz;
 use embassy_stm32::gpio::{Level, Output, Pull, Speed};
@@ -20,15 +22,12 @@ pub mod protocol;
 pub static UART_IN: Channel<ThreadModeRawMutex, protocol::UartMsg, 32> = Channel::new();
 pub static UART_OUT: Channel<ThreadModeRawMutex, protocol::UartMsg, 32> = Channel::new();
 
-
-
 pub static CAN_OUT: Channel<ThreadModeRawMutex, protocol::CanMsg, 32> = Channel::new();
 pub static CAN_IN: Channel<ThreadModeRawMutex, protocol::CanMsg, 32> = Channel::new();
 
 mod radio;
 mod can;
 mod uart;
-
 
 embassy_stm32::bind_interrupts!(struct Irqs {
     OTG_FS => embassy_stm32::usb::InterruptHandler<USB_OTG_FS>;
@@ -92,26 +91,26 @@ async fn main(spawner: embassy_executor::Spawner) {
     let pa_rx_en = Output::new(p.PB15, Level::Low, Speed::VeryHigh);
 
 
-    let mut can_configurator = embassy_stm32::can::CanConfigurator::new(p.FDCAN1, p.PB8, p.PB9, Irqs);
+    // let mut can_configurator = embassy_stm32::can::CanConfigurator::new(p.FDCAN1, p.PB8, p.PB9, Irqs);
 
-    can_configurator.set_extended_filter(
-        embassy_stm32::can::filter::ExtendedFilterSlot::_0,
-        embassy_stm32::can::filter::ExtendedFilter::accept_all_into_fifo1(),
-    );
+    // can_configurator.set_extended_filter(
+    //     embassy_stm32::can::filter::ExtendedFilterSlot::_0,
+    //     embassy_stm32::can::filter::ExtendedFilter::accept_all_into_fifo1(),
+    // );
 
-    can_configurator.set_bitrate(1_000_000);
+    // can_configurator.set_bitrate(1_000_000);
 
-    can_configurator.set_fd_data_bitrate(1_000_000, false);
+    // can_configurator.set_fd_data_bitrate(1_000_000, false);
 
-    let can = can_configurator.start(embassy_stm32::can::OperatingMode::NormalOperationMode);
+    // let can = can_configurator.start(embassy_stm32::can::OperatingMode::NormalOperationMode);
 
-    static mut CAN_TX_BUF: core::cell::UnsafeCell<embassy_stm32::can::TxFdBuf<1024>> = core::cell::UnsafeCell::new(embassy_stm32::can::TxFdBuf::new());
-    static mut CAN_RX_BUF: core::cell::UnsafeCell<embassy_stm32::can::RxFdBuf<1024>> = core::cell::UnsafeCell::new(embassy_stm32::can::RxFdBuf::new());
+    // static mut CAN_TX_BUF: core::cell::UnsafeCell<embassy_stm32::can::TxFdBuf<1024>> = core::cell::UnsafeCell::new(embassy_stm32::can::TxFdBuf::new());
+    // static mut CAN_RX_BUF: core::cell::UnsafeCell<embassy_stm32::can::RxFdBuf<1024>> = core::cell::UnsafeCell::new(embassy_stm32::can::RxFdBuf::new());
 
-    let can = can.buffered_fd(unsafe{CAN_TX_BUF.get_mut()}, unsafe {CAN_RX_BUF.get_mut()});
+    // let can = can.buffered_fd(unsafe{CAN_TX_BUF.get_mut()}, unsafe {CAN_RX_BUF.get_mut()});
 
-    let can_rx = can.reader();
-    let can_tx = can.writer();
+    // let can_rx = can.reader();
+    // let can_tx = can.writer();
 
     let mut spi_config = embassy_stm32::spi::Config::default();
     spi_config.frequency = Hertz(1_000_000);
@@ -125,8 +124,8 @@ async fn main(spawner: embassy_executor::Spawner) {
 
     let (uart_tx, uart_rx) = uart.split();
     spawner.spawn(radio::radio_task(spi, sx_cs, sx_busy, sx_reset, sx_dio1, sx_dio2, sx_dio3, led_tx, led_rx, pa_en, pa_tx_en, pa_rx_en)).unwrap();
-    spawner.spawn(can::can_reader_task(can_rx)).unwrap();
-    spawner.spawn(can::can_writer_task(can_tx)).unwrap();
-    spawner.spawn(uart::uart_writer_task(uart_tx)).unwrap();
-    spawner.spawn(uart::uart_reader_task(uart_rx)).unwrap();
+    // spawner.spawn(can::can_reader_task(can_rx)).unwrap();
+    // spawner.spawn(can::can_writer_task(can_tx)).unwrap();
+    // spawner.spawn(uart::uart_writer_task(uart_tx)).unwrap();
+    // spawner.spawn(uart::uart_reader_task(uart_rx)).unwrap();
 }

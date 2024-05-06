@@ -4,7 +4,6 @@ use super::common::*;
 
 /// FLRC configuration structure
 #[derive(Clone, PartialEq, Debug)]
-#[cfg_attr(feature = "serde", derive(serde::Deserialize, serde::Serialize))]
 #[cfg_attr(feature = "defmt", derive(defmt::Format))]
 pub struct FlrcChannel {
     /// Operating frequency
@@ -30,7 +29,6 @@ impl Default for FlrcChannel {
 
 /// FLRC packet configuration structure
 #[derive(Clone, PartialEq, Debug)]
-#[cfg_attr(feature = "serde", derive(serde::Deserialize, serde::Serialize))]
 #[cfg_attr(feature = "defmt", derive(defmt::Format))]
 pub struct FlrcConfig {
     pub preamble_length: PreambleLength,
@@ -63,7 +61,6 @@ impl Default for FlrcConfig {
 
 /// Bit rate / bandwidth pairs for FLRC mode
 #[derive(Copy, Clone, PartialEq, Debug)]
-#[cfg_attr(feature = "serde", derive(serde::Deserialize, serde::Serialize))]
 #[cfg_attr(feature = "defmt", derive(defmt::Format))]
 pub enum FlrcBitrate {
     /// Baud: 2600 kbps Bandwidth: 2.4 MHz
@@ -112,7 +109,6 @@ impl std::str::FromStr for FlrcBitrate {
 
 /// Coding rates for FLRC mode
 #[derive(Copy, Clone, PartialEq, Debug)]
-#[cfg_attr(feature = "serde", derive(serde::Deserialize, serde::Serialize))]
 #[cfg_attr(feature = "defmt", derive(defmt::Format))]
 pub enum FlrcCodingRate {
     /// 1/2 coding rate
@@ -144,7 +140,6 @@ impl std::str::FromStr for FlrcCodingRate {
 
 /// FLRC sync word length
 #[derive(Copy, Clone, PartialEq, Debug)]
-#[cfg_attr(feature = "serde", derive(serde::Deserialize, serde::Serialize))]
 #[cfg_attr(feature = "defmt", derive(defmt::Format))]
 pub enum FlrcSyncWordLength {
     /// No sync word
