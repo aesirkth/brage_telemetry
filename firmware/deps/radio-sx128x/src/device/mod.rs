@@ -74,7 +74,7 @@ impl Default for Config {
             packet_type: PacketType::LoRa,
             modem: Modem::LoRa(LoRaConfig::default()),
             channel: Channel::LoRa(LoRaChannel::default()),
-            //timeout: Timeout::Configurable{ step: TickSize::TickSize1000us, count: 1000 },
+            // timeout: Timeout::Configurable{ step: TickSize::TickSize1000us, count: 1000 },
             rf_timeout: Timeout::Single,
             xtal_freq: 52000000,
             // timeout_ms: 100,

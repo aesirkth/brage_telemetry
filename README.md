@@ -19,3 +19,4 @@ The modem is based on an STM32U575CG and an SX1280 transceiver. The radio signal
 
 ### Firmware
 The firmware is being developed using Rust with Embassy.
+See the firmware [README](firmware/README.md)

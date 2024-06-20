@@ -2,6 +2,7 @@ use embassy_stm32::spi::{Spi, Instance};
 use embassy_stm32::gpio::Output;
 use embassy_stm32::exti::ExtiInput;
 use radio_sx128x::base::Hal;
+use embassy_stm32::mode::Mode;
 // Assume Error and PinState are defined or imported from somewhere
 use radio_sx128x::Error;
 
@@ -11,8 +12,8 @@ use embassy_time::with_timeout;
 use log::{error, warn, info, debug, trace};
 
 
-pub struct ChungusHal<'d, T: Instance, Tx, Rx> {
-    spi: Spi<'d, T, Tx, Rx>,
+pub struct ChungusHal<'d, T: Instance, M: Mode> {
+    spi: Spi<'d, T, M>,
     cs: Output<'d>,
     busy: ExtiInput<'d>,
     reset: Output<'d>,
@@ -21,13 +22,12 @@ pub struct ChungusHal<'d, T: Instance, Tx, Rx> {
     dio3: ExtiInput<'d>,
 }
 
-impl<'d, T, Tx, Rx> ChungusHal<'d, T, Tx, Rx>
+impl<'d, T, M> ChungusHal<'d, T, M>
 where
     T: Instance,
-    Tx: 'd,
-    Rx: 'd,
+    M: Mode
 {
-    pub fn new(spi: Spi<'d, T, Tx, Rx>, mut cs: Output<'d>, busy: ExtiInput<'d>, mut reset: Output<'d>, dio1: ExtiInput<'d>, dio2: ExtiInput<'d>, dio3: ExtiInput<'d>) -> Self {
+    pub fn new(spi: Spi<'d, T, M>, mut cs: Output<'d>, busy: ExtiInput<'d>, mut reset: Output<'d>, dio1: ExtiInput<'d>, dio2: ExtiInput<'d>, dio3: ExtiInput<'d>) -> Self {
         cs.set_high();
         reset.set_high();
         Self {
@@ -43,11 +43,10 @@ where
 }
 
 
-impl<'d, T, Tx, Rx> Hal for ChungusHal<'d, T, Tx, Rx>
+impl<'d, T, M> Hal for ChungusHal<'d, T, M>
 where
     T: Instance + 'd,  // Ensures T implements Instance and ties its lifetime to 'd
-    Tx: 'd,  // Ensures Tx's lifetime is tied to 'd
-    Rx: 'd,  // Ensures Rx's lifetime is tied to 'd
+    M: Mode + 'd
 {
     type CommsError = ();  // Replace SomeErrorType with the actual error type
     type PinError = ();  // Replace SomePinErrorType with the actual pin error type

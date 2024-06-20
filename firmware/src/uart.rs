@@ -1,3 +1,4 @@
+use defmt::warn;
 use embassy_stm32::peripherals::USART2;
 use embassy_stm32::usart::{BufferedUartRx, BufferedUartTx};
 use embedded_io_async::{Read, Write};

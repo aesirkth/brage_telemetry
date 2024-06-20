@@ -783,7 +783,7 @@ where
             | Irq::RANGING_MASTER_RESULT_VALID;
 
         let irqs = irq1 | irq2;
-        self.set_irq_dio_mask(irqs, irqs, irq2, DioMask::empty()).await?;
+        self.set_irq_dio_mask(irqs, irq1, irq2, DioMask::empty()).await?;
 
         // Enter transmit mode
         self.hal.write_cmd(Commands::SetTx as u8, &config).await?;
@@ -800,7 +800,7 @@ where
         self.hal.wait_dio1(timeout_ms).await
     }
 
-    pub async fn wait_ranging_done(&mut self, timeout_ms: Option<u64>) -> Result<(), <Hal as base::HalError>::E> {
+    pub async fn wait_master_ranging_done(&mut self, timeout_ms: Option<u64>) -> Result<(), <Hal as base::HalError>::E> {
         self.hal.wait_dio2(timeout_ms).await
     }
 
@@ -848,15 +848,10 @@ where
 
     /// Check for transmit completion
     pub async fn check_transmit(&mut self) -> Result<bool, <Hal as base::HalError>::E> {
-        // Poll on DIO and short-circuit if not asserted
-        // if self.hal.get_dio1().await? == false {
-        //     return Ok(false);
-        // }
-
         let irq = self.get_interrupts(true).await?;
-        // let state = self.get_state().await?;
+        let state = self.get_state().await?;
 
-        // trace!("TX poll (irq: {:?}, state: {:?})", irq, state);
+        trace!("TX poll (irq: {:?}, state: {:?})", irq, state);
 
         if irq.contains(Irq::TX_DONE) {
             debug!("TX complete");
@@ -876,8 +871,9 @@ where
         // Set state to idle before we write configuration
         self.set_state(State::StandbyRc).await?;
 
-        // let s = self.get_state().await?;
-        // debug!("RX setup state: {:?}", s);
+        let s = self.get_state().await?;
+        debug!("RX setup state: {:?}", s);
+
 
         // Reset buffer addr
         if let Err(e) = self.set_buff_base_addr(0, 0).await {
@@ -932,8 +928,13 @@ where
 
         self.set_irq_dio_mask(irqs, irq1, irq2, irq3).await?;
 
-        // Enter transmit mode
+        // Enter receive mode
         self.hal.write_cmd(Commands::SetRx as u8, &config).await?;
+
+        let state = self.get_state().await?;
+
+        debug!("RX started (state: {:?})", state);
+
 
         Ok(())
     }
@@ -942,7 +943,7 @@ where
         self.hal.get_dio2().await
     }
 
-    pub async fn wait_respond_done(&mut self, timeout_ms: Option<u64>) -> Result<(), <Hal as base::HalError>::E>{
+    pub async fn wait_slave_ranging_done(&mut self, timeout_ms: Option<u64>) -> Result<(), <Hal as base::HalError>::E>{
         self.hal.wait_dio3(timeout_ms).await
     }
 
@@ -953,11 +954,6 @@ where
 
     /// Check for a received packet
     pub async fn check_receive(&mut self) -> Result<bool, <Hal as base::HalError>::E> {
-        // Poll on DIO and short-circuit if not asserted
-        // if self.hal.get_dio1().await? == false {
-        //     return Ok(false);
-        // }
-
         let irq = self.get_interrupts(true).await?;
         let mut res = Ok(false);
 

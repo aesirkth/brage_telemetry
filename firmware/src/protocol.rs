@@ -35,6 +35,7 @@ pub fn begin_buffer(data: &mut [u8], id: u8) -> Result<usize, usize> {
     data[0] = b'b';
     data[1] = id;
     Ok(HEADER_SIZE)
+    // Ok(100)
 }
 
 pub fn append_can_frame(data: &mut [u8], index: usize, msg: CanMsg) -> Result<usize, usize> {
@@ -54,7 +55,7 @@ pub fn append_uart_frame(data: &mut [u8], index: usize, msg: UartMsg) -> Result<
     }
     data[index] = 'u' as u8;
     data[index + 1] = msg.length as u8;
-    data[index + 2 .. index + 2 + msg.length as usize].copy_from_slice(&msg.data);
+    data[index + 2 .. index + 2 + msg.length as usize].copy_from_slice(&msg.data[0 .. msg.length as usize]);
     Ok(index + 2 + msg.length as usize)
 }
 
@@ -67,6 +68,7 @@ pub fn finish_buffer<'a>(data: &'a mut [u8], index: usize) -> Result<&'a [u8], (
     let checksum: u16 = X25.checksum(data);
     data[index..index + FOOTER_SIZE].copy_from_slice(&checksum.to_le_bytes());
     Ok(&data[..index + FOOTER_SIZE])
+    // Ok(&data[0..200])
 }
 
 pub enum MsgError {
